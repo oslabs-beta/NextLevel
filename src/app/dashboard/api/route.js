@@ -32,11 +32,13 @@ const path = require('path');
 const testDataPath = path.join(process.cwd(), 'data.json');
 
 export async function GET() {
+    console.log('get request made to /dashboard/api');
     const data = JSON.parse(fs.readFileSync(testDataPath, 'utf8'));
     return Response.json(data);
 }
 
 export async function POST(request) {
+    console.log('post request made to /dashboard/api');
     const body = await request.json();
     const newData = {
       "metricType" : body.name,

@@ -7,7 +7,7 @@ import { useReportWebVitals } from 'next/web-vitals'
 export default function NextWebVitals() {
   useReportWebVitals((metric) => {
     const body = JSON.stringify(metric)
-    const url = 'localhost:3000/dashboard/api'
+    const url = 'http://localhost:3000/dashboard/api'
 
     if(navigator.sendBeacon) {
       navigator.sendBeacon(url, body)
