@@ -1,0 +1,16 @@
+{
+  "name": "nextlevelpackage",
+  "version": "1.0.0",
+  "description": "this package will connect you to the nextlevel dashboard",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [
+    "next.js",
+    "performance-metrics",
+    "web-vitals"
+  ],
+  "author": "Kim Cuomo, Fredrico Aires da Neto, Ian Mann, Nelly Segimoto",
+  "license": "ISC"
+}
