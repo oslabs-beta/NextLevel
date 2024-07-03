@@ -1,28 +1,25 @@
 //index.js
 
-function helloNpm() {
-  return "hello NPM"
-}
+'use client'
 
 import { useReportWebVitals } from 'next/web-vitals'
  
-
-function MyApp({ Component, pageProps }) {
+export default function NextWebVitals() {
   useReportWebVitals((metric) => {
     switch (metric.name) {
       case 'FCP': {
-        // handle FCP results
+        console.log('FCP val:', metric.value);
+        console.log('FCP:', metric);
+        break;
       }
-      case 'LCP': {
-        // handle LCP results
+      case 'TTFB': {
+        console.log('TTFB val:', metric.value);
+        console.log('TTFB:', metric);
+        break;
       }
-      // ...
+      default: {
+        break;
+      }
     }
   })
- 
-  return <Component {...pageProps} />
 }
-
-
-
-module.exports = helloNpm

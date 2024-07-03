@@ -12,5 +12,8 @@
     "web-vitals"
   ],
   "author": "Kim Cuomo, Fredrico Aires da Neto, Ian Mann, Nelly Segimoto",
-  "license": "ISC"
+  "license": "ISC",
+  "dependencies": {
+    "web-vitals": "^4.2.1"
+  }
 }
