@@ -13,7 +13,7 @@ const bundleBuildAnalyzer = () => {
   // use exec to run next build and get next bundle analyzer terminal output
   const command = 'ANALYZE=true next build';
   const startTime = Date.now(); // start time before execution
-  exec(command, (error, stdout, stderr) => {
+  exec(command, (error, stdout) => {
     if (error) {
       console.error(`error in exec: ${error}`);
       return;
@@ -21,7 +21,9 @@ const bundleBuildAnalyzer = () => {
     // compute and send the build time to build time endpoint
     const endTime = Date.now(); // end time after execution has finished
     const buildTime = endTime - startTime;
+    console.log('Build time:', buildTime);
     sendToApi({buildTime}, buildURL);
+
     //bundle analyzer data is console logged in stdout
     const bundleLog = stdout;
     sendToApi({bundleLog}, bundleURL);
