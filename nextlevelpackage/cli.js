@@ -7,8 +7,8 @@ const { sendToApi } = require('./sendToApi');
 // function that will run next build and collect data, sending to api
 const bundleBuildAnalyzer = () => {
   const apiKey = process.env.API_KEY;
-  const buildURL = `http://localhost:3000/dashboard/build/api`;
-  const bundleURL = `http://localhost:3000/dashboard/bundle/api`;
+  const buildURL = `http://localhost:3000/dashboard/api/build`;
+  const bundleURL = `http://localhost:3000/dashboard/api/bundle`;
 
   // use exec to run next build and get next bundle analyzer terminal output
   const command = 'ANALYZE=true next build';
@@ -23,8 +23,8 @@ const bundleBuildAnalyzer = () => {
     const buildTime = endTime - startTime;
     sendToApi({buildTime}, buildURL);
     //bundle analyzer data is console logged in stdout
-    const bundleAnalyzerData = stdout;
-    sendToApi({bundleAnalyzerData}, bundleURL);
+    const bundleLog = stdout;
+    sendToApi({bundleLog}, bundleURL);
   });
 }
 

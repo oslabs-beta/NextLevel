@@ -16,6 +16,7 @@
   "author": "Kim Cuomo, Fredrico Aires da Neto, Ian Mann, Nelly Segimoto",
   "license": "ISC",
   "dependencies": {
+    "dotenv": "^16.4.5",
     "node-fetch": "^3.3.2",
     "web-vitals": "^4.2.1"
   }
