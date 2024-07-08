@@ -1,8 +1,8 @@
-"use client";
+"use client"
 
 // importing necessary functions
 import { useSession, signIn, signOut } from "next-auth/react";
-import Image from "next/image";
+// import Image from "next/image";
 
 export default function Home() {
   // extracting data from usesession as session
@@ -25,7 +25,7 @@ export default function Home() {
     <>
       <p>Not Signed In</p>
       <button onClick={() => signIn('google')}>Sign in with Google</button>
-      <button onClick={() => signIn('github')}>Sign in with GitHub</button>
+      {/* <button onClick={() => signIn('github')}>Sign in with GitHub</button> */}
     </>
   );
 }
