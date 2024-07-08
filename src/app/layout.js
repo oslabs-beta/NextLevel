@@ -4,6 +4,8 @@ import "./globals.css";
 // import { WebVitals } from './_components/web-vitals';
 // import { NextWebVitals } from "nextlevelpackage";
 
+import SessionWrapper from './components/SessionWrapper'
+
 const inter = Inter({ subsets: ["latin"] });
 
 export const metadata = {
@@ -13,10 +15,13 @@ export const metadata = {
 
 export default function RootLayout({ children }) {
   return (
-    <html lang="en">
+    <SessionWrapper>
+      <html lang="en">
       <body className={inter.className}>
         {children}
         </body>
     </html>
+    </SessionWrapper>
+    
   );
 }

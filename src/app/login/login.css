@@ -94,6 +94,29 @@ body {
   font-weight: 700;
 }
 
+.oauth-link {
+  text-align: center;
+  margin-top: 20px;
+  margin-bottom: 20px;
+}
+
+.oauth-button {
+  background-color: #ffffff;
+  border: 1px solid #dddddd;
+  padding: 10px 20px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  font-size: 16px;
+  color: #333;
+}
+
+.google-icon {
+  margin-right: 8px;
+  font-size: 20px;
+}
+
 .wrapper .register-link {
   font-size: 14.5px;
   text-align: center;

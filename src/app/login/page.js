@@ -2,6 +2,10 @@ import React from 'react';
 import './login.css';
 import { FaCircleUser } from 'react-icons/fa6';
 import { Si1Password } from 'react-icons/si';
+import { FcGoogle } from 'react-icons/fc';
+import Link from 'next/link';
+import { useSession, signIn, signOut } from "next-auth/react";
+// import { Home } from './Oauth.jsx';
 
 export default function Login() {
   return (
@@ -17,15 +21,24 @@ export default function Login() {
             <input type="password" placeholder="Password" required />
             <Si1Password className="icon" />
           </div>
-
+          
           <div className="remember-forgot">
             <label>
               <input type="checkbox" /> Remember me
             </label>
             <a href="#">Forgot password?</a>
           </div>
-
           <button type="submit"> Login </button>
+
+          <div className="oauth-link">
+          <Link href="/Oauth">
+            <button type="button" className="oauth-button">
+              <FcGoogle className="google-icon" /> Login with Google
+            </button>
+          </Link>
+        </div>
+
+        
 
           <div className="register-link">
             <p>
