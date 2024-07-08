@@ -4,16 +4,19 @@
   "description": "this package will connect you to the nextlevel dashboard",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "nextLevelAnalyze": "node buildBundleAnalyzer.js"
   },
   "keywords": [
     "next.js",
     "performance-metrics",
-    "web-vitals"
+    "web-vitals",
+    "build-time",
+    "bundle-analyzer"
   ],
   "author": "Kim Cuomo, Fredrico Aires da Neto, Ian Mann, Nelly Segimoto",
   "license": "ISC",
   "dependencies": {
+    "node-fetch": "^3.3.2",
     "web-vitals": "^4.2.1"
   }
 }
