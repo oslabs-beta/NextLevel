@@ -5,6 +5,7 @@ import { Si1Password } from 'react-icons/si';
 import { FcGoogle } from 'react-icons/fc';
 import Link from 'next/link';
 import { useSession, signIn, signOut } from "next-auth/react";
+import Github from 'next-auth/providers/github';
 // import { Home } from './Oauth.jsx';
 
 export default function Login() {
@@ -34,6 +35,11 @@ export default function Login() {
           <Link href="/Oauth">
             <button type="button" className="oauth-button">
               <FcGoogle className="google-icon" /> Login with Google
+            </button>
+          </Link>
+          <Link href="/Oauth">
+            <button type="button" className="oauth-button">
+              <FcGoogle className="Github-icon" /> Login with Github
             </button>
           </Link>
         </div>
