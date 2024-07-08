@@ -1,6 +1,7 @@
 import { Inter } from "next/font/google";
 import React from "react";
 import "./globals.css";
+import TopNav from "./components/topnav";
 // import { WebVitals } from './_components/web-vitals';
 // import { NextWebVitals } from "nextlevelpackage";
 
@@ -17,6 +18,7 @@ export default function RootLayout({ children }) {
   return (
     <SessionWrapper>
       <html lang="en">
+      <TopNav />
       <body className={inter.className}>
         {children}
         </body>
