@@ -1,21 +1,19 @@
-// may want to put this inside of a metrics endpoint or something and modify the npm package to this endpoint
 const fs = require('fs');
 const path = require('path');
-const testDataPath = path.join(process.cwd(), 'data.json');
+const testDataPath = path.join(process.cwd(), 'dataBuild.json');
 
 export async function GET() {
-    console.log('get request made to /dashboard/api');
+    console.log('get request made to /dashboard/api/build');
     const data = JSON.parse(fs.readFileSync(testDataPath, 'utf8'));
+    console.log('build time data:', data);
     return Response.json(data);
 }
 
 export async function POST(request) {
-    console.log('post request made to /dashboard/api');
+    console.log('post request made to /dashboard/api/build');
     const body = await request.json();
     const newData = {
-      "metricType" : body.name,
-      "metricValue" : body.value, // changed from body.time to body.value, as the metric value is stored in the value field
-      //add metric time here or when sending over from the client in the body
+      "buildTime": body.buildTime,
     };
     const currentData = JSON.parse(fs.readFileSync(testDataPath, 'utf8'));
     currentData.testData.push(newData);

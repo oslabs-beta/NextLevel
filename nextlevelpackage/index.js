@@ -9,6 +9,11 @@ export default function NextWebVitals() {
     const body = JSON.stringify(metric)
     const url = 'http://localhost:3000/dashboard/api'
 
+    if (!process.env.API_KEY) {
+      console.log('API key not found in environment variables');
+      return;
+    }
+    
     if(navigator.sendBeacon) {
       navigator.sendBeacon(url, body)
     } else {
