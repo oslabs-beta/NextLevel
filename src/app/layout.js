@@ -14,11 +14,11 @@ export const metadata = {
   description: "A Next.js performance dashboard",
 };
 
-export default function RootLayout({ children, userLoggedIn, handleLogout }) {
+export default function RootLayout({ children }) {
   return (
     <SessionWrapper>
       <html lang="en">
-      <TopNav userLoggedIn={userLoggedIn} handleLogout={handleLogout} />
+      <TopNav />
       <body className={inter.className}>
         {children}
         </body>
