@@ -1,35 +1,56 @@
+.header {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  background-color: #ffffff;
+  padding: 10px 20px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  z-index: 1000; /* Ensure it appears above other content */
+}
+
 .nav {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  padding: 1rem;
-  background-color: #333;
-  color: white;
+}
+
+.logo {
+  margin-right: 20px;
 }
 
 .logo img {
-  height: 40px; /* Adjust height as needed */
+  height: 40px; /* Adjust size as needed */
 }
 
 .links {
   display: flex;
+  gap: 20px;
 }
 
-.links a,
-.links button {
-  color: white;
+.links a {
+  color: #333333;
   text-decoration: none;
-  margin-left: 1rem;
+  font-weight: bold;
 }
 
-.links button {
-  background-color: transparent;
-  border: none;
-  cursor: pointer;
+.links a:hover {
+  color: #0070f3; /* Example link hover color */
 }
 
-.links a:hover,
-.links button:hover {
-  text-decoration: underline;
-}
+/* Adjust styles for mobile or smaller screens */
+@media (max-width: 768px) {
+  .nav {
+    flex-direction: column;
+    align-items: flex-start;
+  }
 
+  .logo {
+    margin-bottom: 10px;
+  }
+
+  .links {
+    flex-direction: column;
+    gap: 10px;
+  }
+}
