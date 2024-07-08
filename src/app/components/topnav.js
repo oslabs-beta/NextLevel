@@ -1,12 +1,33 @@
 import React from 'react';
-import styles from './globals.css';
-import Link
+import styles from './topnav.module.css';
+import Link from 'next/link';
 
-function TopNav() {
+function TopNav({ userLoggedIn, handleLogout }) {
   return (
-    <div className={styles.topNav}>
-      <h2>TopNav</h2>
-    </div>
+    <nav className={styles.nav}>
+      <div className={styles.logo}>
+        <Link href="/">
+          <a>
+            <img src="/logo.png" alt="Logo" />
+          </a>
+        </Link>
+      </div>
+      <div className={styles.links}>
+        <Link href="/">
+          <a>Home</a>
+        </Link>
+        <Link href="/dashboard">
+          <a>Dashboard</a>
+        </Link>
+        {userLoggedIn ? (
+          <button onClick={handleLogout}>Logout</button>
+        ) : (
+          <Link href="/login">
+            <a>Login</a>
+          </Link>
+        )}
+      </div>
+    </nav>
   );
 }
 

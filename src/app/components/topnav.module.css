@@ -1,0 +1,35 @@
+.nav {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 1rem;
+  background-color: #333;
+  color: white;
+}
+
+.logo img {
+  height: 40px; /* Adjust height as needed */
+}
+
+.links {
+  display: flex;
+}
+
+.links a,
+.links button {
+  color: white;
+  text-decoration: none;
+  margin-left: 1rem;
+}
+
+.links button {
+  background-color: transparent;
+  border: none;
+  cursor: pointer;
+}
+
+.links a:hover,
+.links button:hover {
+  text-decoration: underline;
+}
+
