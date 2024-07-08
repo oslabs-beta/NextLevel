@@ -1,7 +1,11 @@
+import React from 'react';
+import styles from '../dashboard.module.css';
+
 function BuildTimeChart() {
   return (
-    <div className="chart">
-      <h1>Build Time Chart</h1>
+    <div className={styles.chart}>
+      <h3>Build Time Chart</h3>
+      
     </div>
   );
 }
