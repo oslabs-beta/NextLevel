@@ -1,7 +1,7 @@
 body, html {
   margin: 0;
   padding: 0;
-  font-family: Arial, sans-serif;
+  font-family: 'Poppins', sans-serif;
   height: 100%;
   background-color: #e7e7e7;
 }
@@ -10,9 +10,9 @@ body, html {
   box-sizing: border-box;
 }
 
-h2 {
+/* h2 {
   font-family: var(--font-roboto-mono);
-}
+} */
 
 /* .topNav {
   background-color: #333;

@@ -1,41 +1,67 @@
-.div h2 {
-  font-family: var(--font-roboto-mono);
-}
-
 .dashboardContainer {
   display: flex;
   height: 100vh;
-  overflow: hidden;
+  /* overflow: hidden; */
+}
+
+.dashboardTitle {
+  padding-top: 40px;
 }
 
 .sidebar {
   position: fixed;
-  top: 0;
+  top: 65px; /* Adjust this value to match the height of your top nav */
   left: 0;
-  height: 100%;
-  width: 20%;
-  background-color: #f0f0f0;
+  bottom: 0;
+  width: 15%;
+  background-color: #143A52;
   padding: 20px;
   box-sizing: border-box;
-  overflow-y: auto;
+  overflow-y: auto; /* Allow scrolling if sidebar content is long */
+  align-content: flex-end;
+}
+
+.sidebarList {
+  list-style-type: none;
+  padding: 0;
+  margin: 0;
+}
+
+.sidebarListItems {
+  color: #e7e7e7;
+  display: inline-block;
+  vertical-align: middle;
+}
+
+.sidebarListIcons {
+  color: #e7e7e7;
+  margin-right: 5px;
+  display: inline-block;
+  vertical-align: middle;
 }
 
 .mainContent {
-  margin-left: 20%; /* Add this to account for the fixed sidebar */
-  width: 80%;
+  margin-left: 15%; /* Add this to account for the fixed sidebar */
+  padding-top: 60px; /* Add padding to account for the top nav */
+  width: 85%;
   padding: 20px;
   box-sizing: border-box;
   display: flex;
   flex-direction: column;
   gap: 20px;
   overflow-y: auto; /* Allow scrolling for the main content */
-  height: 100vh;
+  /* height: calc(100vh - 60px); Subtract the height of the top nav */
 }
 
 .apiContainer {
   display: flex;
   align-items: center;
   margin-bottom: 20px;
+  gap: 10px;
+}
+
+#apiTitle {
+  margin-right: 10px;
 }
 
 .apiCodeInput {
@@ -43,7 +69,6 @@
   padding: 10px;
   border: 1px solid #ddd;
   border-radius: 4px;
-  margin-right: 10px;
   font-size: 14px;
 }
 
@@ -67,18 +92,27 @@
   font-size: 14px;
 }
 
-.chart {
+.chartContainer {
   background-color: #ffffff;
   border: 1px solid #ddd;
   border-radius: 8px;
   padding: 20px;
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  margin: 10px;
+}
+
+.chartTitle {
+  margin: 0 0 10px 0; /* Add bottom margin to space title from the chart */
+}
+
+.chart {
   flex: 1;
   display: flex;
   align-items: center;
   justify-content: center;
-  flex-direction: row;
 }
-
 
 

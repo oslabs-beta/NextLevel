@@ -1,4 +1,4 @@
-import { Poppins } from "next/font/google";
+import { Poppins } from "@next/font/google";
 import React from "react";
 import "./globals.css";
 import TopNav from "./components/topnav";
@@ -13,19 +13,19 @@ const poppins = Poppins({
 })
 
 export const metadata = {
-  title: "Next Level",
+  title: "NextLevel",
   description: "A Next.js performance dashboard",
 };
 
 export default function RootLayout({ children }) {
   return (
     <SessionWrapper>
-      <html lang="en" className={ poppins.className }>
-      <TopNav />
-      <body >
-        {children}
+      <html lang="en" >
+        <body className={ poppins.className }>
+          <TopNav />
+          {children}
         </body>
-    </html>
+      </html>
     </SessionWrapper>
   );
 }

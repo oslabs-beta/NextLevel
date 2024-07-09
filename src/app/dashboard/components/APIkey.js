@@ -18,7 +18,7 @@ function APIKey({ api }) {
   };
   return (
     <div className={styles.apiContainer}>
-      <h2>API Key</h2>
+      <h3 id="apiTitle">API Key</h3>
       <input
         type="text"
         value={api}
