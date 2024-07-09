@@ -13,7 +13,7 @@ export default function Login() {
     <body>
       <div className="wrapper">
         <form action="">
-          <h1> NEXT LEVEL </h1>
+          <h1> NextLevel </h1>
           <div className="input-box">
             <input type="text" placeholder="Username" required />
             <FaCircleUser className="icon" />
