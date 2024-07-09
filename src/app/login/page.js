@@ -3,13 +3,10 @@ import './login.css';
 import { FaCircleUser } from 'react-icons/fa6';
 import { Si1Password } from 'react-icons/si';
 import { FcGoogle } from 'react-icons/fc';
+import { DiGithubBadge } from "react-icons/di";
 import Link from 'next/link';
 import { useSession, signIn, signOut } from "next-auth/react";
-<<<<<<< HEAD
-import Github from 'next-auth/providers/github';
-=======
-// import {backimage} from '../../../assets/4k-tech-untb6o7k25k9gvy1.jpg';
->>>>>>> 2a23223e2276fe1414755071e7a683c6a3d933a7
+//import Github from 'next-auth/providers/github';
 // import { Home } from './Oauth.jsx';
 
 export default function Login() {
@@ -43,7 +40,7 @@ export default function Login() {
           </Link>
           <Link href="/Oauth">
             <button type="button" className="oauth-button">
-              <FcGoogle className="Github-icon" /> Login with Github
+              <DiGithubBadge className="Github-icon" /> Login with Github
             </button>
           </Link>
         </div>
