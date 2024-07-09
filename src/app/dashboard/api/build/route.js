@@ -12,8 +12,10 @@ export async function GET() {
 export async function POST(request) {
     console.log('post request made to /dashboard/api/build');
     const body = await request.json();
+    const apiKey = request.headers.get('api-key');
     const newData = {
       "buildTime": body.buildTime,
+      "apiKey": apiKey,
     };
     const currentData = JSON.parse(fs.readFileSync(testDataPath, 'utf8'));
     currentData.testData.push(newData);
