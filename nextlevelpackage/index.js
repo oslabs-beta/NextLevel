@@ -13,7 +13,7 @@ export default function NextWebVitals() {
     const apiKey = process.env.NEXT_PUBLIC_API_KEY;
     const data = {...metric, apiKey};
     const body = JSON.stringify(data);
-    const url = 'http://localhost:3000/dashboard/api'
+    const url = 'https://www.nextlevel-dash.com/dashboard/api'
 
     
     
