@@ -10,15 +10,14 @@ const handler = NextAuth({
         GithubProvider({
             clientId: process.env.GITHUB_ID,
             clientSecret: process.env.GITHUB_SECRET,
+
         }),
         GoogleProvider({
             clientId: process.env.GOOGLE_CLIENT_ID,
             clientSecret: process.env.GOOGLE_CLIENT_SECRET,
+            
           })
     ],
-    secret: process.env.SECRET
+    
 });
-const authHandler = (req, res) => NextAuth(req, res, options);
-export default authHandler;
-
 export { handler as GET, handler as POST }
