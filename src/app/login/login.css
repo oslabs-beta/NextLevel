@@ -9,21 +9,26 @@ body {
   font-family: 'Poppins', sans-serif;
   display: flex;
   justify-content: center;
-  align-items: center;
+  align-items: center; 
   min-height: 100vh;
-  background: seagreen;
+  background: no-repeat;
+  background-size: cover;
+  background-image: url('https://getwallpapers.com/wallpaper/full/2/8/f/537844.jpg');
+  background-position: center;
 }
 
 .wrapper {
   width: 420px;
-  background: slateblue;
+  background: transparent;
+  border: 2px solid rgba(255, 255, 255, 0.2);
+  backdrop-filter: blur(30px);
+  box-shadow: 0 0 30px rgba(0,0,0,.2);
   color: #fff;
   border-radius: 10px;
   padding: 30px 40px;
 }
-
 .wrapper h1 {
-  font-size: 36px;
+  font-size: 40px;
   text-align: center;
 }
 
@@ -40,7 +45,7 @@ body {
   background: transparent;
   border: none;
   outline: none;
-  border: 2px solid rgba(255, 255, 255, 0.2);
+  border: 2px solid rgba(233, 225, 225, 0.2);
   border-radius: 40px;
   font-size: 16px;
   color: #fff;
@@ -94,6 +99,10 @@ body {
   font-weight: 700;
 }
 
+.wrapper button:hover {
+  background-color: rgb(56, 128, 221);
+  color: white;
+}
 .oauth-link {
   text-align: center;
   margin-top: 20px;
