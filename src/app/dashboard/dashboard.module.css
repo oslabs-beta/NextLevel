@@ -1,3 +1,7 @@
+.div h2 {
+  font-family: var(--font-roboto-mono);
+}
+
 .dashboardContainer {
   display: flex;
   height: 100vh;

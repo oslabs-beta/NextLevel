@@ -3,7 +3,7 @@ import styles from '../dashboard.module.css';
 
 function BuildTimeMetrics() {
   return (
-    <div class={styles.chart}>
+    <div className={styles.chart}>
       <h3>Build Time Metrics</h3>
     </div>
   );

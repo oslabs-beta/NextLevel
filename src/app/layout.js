@@ -1,13 +1,16 @@
-import { Inter } from "next/font/google";
+import { Poppins } from "next/font/google";
 import React from "react";
 import "./globals.css";
 import TopNav from "./components/topnav";
-// import { WebVitals } from './_components/web-vitals';
-// import { NextWebVitals } from "nextlevelpackage";
 
 import SessionWrapper from './components/SessionWrapper'
 
-const inter = Inter({ subsets: ["latin"] });
+const poppins = Poppins({
+  subsets: ['latin'],
+  display: 'swap',
+  weight: ['200', '400', '600'],
+  style: ['normal', 'italic']
+})
 
 export const metadata = {
   title: "Next Level",
@@ -17,13 +20,12 @@ export const metadata = {
 export default function RootLayout({ children }) {
   return (
     <SessionWrapper>
-      <html lang="en">
+      <html lang="en" className={ poppins.className }>
       <TopNav />
-      <body className={inter.className}>
+      <body >
         {children}
         </body>
     </html>
     </SessionWrapper>
-    
   );
 }
