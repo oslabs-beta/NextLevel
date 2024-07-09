@@ -9,7 +9,7 @@ import SessionWrapper from './components/SessionWrapper'
 const inter = Inter({ subsets: ["latin"] });
 
 export const metadata = {
-  title: "Nex Level",
+  title: "Next Level",
   description: "A Next.js performance dashboard",
 };
 

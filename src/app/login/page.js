@@ -5,6 +5,7 @@ import { Si1Password } from 'react-icons/si';
 import { FcGoogle } from 'react-icons/fc';
 import Link from 'next/link';
 import { useSession, signIn, signOut } from "next-auth/react";
+// import {backimage} from '../../../assets/4k-tech-untb6o7k25k9gvy1.jpg';
 // import { Home } from './Oauth.jsx';
 
 export default function Login() {
