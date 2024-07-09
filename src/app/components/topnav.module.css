@@ -3,8 +3,8 @@
   top: 0;
   left: 0;
   width: 100%;
-  background-color: #ffffff;
-  padding: 10px 20px;
+  background-color: hsl(0, 0%, 100%, .7);
+  padding: 0px 20px;
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
   z-index: 1000; /* Ensure it appears above other content */
 }
@@ -20,7 +20,10 @@
 }
 
 .logo img {
-  height: 40px; /* Adjust size as needed */
+  height: 200px; /* Adjust size as needed */
+  max-width: 350px; /* Adjust the maximum width as needed */
+  width: auto; /* Ensure the aspect ratio is maintained */
+  max-height: 200px; /* Ensure the logo doesn't exceed the specified height */
 }
 
 .links {
