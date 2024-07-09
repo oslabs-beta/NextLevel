@@ -2,6 +2,7 @@
 const fs = require('fs');
 const path = require('path');
 const testDataPath = path.join(process.cwd(), 'data.json');
+import { NextResponse } from 'next/server';
 
 export async function GET() {
     console.log('get request made to /dashboard/api');

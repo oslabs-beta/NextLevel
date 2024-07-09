@@ -27,8 +27,22 @@ body {
   border-radius: 10px;
   padding: 30px 40px;
 }
+
+.logo-container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 20px; /* Adjust as needed */
+}
+
+.logo {
+  width: 60px; /* Adjust as needed */
+  height: 60px; /* Adjust as needed */
+  margin-right: 10px; /* Adjust as needed */
+}
+
 .wrapper h1 {
-  font-size: 40px;
+  font-size: 50px;
   text-align: center;
 }
 
