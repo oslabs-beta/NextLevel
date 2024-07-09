@@ -6,19 +6,26 @@ import { useReportWebVitals } from 'next/web-vitals'
  
 export default function NextWebVitals() {
   useReportWebVitals((metric) => {
-    const body = JSON.stringify(metric)
-    const url = 'http://localhost:3000/dashboard/api'
-
-    if (!process.env.API_KEY) {
+    if (!process.env.NEXT_PUBLIC_API_KEY) {
       console.log('API key not found in environment variables');
       return;
     }
+    const apiKey = process.env.NEXT_PUBLIC_API_KEY;
+    const data = {...metric, apiKey};
+    const body = JSON.stringify(data);
+    const url = 'https://www.nextlevel-dash.com/dashboard/api'
+
+    
     
     if(navigator.sendBeacon) {
       navigator.sendBeacon(url, body)
     } else {
       fetch(url, {
         method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+          'API-Key': apiKey
+        },
         body,
         keepalive: true
       })
