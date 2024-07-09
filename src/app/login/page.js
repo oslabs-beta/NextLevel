@@ -15,8 +15,8 @@ export default function Login() {
       <div className="wrapper">
         <form action="">
           <h1> NextLevel </h1>
-          <div className="input-box">
-            <input type="text" placeholder="Username" required />
+          <div className="input-box"> 
+            <input type="text" placeholder="Username" required /> 
             <FaCircleUser className="icon" />
           </div>
           <div className="input-box">
@@ -45,13 +45,9 @@ export default function Login() {
           </Link>
         </div>
 
-
-        
-
           <div className="register-link">
             <p>
-              {' '}
-              Don't have an account? <a href="#">Register</a>
+              Don't have an account? <Link href = "/signup">Register</Link>
             </p>
           </div>
         </form>
