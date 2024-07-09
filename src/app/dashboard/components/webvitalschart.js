@@ -78,14 +78,16 @@ function WebVitalsChart({ data }) {
   };
   
   return (
-    <div className={styles.chart}>
-      <h2>Web Vitals Chart</h2>
+    <div className={styles.chartContainer}>
+      <h2 className={styles.chartTitle}>Web Vitals Chart</h2>
       {/* <ul>
         adding fake data to test
         {allData.map(webVital => <li key={webVital.id}> {webVital.title} </li>)}
       </ul> */}
-      <Line data={chartData} options={options} />
-      {/* {children} */}
+      <div className={styles.chart}> 
+        <Line data={chartData} options={options} />
+       {/* {children} */}
+      </div>
     </div>
   );
 }
