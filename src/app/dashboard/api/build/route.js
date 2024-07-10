@@ -11,7 +11,7 @@ export async function GET(request) {
       console.log('get request made to /dashboard/api/build');
       const data = JSON.parse(await fs.readFile(testDataPath, 'utf8'));
       console.log('build time data:', data);
-      return new NextResponse.json(data, { headers: corsResponse.headers }); //does this need the new keyword?
+      return NextResponse.json(data, { headers: corsResponse.headers }); //does this need the new keyword?
     } catch (error) {
       console.error(error);
       return new NextResponse(`Internal Server Error: ${error.message}`, { status: 500 });  //does this need the new keyword?
@@ -31,7 +31,7 @@ export async function POST(request) {
       const currentData = JSON.parse(await fs.readFile(testDataPath, 'utf8'));
       currentData.testData.push(newData);
       await fs.writeFile(testDataPath, JSON.stringify(currentData));
-      return new NextResponse(JSON.stringify(newData), {  //does this need the new keyword?
+      return NextResponse(JSON.stringify(newData), {  //does this need the new keyword?
         headers: corsResponse.headers,
         status: 201,
       });
