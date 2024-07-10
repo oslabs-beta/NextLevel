@@ -15,9 +15,13 @@ export async function GET() {
 }
 
 export async function POST(request) {
+  console.log('request ', request);
   try {
+    console.log('going into try block post -- dashb api build')
     const body = await request.json();
+    console.log('body:', body);
     const apiKey = request.headers.get('Authorization');
+    console.log('apiKey:', apiKey);
     const newData = {
       buildTime: body.buildTime,
       apiKey: apiKey,
@@ -29,7 +33,7 @@ export async function POST(request) {
     return NextResponse.json(newData, { status: 201 });
   } catch (error) {
     console.error(error);
-    return NextResponse.json({ error: 'Internal Server Error' }, { status: 500 });
+    return NextResponse.json({ error: 'Hi Fred' }, { status: 500 });
   }
 }
 
