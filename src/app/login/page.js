@@ -4,8 +4,8 @@ import React, { useState } from "react";
 import "./login.css";
 import { FaCircleUser } from "react-icons/fa6";
 import { Si1Password } from "react-icons/si";
-import { FcGoogle } from "react-icons/fc";
-import { DiGithubBadge } from "react-icons/di";
+import { FcGoogle } from 'react-icons/fc';
+import { IoLogoGithub } from "react-icons/io";
 import Link from "next/link";
 import { useSession, signIn, signOut } from "next-auth/react";
 import Modal from "../components/Modal.js"
@@ -48,7 +48,7 @@ export default function Login() {
               <FcGoogle className="google-icon" />
             </button>
             <button type="button" className="oauth-button" onClick={toggleModal}>
-              <DiGithubBadge className="github-icon" />
+              <IoLogoGithub className="github-icon" />
             </button>
           </div>
           <div className="register-link">
