@@ -27,8 +27,22 @@ body {
   border-radius: 10px;
   padding: 30px 40px;
 }
+
+.logo-container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 20px; /* Adjust as needed */
+}
+
+.logo {
+  width: 60px; /* Adjust as needed */
+  height: 60px; /* Adjust as needed */
+  margin-right: 10px; /* Adjust as needed */
+}
+
 .wrapper h1 {
-  font-size: 40px;
+  font-size: 50px;
   text-align: center;
 }
 
@@ -64,6 +78,15 @@ body {
   font-size: 20px;
 }
 
+input:-webkit-autofill {
+  -webkit-box-shadow: 0 0 0 1000px transparent inset !important;
+  -webkit-text-fill-color: #fff !important;
+}
+
+input:-webkit-autofill ~ .icon {
+  color: #000 !important;
+}
+
 .wrapper .remember-forgot {
   display: flex;
   justify-content: space-between;
@@ -94,7 +117,7 @@ body {
   border-radius: 40px;
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
   cursor: pointer;
-  font-size: 16px;
+  font-size: 20px;
   color: #333;
   font-weight: 700;
 }
