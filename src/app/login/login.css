@@ -78,6 +78,15 @@ body {
   font-size: 20px;
 }
 
+input:-webkit-autofill {
+  -webkit-box-shadow: 0 0 0 1000px transparent inset !important;
+  -webkit-text-fill-color: #fff !important;
+}
+
+input:-webkit-autofill ~ .icon {
+  color: #000 !important;
+}
+
 .wrapper .remember-forgot {
   display: flex;
   justify-content: space-between;
