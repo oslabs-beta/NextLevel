@@ -1,0 +1,51 @@
+.modal-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.5);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  
+  .modal-content {
+    background: white;
+    padding: 2rem;
+    border-radius: 8px;
+    text-align: center;
+  }
+  
+  .oauth-button {
+    background-color: #ffffff;
+  border: 1px solid #dddddd;
+  padding: 7px;
+  padding-left: 15px;
+  gap: 100px !important;
+  display: inline-block;
+  width: 140px !important;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  font-size: 16px;
+  color: #333;
+  margin-right: 10px;
+  margin-left: 10px;
+  }
+  
+  .github-icon {
+    margin-right: 8px;
+    font-size: 30px;
+  }
+  
+  .google-icon{
+   margin-right: 8px;
+   font-size: 30px;
+  }
+  .close-button {
+    margin-top: 1rem;
+    padding: 0.5rem 1rem;
+    cursor: pointer;
+  }
+  

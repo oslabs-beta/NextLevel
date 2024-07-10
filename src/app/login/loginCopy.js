@@ -1,27 +1,15 @@
-"use client";
-
-import React, { useState } from "react";
+import React from "react";
 import "./login.css";
 import { FaCircleUser } from "react-icons/fa6";
 import { Si1Password } from "react-icons/si";
-import { FcGoogle } from 'react-icons/fc';
-import { IoLogoGithub } from "react-icons/io";
+import { FcGoogle } from "react-icons/fc";
+import { DiGithubBadge } from "react-icons/di";
 import Link from "next/link";
 import { useSession, signIn, signOut } from "next-auth/react";
-import Modal from "../components/Modal.js"
 //import Github from 'next-auth/providers/github';
 //import { Home } from './Oauth/page.js';
 
 export default function Login() {
-  const [isModalOpen, setIsModalOpen] = useState(false);
-
-  const handleOAuthSignIn = (provider) => {
-    signIn(provider, { callbackUrl: '/dashboard' });
-  };
-
-  const toggleModal = () => {
-    setIsModalOpen(!isModalOpen);
-  };
   return (
     <body>
       <div className="wrapper">
@@ -44,12 +32,17 @@ export default function Login() {
           </div>
           <button type="submit"> Login </button>
           <div className="oauth-link">
-            <button type="button" className="oauth-button" onClick={toggleModal}>
-              <FcGoogle className="google-icon" />
-            </button>
-            <button type="button" className="oauth-button" onClick={toggleModal}>
-              <IoLogoGithub className="github-icon" />
-            </button>
+            <Link href="/Oauth">
+              <button type="button" className="oauth-button">
+                <FcGoogle className="google-icon" />
+              </button>
+            </Link>
+
+            <Link href= "/Oauth">
+              <button type="button" className="oauth-button">
+                <DiGithubBadge className="github-icon" />
+              </button>
+            </Link>
           </div>
           <div className="register-link">
             <p>
@@ -58,7 +51,6 @@ export default function Login() {
           </div>
         </form>
       </div>
-      <Modal isOpen={isModalOpen} onClose={toggleModal} handleOAuthSignIn={handleOAuthSignIn} />
     </body>
   );
 }
