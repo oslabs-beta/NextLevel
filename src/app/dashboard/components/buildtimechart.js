@@ -2,7 +2,7 @@
 
 'use client';
 
-import React, { useEffect, useState }, { useEffect, useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import styles from '../dashboard.module.css';
 import { Line } from 'react-chartjs-2';
 import {
