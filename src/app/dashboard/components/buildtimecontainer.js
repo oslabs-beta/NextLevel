@@ -5,8 +5,8 @@ import BuildTimeMetrics from './buildtimemetrics';
 
 function BuildTimeContainer() {
   return (
-    <div className={styles.chart}>
-      <h2>Build Time Container</h2>
+    <div className={styles.chartContainer}>
+      <h2 className={styles.chartTitle}>Build Time Container</h2>
       <BuildTimeChart />
       <BuildTimeMetrics />
     </div>

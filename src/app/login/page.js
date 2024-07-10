@@ -1,3 +1,4 @@
+
 'use client';
 
 import React from 'react';
@@ -55,6 +56,8 @@ export default function Login() {
           </div>
           <div className="input-box">
             <input type="text" placeholder="Username" value = {username} onChange = {(e) => setUsername(e.target.value)} required />
+
+
             <FaCircleUser className="icon" />
           </div>
           <div className="input-box">
@@ -69,6 +72,7 @@ export default function Login() {
             <a href="#">Forgot password?</a>
           </div>
           <button type="submit"> Login </button>
+
           {error && (
             <p className="message" style={{ color: 'red' }}>
               {error}
@@ -79,18 +83,13 @@ export default function Login() {
               Login successful!
             </p>
           )}
-
           <div className="oauth-link">
-            <Link href="/Oauth">
-              <button type="button" className="oauth-button">
-                <AiOutlineGoogle className="google-icon" />
-              </button>
-            </Link>
-            <Link href="/Oauth">
-              <button type="button" className="oauth-button">
-                <IoLogoGithub className="github-icon" />
-              </button>
-            </Link>
+            <button type="button" className="oauth-button" onClick={toggleModal}>
+              <FcGoogle className="google-icon" />
+            </button>
+            <button type="button" className="oauth-button" onClick={toggleModal}>
+              <IoLogoGithub className="github-icon" />
+            </button>
           </div>
 
           <div className="register-link">
@@ -100,6 +99,7 @@ export default function Login() {
           </div>
         </form>
       </div>
+      <Modal isOpen={isModalOpen} onClose={toggleModal} handleOAuthSignIn={handleOAuthSignIn} />
     </body>
   );
 }

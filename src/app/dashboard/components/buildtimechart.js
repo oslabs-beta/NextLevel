@@ -76,7 +76,9 @@ function BuildTimeChart({ data }) {
   return (
     <div className={styles.chart}>
       <h3>Build Time Chart</h3>
+
       {/* <Line data={chartData} options={options} /> */}
+
     </div>
   );
 }

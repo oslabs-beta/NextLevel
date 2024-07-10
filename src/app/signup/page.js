@@ -1,3 +1,4 @@
+
 'use client';
 
 import { useState } from 'react';
@@ -7,6 +8,8 @@ import { Si1Password } from 'react-icons/si';
 import { AiOutlineGoogle } from 'react-icons/ai';
 import { IoLogoGithub } from 'react-icons/io';
 import Link from 'next/link';
+import Modal from "../components/Modal.js"
+import { useSession, signIn, signOut } from "next-auth/react";
 // import { useSession, signIn, signOut } from 'next-auth/react';
 // import {backimage} from '../../../assets/4k-tech-untb6o7k25k9gvy1.jpg';
 // import { Home } from './Oauth.jsx';
@@ -56,6 +59,16 @@ export default function SignUp() {
       setError('An error occurred. Please try again.');
       setSuccess(false);
     }
+
+  const [isModalOpen, setIsModalOpen] = useState(false);
+
+  const handleOAuthSignIn = (provider) => {
+    signIn(provider, { callbackUrl: '/dashboard' });
+  };
+
+  const toggleModal = () => {
+    setIsModalOpen(!isModalOpen);
+
   };
   return (
     <body>
@@ -101,24 +114,24 @@ export default function SignUp() {
           )}
 
           <div className="oauth-link">
-            <Link href="/Oauth">
-              <button type="button" className="oauth-button">
-                <AiOutlineGoogle className="google-icon" />
-              </button>
-            </Link>
-            <Link href="/Oauth">
-              <button type="button" className="oauth-button">
-                <IoLogoGithub className="github-icon" />
-              </button>
+
+            <button type="button" className="oauth-button" onClick={toggleModal}>
+              <FcGoogle className="google-icon" />
+            </button>
+            <button type="button" className="oauth-button" onClick={toggleModal}>
+              <IoLogoGithub className="github-icon" />
+            </button>
             </Link>
           </div>
           <div className="register-link">
             <p>
               Already have an account? <Link href="/login">Login</Link>
             </p>
+n
           </div>
         </form>
       </div>
+      <Modal isOpen={isModalOpen} onClose={toggleModal} handleOAuthSignIn={handleOAuthSignIn} />
     </body>
   );
 }

@@ -12,11 +12,13 @@ export async function GET() {
 
 export async function POST(request) {
     console.log('post request made to /dashboard/api');
+    console.log()
     const body = await request.json();
     const newData = {
       "metricType" : body.name,
       "metricValue" : body.value, // changed from body.time to body.value, as the metric value is stored in the value field
       //add metric time here or when sending over from the client in the body
+      "apiKey" : body.apiKey,
     };
     const currentData = JSON.parse(fs.readFileSync(testDataPath, 'utf8'));
     currentData.testData.push(newData);
