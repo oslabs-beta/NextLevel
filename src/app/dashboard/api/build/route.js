@@ -1,3 +1,4 @@
+import { NextResponse } from 'next/server';
 const fs = require('fs');
 const path = require('path');
 const testDataPath = path.join(process.cwd(), 'dataBuild.json');
@@ -6,7 +7,7 @@ export async function GET() {
     console.log('get request made to /dashboard/api/build');
     const data = JSON.parse(fs.readFileSync(testDataPath, 'utf8'));
     console.log('build time data:', data);
-    return Response.json(data);
+    return NextResponse.json(data);
 }
 
 export async function POST(request) {
