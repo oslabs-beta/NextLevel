@@ -1,5 +1,5 @@
 import React from 'react';
-import './modal.css'; // Create and import modal specific styles
+import './Modal.css'; // Create and import modal specific styles
 import { FcGoogle } from 'react-icons/fc';
 import { DiGithubBadge } from 'react-icons/di';
 
