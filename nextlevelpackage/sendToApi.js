@@ -31,9 +31,9 @@ const sendToApi = (data, url) => {
 module.exports = { sendToApi };
 
 // TRY THIS LATER!!!
-import fetch from 'node-fetch';
-import dotenv from 'dotenv';
-dotenv.config({ path: '.env.local' });
+// import fetch from 'node-fetch';
+// import dotenv from 'dotenv';
+// dotenv.config({ path: '.env.local' });
 
 
 // creating a sendToApi function that will send data to different endpoints
