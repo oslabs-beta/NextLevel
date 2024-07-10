@@ -18,10 +18,6 @@ function TopNav({ userLoggedIn, handleLogout }) {
       <nav className={styles.nav}>
         <div className={styles.logo}>
           <Link href="/">
-
-            {/* //add logo */}
-            <img src="./../../../public/Transparent Logo.png" alt="Logo" />
-
             <Image src={logo} alt="logo" layout="intrinsic" height={40}/>
           </Link>
         </div>
