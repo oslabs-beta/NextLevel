@@ -25,7 +25,7 @@ export default function Home() {
     <>
       <p>Not Signed In</p>
       <button onClick={() => signIn('google')}>Sign in with Google</button>
-      {/* <button onClick={() => signIn('github')}>Sign in with GitHub</button> */}
+      <button onClick={() => signIn('github')}>Sign in with GitHub</button>
     </>
   );
 }
