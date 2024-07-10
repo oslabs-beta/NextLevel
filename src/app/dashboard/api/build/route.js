@@ -3,6 +3,7 @@ import path from 'path';
 import { NextResponse } from 'next/server';
 import { corsMiddleware } from '../middleware';
 const testDataPath = path.join(process.cwd(), 'dataBuild.json');
+import { corsMiddleware } from '../middleware.js';
 
 
 export async function GET(request) {

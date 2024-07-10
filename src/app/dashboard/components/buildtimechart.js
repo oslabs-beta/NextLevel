@@ -1,6 +1,8 @@
 'use client';
 
-import React, { useEffect, useState } from 'react';
+'use client';
+
+import React, { useEffect, useState }, { useEffect, useState } from 'react';
 import styles from '../dashboard.module.css';
 import { Line } from 'react-chartjs-2';
 import {
@@ -76,6 +78,9 @@ function BuildTimeChart({ data }) {
   return (
     <div className={styles.chart}>
       <h3>Build Time Chart</h3>
+
+      {/* <Line data={chartData} options={options} /> */}
+
       {/* <Line data={chartData} options={options} /> */}
     </div>
   );
