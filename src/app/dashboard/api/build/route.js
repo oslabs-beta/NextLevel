@@ -2,8 +2,10 @@ import { NextResponse } from 'next/server';
 const fs = require('fs');
 const path = require('path');
 const testDataPath = path.join(process.cwd(), 'dataBuild.json');
+import { corsMiddleware } from '../middleware.js';
 
 export async function GET() {
+    await corsMiddleware(request);
     console.log('get request made to /dashboard/api/build');
     const data = JSON.parse(fs.readFileSync(testDataPath, 'utf8'));
     console.log('build time data:', data);
@@ -11,6 +13,7 @@ export async function GET() {
 }
 
 export async function POST(request) {
+    await corsMiddleware(request);
     console.log('post request made to /dashboard/api/build');
     const body = await request.json();
     const apiKey = request.headers.get('api-key');
