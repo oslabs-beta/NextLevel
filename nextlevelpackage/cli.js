@@ -5,6 +5,8 @@ const { sendToApi } = require('./sendToApi');
 const { spawn } = require('child_process');
 
 const bundleBuildAnalyzer = () => {
+  // const buildURL = `http://localhost:3000/dashboard/api/build`;
+  // const bundleURL = `http://localhost:3000/dashboard/api/bundle`;
   const buildURL = `https://www.nextlevel-dash.com/dashboard/api/build`;
   const bundleURL = `https://www.nextlevel-dash.com/dashboard/api/bundle`;
 

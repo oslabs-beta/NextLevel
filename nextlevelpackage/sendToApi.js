@@ -20,7 +20,7 @@ const sendToApi = (data, url) => {
       body,
       headers: {
         'Content-Type': 'application/json',
-        'api-key': apiKey
+        'Authorization': apiKey
       },
       keepalive: true
     }).catch(err => {
