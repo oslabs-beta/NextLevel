@@ -13,24 +13,19 @@ export async function POST(req) {
   await dbConnect();
 
   try {
-    // Check if the user already exists
     const existingUser = await User.findOne({ username });
 
-    if (existingUser) {
+    if (existingUser) { //if user already exsists
       return NextResponse.json({ message: 'User already exists' }, { status: 409 });
     }
+    const hashedPassword = await bcrypt.hash(password, 10); //hashiing the password
 
-    // Hash the password
-    const hashedPassword = await bcrypt.hash(password, 10);
-
-    // Create the user
-    const user = new User({
+    const user = new User({ //creating the new user
       username,
       password: hashedPassword,
     });
 
-    // Save the user to the database
-    await user.save();
+    await user.save();//saving user to the database
 
     return NextResponse.json({ message: 'User created successfully', user }, { status: 201 });
   } catch (error) {

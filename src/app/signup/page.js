@@ -1,7 +1,6 @@
 'use client';
 
 import { useState } from 'react';
-import { useRouter } from 'next/router';
 import './signUp.css';
 import { FaCircleUser } from 'react-icons/fa6';
 import { Si1Password } from 'react-icons/si';
