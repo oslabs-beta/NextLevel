@@ -13,6 +13,7 @@
   display: flex;
   justify-content: space-between;
   align-items: center;
+  height: 70px;
 }
 
 .logo {
@@ -20,7 +21,7 @@
 }
 
 .logo img {
-  height: 200px; /* Adjust size as needed */
+  height: 250px; /* Adjust size as needed */
   max-width: 350px; /* Adjust the maximum width as needed */
   width: auto; /* Ensure the aspect ratio is maintained */
   max-height: 200px; /* Ensure the logo doesn't exceed the specified height */
