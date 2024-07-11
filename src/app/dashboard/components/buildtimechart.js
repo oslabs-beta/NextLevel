@@ -15,6 +15,7 @@ import {
   TimeScale
 } from 'chart.js';
 import 'chartjs-adapter-date-fns';
+import useBuildTimeData from '../hooks/useBuildTimeData';
 
 ChartJS.register(
   CategoryScale,
@@ -29,55 +30,54 @@ ChartJS.register(
 
 
 function BuildTimeChart({ data }) {
-  // const chartData = {
-  //   labels: data.map(entry => new Date(entry.timestamp)),
-  //   datasets: [
-  //     {
-  //       label: 'Build Time Data',
-  //       data: data.map(entry => entry.btdata),
-  //       fill: false,
-  //       borderColor: 'rgb(75, 192, 192)',
-  //       tension: 0.1,
-  //     },
-  //   ],
-  // };
+  const chartData = {
+    labels: data.map(entry => new Date(entry.buildDate)),
+    datasets: [
+      {
+        label: 'Build Time',
+        data: data.map(entry => entry.buildTime),
+        fill: false,
+        borderColor: 'rgb(75, 192, 192)',
+        tension: 0.1,
+      },
+    ],
+  };
 
-  // const options = {
-  //   scales: {
-  //     x: {
-  //       type: 'time',
-  //       time: {
-  //         unit: 'minute',
-  //       },
-  //       title: {
-  //         display: true,
-  //         text: 'Date/Time',
-  //       },
-  //     },
-  //     y: {
-  //       title: {
-  //         display: true,
-  //         text: 'Speed (ms)',
-  //       },
-  //     },
-  //   },
-  //   responsive: true,
-  //   plugins: {
-  //     legend: {
-  //       position: 'top',
-  //     },
-  //     title: {
-  //       display: true,
-  //       text: 'Build Time Over Time',
-  //     },
-  //   },
-  // };
+  const options = {
+    scales: {
+      x: {
+        type: 'time',
+        time: {
+          unit: 'minute',
+        },
+        title: {
+          display: true,
+          text: 'Date/Time',
+        },
+      },
+      y: {
+        title: {
+          display: true,
+          text: 'Speed (ms)',
+        },
+      },
+    },
+    responsive: true,
+    plugins: {
+      legend: {
+        position: 'top',
+      },
+      title: {
+        display: true,
+
+      },
+    },
+  };
 
   return (
     <div className={styles.chart}>
-      <h3>Build Time Chart</h3>
 
-      {/* <Line data={chartData} options={options} /> */}
+      <Line data={chartData} options={options} />
 
     </div>
   );
