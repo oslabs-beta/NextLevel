@@ -1,0 +1,21 @@
+.copyButton {
+  padding: 10px 20px;
+  background-color: #224e69;
+  color: white;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  font-size: 14px;
+  transition: transform 0.1s ease;
+}
+
+.copyButton:hover {
+  background-color: #90b8cc;
+  transform: translateY(2px);
+}
+
+.copySuccess {
+  margin-left: 10px;
+  color: #143A52;
+  font-size: 14px;
+}
