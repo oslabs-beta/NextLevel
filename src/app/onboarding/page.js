@@ -13,6 +13,7 @@ const onboardingSteps = [
     description: 'NPM install Next.js Bundle Analyzer:',
     code: `npm install @next/bundle-analyzer`,
     language: 'terminal',
+    api: false,
   },
   {
     stepNumber: '',
@@ -27,6 +28,7 @@ const nextConfig = {};
 
 export default withBundleAnalyzer(nextConfig);`,
     language: 'next.config.mjs',
+    api: false,
   },
   {
     stepNumber: 2,
@@ -34,6 +36,7 @@ export default withBundleAnalyzer(nextConfig);`,
     description: 'NPM Install NextLevelPackage:',
     code: `npm install nextlevelpackage`,
     language: 'terminal',
+    api: false,
   },
   {
     stepNumber: '',
@@ -41,6 +44,7 @@ export default withBundleAnalyzer(nextConfig);`,
     description: 'Import NextLevelPackage in layout.js:',
     code: `import NextWebVitals from 'nextlevelpackage';`,
     language: 'layout.js',
+    api: false,
   },
   {
     stepNumber: '',
@@ -57,6 +61,7 @@ export default withBundleAnalyzer(nextConfig);`,
   );
 }`,
     language: 'layout.js',
+    api: false,
   },
   {
     stepNumber: 3,
@@ -64,6 +69,7 @@ export default withBundleAnalyzer(nextConfig);`,
     description: 'Add the following line to your .env.local file:',
     code: `NEXT_PUBLIC_API_KEY=your-api-key-here`,
     language: '.env.local',
+    api: true,
   },
   {
     stepNumber: 4,
@@ -73,6 +79,7 @@ export default withBundleAnalyzer(nextConfig);`,
   "nextlevelbuild": "node ./node_modules/nextlevelpackage/cli.js"
 }`,
     language: 'terminal',
+    api: false,
   },
   {
     stepNumber: '',
@@ -80,6 +87,7 @@ export default withBundleAnalyzer(nextConfig);`,
     description: 'Run this build script instead of npm next build to track metrics in the dashboard:',
     code: `npm run nextlevelbuild`,
     language: 'terminal',
+    api: false,
   },
 ];
 
@@ -98,6 +106,7 @@ export default function Onboarding () {
           description={step.description}
           code={step.code}
           language={step.language}
+          api={step.api}
         />
       ))}
       <NextButton />
