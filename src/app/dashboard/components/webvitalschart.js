@@ -15,6 +15,7 @@ import {
   TimeScale
 } from 'chart.js';
 import 'chartjs-adapter-date-fns';
+import useWebVitalsData from '../hooks/useWebVitalsData'
 
 ChartJS.register(
   CategoryScale,
@@ -29,9 +30,6 @@ ChartJS.register(
 
 
 function WebVitalsChart({ data }) {
-  // adding fake data to test
-  // const res = await fetch('https://jsonplaceholder.typicode.com/todos');
-  // const allData = await res.json();
 
   const chartData = {
     labels: data.map(entry => new Date(entry.timestamp)),
@@ -43,6 +41,34 @@ function WebVitalsChart({ data }) {
         borderColor: 'rgb(75, 192, 192)',
         tension: 0.1,
       },
+      {
+        label: 'Largest Contentful Paint (ms)',
+        data: data.map(entry => entry.lcp),
+        fill: false,
+        borderColor: 'rgb(199,235,185)',
+        tension: 0.1,
+      },
+      {
+        label: 'First Contentful Paint (ms)',
+        data: data.map(entry => entry.fcp),
+        fill: false,
+        borderColor: 'rgb(255, 99, 132)',
+        tension: 0.1,
+      },
+      {
+        label: 'First Input Delay (ms)',
+        data: data.map(entry => entry.fid),
+        fill: false,
+        borderColor: 'rgb(153, 102, 255)',
+        tension: 0.1,
+      },
+      {
+        label: 'Interaction to Next Paint (ms)',
+        data: data.map(entry => entry.inp),
+        fill: false,
+        borderColor: 'rgb(54, 162, 235)',
+        tension: 0.1,
+      },
     ],
   };
 
@@ -52,10 +78,17 @@ function WebVitalsChart({ data }) {
         type: 'time',
         time: {
           unit: 'minute',
+          tooltipFormat: 'MMM dd, yyyy HH:mm', // Format the tooltip
+          displayFormats: {
+            minute: 'MMM dd, yyyy HH:mm', // Format for the x-axis labels
+          },
         },
         title: {
           display: true,
           text: 'Date/Time',
+        },
+        ticks: {
+          source: 'data', // Ensures only data points are used for ticks
         },
       },
       y: {
@@ -72,14 +105,14 @@ function WebVitalsChart({ data }) {
       },
       title: {
         display: true,
-        text: 'Time to First Byte Over Time',
+        // text: 'Web Vitals Over Time',
       },
     },
   };
   
   return (
     <div className={styles.chartContainer}>
-      <h2 className={styles.chartTitle}>Web Vitals Chart</h2>
+      <h2 className={styles.chartTitle}>Web Vitals</h2>
       {/* <ul>
         adding fake data to test
         {allData.map(webVital => <li key={webVital.id}> {webVital.title} </li>)}

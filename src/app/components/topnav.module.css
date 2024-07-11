@@ -30,6 +30,7 @@
 .links {
   display: flex;
   gap: 20px;
+  margin-right: 15px;
 }
 
 .links a {

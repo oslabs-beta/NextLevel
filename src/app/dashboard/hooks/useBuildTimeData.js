@@ -2,17 +2,20 @@
 
 import React, { useEffect, useState } from 'react';
 
-const useTTFBData = () => {
+const useBuildTimeData = () => {
   const [data, setData] = useState([]);
 
   useEffect(() => {
     // Dummy data for demonstration
     const dummyData = [
-      { timestamp: '2024-07-08T12:00:00Z', ttfb: 200 },
-      { timestamp: '2024-07-08T12:05:00Z', ttfb: 180 },
-      { timestamp: '2024-07-08T12:10:00Z', ttfb: 220 },
-      // Add more dummy data as needed
+        { buildDate: '2024-07-08T14:23:13Z', buildTime: 15123 },
+        { buildDate: '2024-07-09T15:16:45Z', buildTime: 13876 },
+        { buildDate: '2024-07-09T16:08:56Z', buildTime: 12987 },
+        { buildDate: '2024-07-10T16:43:44Z', buildTime: 12234 },
+        { buildDate: '2024-07-11T17:37:22Z', buildTime: 11289 },
+        // Add more dummy data as needed
     ];
+      
 
     // Simulate fetching data (asynchronously)
     const fetchData = async () => {
@@ -27,4 +30,4 @@ const useTTFBData = () => {
   return data;
 };
 
-export default useTTFBData; 
+export default useBuildTimeData; 

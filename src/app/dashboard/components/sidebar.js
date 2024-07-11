@@ -6,12 +6,24 @@ import Link from 'next/link';
 function SideBar() {
   return (
     <div className={styles.sidebar}>
-      <Link href="/dashboard/settings">
-      <ul className={styles.sidebarList}>
-        <IoSettingsOutline className={styles.sidebarListIcons} />
-        <li className={styles.sidebarListItems}>Settings</li>
-      </ul>
-      </Link>
+      <div className={styles.topSection}>
+        <ul className={styles.sidebarTop}>
+          <Link className={styles.link} href="/onboarding">
+          <li className={styles.sidebarListItems}>Onboarding</li>
+          </Link>
+          <Link className={styles.link} href="/onboarding">
+          <li className={styles.sidebarListItems}>History</li>
+          </Link>
+        </ul>
+      </div> 
+      <div className={styles.bottomSection}>
+        <Link className={styles.link} href="/dashboard/settings">
+          <div className={styles.sidebarLink}>
+            <IoSettingsOutline className={styles.sidebarListIcons} />
+            <span className={styles.sidebarListItems}>Settings</span>
+          </div>
+        </Link>
+      </div>
     </div>
   );
 }

@@ -59,6 +59,7 @@ export default function Login() {
         setError('');
         setUsername('');
         setPassword('');
+        localStorage.setItem('userLoggedIn', 'true'); 
         window.location.href = '/dashboard';
       } else {
         const errorData = await response.json();

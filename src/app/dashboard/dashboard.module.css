@@ -9,10 +9,6 @@
   background-color: #e7e7e7;
 }
 
-.dashboardTitle {
-  padding-top: 40px;
-}
-
 .sidebar {
   position: fixed;
   top: 70px; /* Adjust this value to match the height of your top nav */
@@ -22,20 +18,49 @@
   background-color: #143A52;
   padding: 20px;
   box-sizing: border-box;
-  overflow-y: auto; /* Allow scrolling if sidebar content is long */
-  align-content: flex-end;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+.top-section{
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  box-sizing: border-box;
+  margin-left: -10px;
+  border: 3px solid yellow;
+}
+.sidebarTop{
+  margin-left: -40px;
 }
 
-.sidebarList {
-  list-style-type: none;
-  padding: 0;
-  margin: 0;
+.bottom-section {
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  box-sizing: border-box;
+  border: 3px solid red;
+}
+.sidebarLink {
+  display: flex;
+  align-items: center;
+  text-decoration: none;
+  color: white;
+  padding: 10px 0;
+}
+
+.link {
+  color: #e7e7e7;
+  text-decoration: none;
 }
 
 .sidebarListItems {
   color: #e7e7e7;
-  display: inline-block;
-  vertical-align: middle;
+  display: block;
+  font-size: 20px;
+  text-decoration: none;
 }
 
 .sidebarListIcons {
@@ -61,8 +86,10 @@
 .apiContainer {
   display: flex;
   align-items: center;
-  margin-bottom: 20px;
+  align-self: center;
   gap: 10px;
+  padding-top: 80px;
+  width: 97.5%;
 }
 
 #apiTitle {
@@ -107,17 +134,81 @@
   flex-direction: column;
   gap: 20px;
   margin: 10px;
+  justify-content: center;
+  flex-grow: 1;
+  width: 100%;
+  height: 100%;
 }
 
 .chartTitle {
-  margin: 0 0 10px 0; /* Add bottom margin to space title from the chart */
+  margin: 0 0 5px 0; /* Add bottom margin to space title from the chart */
 }
 
 .chart {
+  flex: 2;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  height: 100%;
+}
+
+.buildCharts {
+  display: flex;
+  flex-direction: row;
+  align-items: flex-start;
+}
+
+.buildCharts > *:not(:last-child) {
+  margin-right: 15px;
+}
+
+.bundleLogContainer {
   flex: 1;
   display: flex;
+  flex-direction: column;
   align-items: center;
   justify-content: center;
 }
 
+.bundleToggleBox {
+  background-color: #ffffff;
+  width: 100%;
+}
 
+.bundleHeader {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background-color: #c9c9c9;
+  padding: 0.5em 1em;
+  font-size: 0.9em;
+  border-bottom: 1px solid #eaeaea;
+  border-radius: 10px 10px 0px 0px;
+}
+
+.bundleLogContent {
+  padding: 1em;
+  background-color: #ffffff;
+  border-radius: 0px 0px 10px 10px;
+}
+
+.toggleButton {
+  font-size: 1.1rem;
+  background-color: #c9c9c9;
+  border: none;
+  color: #143A52;
+}
+
+.toggleButton:disabled {
+  background-color: #c9c9c9;
+  color: #a1a1a1;
+  cursor: not-allowed;
+}
+
+.bundleLog {
+  padding: 0 15px;
+  background-color: #e9e9e9;
+  overflow-x: auto;
+  border-radius: 0px 0px 10px 10px ;
+}
