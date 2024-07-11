@@ -9,10 +9,12 @@ import { IoLogoGithub } from 'react-icons/io';
 import Link from 'next/link';
 import Modal from "../components/Modal.js";
 import { signIn } from "next-auth/react";
+import Str from '@supercharge/strings';
 
 export default function SignUp() {
   const [username, setUsername] = useState('');
   const [password, setPassword] = useState('');
+  const [APIkey, setAPIkey] = useState('');
   const [confirmPass, setConfirmPass] = useState('');
   const [error, setError] = useState('');
   const [success, setSuccess] = useState(false);
@@ -26,13 +28,17 @@ export default function SignUp() {
       return;
     }
 
+    const randomAPI = Str.random();
+
+    setAPIkey(randomAPI);
+
     try {
       const response = await fetch('/api/signup', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
         },
-        body: JSON.stringify({ username, password }),
+        body: JSON.stringify({ username, password, APIkey}),
       });
 
       if (response.ok) {

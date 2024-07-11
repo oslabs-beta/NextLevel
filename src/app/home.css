@@ -19,5 +19,8 @@ section {
     place-items: center;
     align-content: center;
     min-height: 100vh;
+    font-size: 50px;
+    padding-left: 20px;
+    padding-right: 20px;
 
 }

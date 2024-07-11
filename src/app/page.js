@@ -5,7 +5,6 @@ import { IoMdVideocam } from 'react-icons/io';
 export default function Home() {
   return (
    <main>
-    <body>
     <div className = 'navbar-gap'></div>
     <section> 
       <h1>NextLevel</h1>
@@ -18,7 +17,6 @@ export default function Home() {
     <section>
 
     </section>
-    </body>
    </main>
   );
 }

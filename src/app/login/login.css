@@ -174,3 +174,10 @@ input:-webkit-autofill ~ .icon {
 .register-link p a:hover {
   text-decoration: underline;
 }
+
+.message {
+  text-align: center;
+  margin-top: 10px;
+  width: 100%;
+  margin-bottom: -20px;
+}

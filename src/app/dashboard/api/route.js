@@ -1,32 +1,64 @@
-// may want to put this inside of a metrics endpoint or something and modify the npm package to this endpoint
-const fs = require('fs');
-const path = require('path');
-const testDataPath = path.join(process.cwd(), 'data.json');
+import dbConnect from '../../lib/connectDB.js';
+import User from '../../models/User.js';
 import { NextResponse } from 'next/server';
 
-export async function GET() {
-    console.log('get request made to /dashboard/api');
-    const data = JSON.parse(fs.readFileSync(testDataPath, 'utf8'));
-    return Response.json(data);
+export async function GET(request) {
+  try {
+    const { searchParams } = new URL(request.url);
+    const username = searchParams.get('username');
+    const metricType = searchParams.get('metricType');
+    if (!username) {
+      return NextResponse.json({ message: 'Username is required' }, { status: 400 });
+    }
+    if (!metricType) {
+      return NextResponse.json({ message: 'Metric Type is required' }, { status: 400 });
+    }
+
+    const foundUser = await User.findOne({ username });
+
+    if (!foundUser) {
+      return NextResponse.json({ message: "User not found in web vitals route" }, { status: 404 });
+    }
+
+    console.log("Found user: ", foundUser);
+
+    return NextResponse.json(foundUser[metricType]);
+  } catch (error) {
+    console.error(error);
+    return NextResponse.json({ error: error.message }, { status: 500 });
+  }
 }
 
 export async function POST(request) {
-    console.log('post request made to /dashboard/api');
-    console.log()
-    const body = await request.json();
-    const newData = {
-      "metricType" : body.name,
-      "metricValue" : body.value, // changed from body.time to body.value, as the metric value is stored in the value field
-      //add metric time here or when sending over from the client in the body
-      "apiKey" : body.apiKey,
-    };
-    const currentData = JSON.parse(fs.readFileSync(testDataPath, 'utf8'));
-    currentData.testData.push(newData);
-    fs.writeFileSync(testDataPath, JSON.stringify(currentData));
-    return new Response(JSON.stringify(newData), {
-      headers: {
-        "Content-Type": "application/json"
-      },
-      status: 201,
-    });
+  await dbConnect();
+  try {
+    const { metricType, metricValue, apiKey } = await request.json();
+    console.log('API key:', apiKey);
+
+    if (!metricType || !metricValue || !apiKey) {
+      return NextResponse.json({ message: 'Missing infromation in the web vitals post' }, { status: 400 });
+    }
+
+    console.log('going into try web vitals post')
+    const user = await User.findOne({ APIkey: apiKey });
+    console.log('User:', user);
+    
+    if (!user) { 
+      return NextResponse.json({ message: 'API key was not found' }, { status: 409 });
+    }
+    // maybe make new schema with buildDate
+    const newMetric = {
+      metricType,
+      metricValue,
+      metricDate: Date.now()
+    }
+    user[metricType].push(newMetric);
+    
+    await user.save();
+
+    return NextResponse.json({ message: 'Web vitals updated successfully'}, { status: 201 });
+  } catch (error) {
+    console.error(error);
+    return NextResponse.json({ message: `Internal server error in web vitals post request ${error}` }, { status: 500 });
+  }
 }

@@ -21,10 +21,10 @@
 }
 
 .logo img {
-  height: 250px; /* Adjust size as needed */
-  max-width: 350px; /* Adjust the maximum width as needed */
+  height: 400px; /* Adjust size as needed */
+  max-width: 400px; /* Adjust the maximum width as needed */
   width: auto; /* Ensure the aspect ratio is maintained */
-  max-height: 200px; /* Ensure the logo doesn't exceed the specified height */
+  max-height: 400px; /* Ensure the logo doesn't exceed the specified height */
 }
 
 .links {
