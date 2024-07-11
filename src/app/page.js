@@ -29,15 +29,15 @@ export default function Home() {
   return (
     <main>
       <div className='navbar-gap'></div>
-      <section class='show'>
+      <section className='show'>
         <h1>NextLevel</h1>
         <h2>A new way to javascript</h2>
       </section>
-      <section class='hidden'>
+      <section className='hidden'>
         <h1>NEXT JS!</h1>
         <p>Discover the power of modern web development with Next.js, the leading React framework for building fast, scalable, and SEO-friendly applications. Seamlessly integrate server-side rendering, static site generation, and API routes to create high-performance websites that captivate and engage users.</p>
       </section>
-      <section class='hidden'>
+      <section className='hidden'>
         <h2>This is so cool</h2>
       </section>
     </main>
