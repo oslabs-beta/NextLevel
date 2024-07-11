@@ -8,8 +8,8 @@ function BuildTimeContainer({ data }) {
     <div className={styles.chartContainer}>
       <h2 className={styles.chartTitle}>Build Time</h2>
       <div className={styles.buildCharts}>
-        <BuildTimeChart data={ data }/>
-        <BuildTimeMetrics />
+        <BuildTimeChart className={styles.buildTimeChart} data={ data }/>
+        <BuildTimeMetrics className={styles.bundleLogChart}/>
       </div>
     </div>
   );

@@ -4,7 +4,7 @@ import React, { useEffect, useState } from 'react';
 import styles from './topnav.module.css';
 import Link from 'next/link';
 import Image from 'next/image';
-import logo from '/public/TopNavLogo.png';
+import logo from '/public/TransparentLogoLessSpace.png';
 import { useRouter } from 'next/navigation';    //added
 
 function TopNav() {

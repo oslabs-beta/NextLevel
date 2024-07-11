@@ -3,6 +3,7 @@
 import React, { useEffect } from 'react';
 import './home.css';
 import { IoMdVideocam } from 'react-icons/io';
+import Link from 'next/link';
 
 export default function Home() {
 
@@ -26,11 +27,15 @@ export default function Home() {
     const hiddenFlyRightElements = document.querySelectorAll('.hidden-fly-right');
     hiddenFlyRightElements.forEach((el) => observer.observe(el));
 
+    const hiddenFlyUpElements = document.querySelectorAll('.hidden-fly-up');
+    hiddenFlyUpElements.forEach((el) => observer.observe(el));
+
     // Cleanup observer on unmount
     return () => {
       hiddenFadeElements.forEach((el) => observer.unobserve(el));
       hiddenFlyLeftElements.forEach((el) => observer.unobserve(el));
       hiddenFlyRightElements.forEach((el) => observer.unobserve(el));
+      hiddenFlyUpElements.forEach((el) => observer.unobserve(el));
     };
   }, []);
 
@@ -40,6 +45,21 @@ export default function Home() {
       <section className='hidden-fade'>
         <img src = '/Transparent Logo White.png' className = "home-logo"></img>
         <h2>Take your app to the NextLevel</h2>
+        <section className='hidden-fly-up'>
+          <div className="buttonsDiv"> 
+            <div className='homepageButtons'>
+              <Link className='homepage-link' href="/login">
+                <div className="login-button">Login</div> {/* Added button to route to the login page */}
+              </Link>
+            </div>
+            <div className='or'> or </div>
+            <div className='homepageButtons'>
+              <Link className='homepage-link'  href="/signup">
+                <div className="signup-button">Get Started</div> {/* Added button to route to the login page */}
+              </Link>
+            </div>
+          </div>
+        </section>
       </section>
       <section className='hidden-fly-left'>
         <h2>Level up with Next.js</h2>
