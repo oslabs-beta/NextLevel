@@ -5,7 +5,7 @@
   padding: 0;
   box-sizing: border-box;
 }
-body {
+body-login {
   font-family: 'Poppins', sans-serif;
   display: flex;
   justify-content: center;
@@ -13,7 +13,6 @@ body {
   min-height: 100vh;
   background: no-repeat;
   background-size: cover;
-  background-image: url('https://getwallpapers.com/wallpaper/full/2/8/f/537844.jpg');
   background-position: center;
 }
 
@@ -26,6 +25,7 @@ body {
   color: #fff;
   border-radius: 10px;
   padding: 30px 40px;
+  /* box-shadow: 0px 0px 10px rgba(255, 255, 255, 0.404); */
 }
 
 .logo-container {
@@ -173,6 +173,7 @@ input:-webkit-autofill ~ .icon {
 
 .register-link p a:hover {
   text-decoration: underline;
+  color: rgb(56, 128, 221)
 }
 
 .message {
