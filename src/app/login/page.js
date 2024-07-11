@@ -1,6 +1,6 @@
 'use client';
 
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import './login.css';
 import { FaCircleUser } from 'react-icons/fa6';
 import { Si1Password } from 'react-icons/si';
@@ -12,6 +12,30 @@ import Modal from '../components/Modal';
 import { signIn } from 'next-auth/react';
 
 export default function Login() {
+  useEffect(() => {
+    //Stops background/other css elements from bleeding to next page
+    document.body.style.fontFamily = "'Poppins', sans-serif";
+    document.body.style.display = 'flex';
+    document.body.style.justifyContent = 'center';
+    document.body.style.alignItems = 'center';
+    document.body.style.minHeight = '100vh';
+    document.body.style.background =
+      'url("https://getwallpapers.com/wallpaper/full/2/8/f/537844.jpg") no-repeat';
+    document.body.style.backgroundSize = 'cover';
+    document.body.style.backgroundPosition = 'center';
+
+    return () => {
+      document.body.style.fontFamily = '';
+      document.body.style.display = '';
+      document.body.style.justifyContent = '';
+      document.body.style.alignItems = '';
+      document.body.style.minHeight = '';
+      document.body.style.background = '';
+      document.body.style.backgroundSize = '';
+      document.body.style.backgroundPosition = '';
+    };
+  }, []);
+
   const [username, setUsername] = useState('');
   const [password, setPassword] = useState('');
   const [error, setError] = useState('');
@@ -101,10 +125,18 @@ export default function Login() {
           </p>
         )}
         <div className="oauth-link">
-          <button type="button" className="oauth-button" onClick={() => handleOAuthSignIn('google')}>
+          <button
+            type="button"
+            className="oauth-button"
+            onClick={() => handleOAuthSignIn('google')}
+          >
             <AiOutlineGoogle className="google-icon" />
           </button>
-          <button type="button" className="oauth-button" onClick={() => handleOAuthSignIn('github')}>
+          <button
+            type="button"
+            className="oauth-button"
+            onClick={() => handleOAuthSignIn('github')}
+          >
             <IoLogoGithub className="github-icon" />
           </button>
         </div>
@@ -114,7 +146,11 @@ export default function Login() {
           </p>
         </div>
       </form>
-      <Modal isOpen={isModalOpen} onClose={toggleModal} handleOAuthSignIn={handleOAuthSignIn} />
+      <Modal
+        isOpen={isModalOpen}
+        onClose={toggleModal}
+        handleOAuthSignIn={handleOAuthSignIn}
+      />
     </div>
   );
 }
