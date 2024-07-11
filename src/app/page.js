@@ -30,7 +30,7 @@ export default function Home() {
     <main>
       <div className='navbar-gap'></div>
       <section className='show'>
-        <h1>NextLevel</h1>
+        <img src = '/Transparent Logo White.png' className = "home-logo"></img>
         <h2>A new way to javascript</h2>
       </section>
       <section className='hidden'>

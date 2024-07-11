@@ -14,6 +14,10 @@ body {
     height: 50px;
 }
 
+.home-logo{
+  width: 900px;
+}
+
 section {
     display: grid;
     place-items: center;
