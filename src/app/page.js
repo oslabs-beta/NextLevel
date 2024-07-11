@@ -29,7 +29,7 @@ export default function Home() {
   return (
     <main>
       <div className='navbar-gap'></div>
-      <section class='show'>
+      <section className='show'>
         <h1>NextLevel</h1>
         <h2>A new way to javascript</h2>
       </section>
