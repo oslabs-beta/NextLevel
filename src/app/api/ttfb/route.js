@@ -1,3 +1,5 @@
+//delete this?
+
 export async function GET(request) {
   const data = [
     { timestamp: '2024-07-08T12:00:00Z', ttfb: 200 },
