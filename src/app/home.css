@@ -28,11 +28,22 @@ section {
     padding-right: 20px;
 
 }
+.hidden-fade{
+  opacity: 0;
+  transition: all 1.3s;
+}
 
-.hidden{
+.hidden-fly-left{
   opacity: 0;
   filter: blur(5px);
   transform: translateX(-100%);
+  transition: all 1s;
+}
+
+.hidden-fly-right{
+  opacity: 0;
+  filter: blur(5px);
+  transform: translateX(100%);
   transition: all 1s;
 }
 

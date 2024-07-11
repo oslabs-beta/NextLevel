@@ -5,13 +5,24 @@ import styles from './topnav.module.css';
 import Link from 'next/link';
 import Image from 'next/image';
 import logo from '/public/TopNavLogo.png';
+import { useRouter } from 'next/navigation';    //added
 
-function TopNav({ userLoggedIn, handleLogout }) {
+function TopNav() {
+  const [userLoggedIn, setUserLoggedIn] = useState(false);
   const [isMounted, setIsMounted] = useState(false);
+  const router = useRouter();
 
   useEffect(() => {
     setIsMounted(true);
+    const isLoggedIn = Boolean(localStorage.getItem('userLoggedIn')); // Example check
+    setUserLoggedIn(isLoggedIn);
   }, []);
+
+  const handleLogout = () => {
+    localStorage.removeItem('userLoggedIn'); // Example logout logic
+    setUserLoggedIn(false);
+    router.push('/'); // Redirect to home page
+  };
 
   return (
     <div className={styles.header}>
@@ -25,7 +36,7 @@ function TopNav({ userLoggedIn, handleLogout }) {
           <Link href="/">Home</Link>
           {isMounted && (
             userLoggedIn ? (
-              <button onClick={handleLogout}>Logout</button>
+              <Link href="/" onClick={handleLogout}>Logout</Link>
             ) : (
               <Link href="/login">Login</Link>
             )
