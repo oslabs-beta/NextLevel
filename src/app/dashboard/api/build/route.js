@@ -1,18 +1,22 @@
-import fs from 'fs/promises';
-import path from 'path';
+import dbConnect from '../../../lib/connectDB.js';
+import User from '../../../models/User.js';
 import { NextResponse } from 'next/server';
 
-const testDataPath = path.join(process.cwd(), 'dataBuild.json');
-import User from '../../models/User.js';o
-
 export async function GET(request) {
-  const { username } = request.body;
-  const foundUser = User.findOne({ username });
   try {
-    if (!foundUser){
-      return NextResponse.json({message: "User not found in build route"});
+    const { searchParams } = new URL(request.url);
+    const username = searchParams.get('username');
+    if (!username) {
+      return NextResponse.json({ message: 'Username is required' }, { status: 400 });
     }
-    console.log("Found user: ", foundUser)
+
+    const foundUser = await User.findOne({ username });
+
+    if (!foundUser) {
+      return NextResponse.json({ message: "User not found in build route" }, { status: 404 });
+    }
+
+    console.log("Found user: ", foundUser);
     return NextResponse.json(foundUser.buildTime);
   } catch (error) {
     console.error(error);
@@ -21,20 +25,36 @@ export async function GET(request) {
 }
 
 export async function POST(request) {
-  const { buildTime } = await request.json();
-  const { APIkey } = request.headers.get('Authorization');
-  request.body
+  await dbConnect();
 
   try {
-    const User = await User.findOne({ APIkey });
-    if (!User) { 
+
+    const { buildTime } = await request.json();
+    const APIkey = request.headers.get('Authorization');
+    console.log('API key:', APIkey);
+
+    if (!APIkey) {
+      return NextResponse.json({ message: 'API key is required' }, { status: 400 });
+    }
+
+    console.log('going into try block post -- dashb api bundle')
+    const user = await User.findOne({ APIkey });
+    console.log('User:', user);
+    if (!user) { 
       return NextResponse.json({ message: 'API key was not found' }, { status: 409 });
     }
     // maybe make new schema with buildDate
-    User.buildTime.push(buildTime);
+    const newBuild = {
+      buildTime,
+      buildDate: Date.now()
+    }
+    user.buildTime.push(newBuild);
+    
+    await user.save();
+
     return NextResponse.json({ message: 'User build updated successfully'}, { status: 201 });
   } catch (error) {
     console.error(error);
-    return NextResponse.json({ message: 'Internal server error in build post request' }, { status: 500 });
+    return NextResponse.json({ message: `Internal server error in build post request ${error}` }, { status: 500 });
   }
 }
