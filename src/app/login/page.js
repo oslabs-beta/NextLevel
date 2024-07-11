@@ -4,7 +4,8 @@ import React, { useState } from 'react';
 import './login.css';
 import { FaCircleUser } from 'react-icons/fa6';
 import { Si1Password } from 'react-icons/si';
-import { FcGoogle } from 'react-icons/fc';
+// import { FcGoogle } from 'react-icons/fc';
+import { AiOutlineGoogle } from 'react-icons/ai';
 import { IoLogoGithub } from 'react-icons/io';
 import Link from 'next/link';
 import Modal from '../components/Modal';
@@ -34,6 +35,7 @@ export default function Login() {
         setError('');
         setUsername('');
         setPassword('');
+        localStorage.setItem('userLoggedIn', 'true'); // Set user login state
         window.location.href = '/dashboard';
       } else {
         const errorData = await response.json();
@@ -101,7 +103,7 @@ export default function Login() {
         )}
         <div className="oauth-link">
           <button type="button" className="oauth-button" onClick={() => handleOAuthSignIn('google')}>
-            <FcGoogle className="google-icon" />
+            <AiOutlineGoogle className="google-icon" />
           </button>
           <button type="button" className="oauth-button" onClick={() => handleOAuthSignIn('github')}>
             <IoLogoGithub className="github-icon" />
