@@ -17,33 +17,26 @@ export default function NextWebVitals() {
 
     
     
-    if(navigator.sendBeacon) {
-      navigator.sendBeacon(url, body)
-    } else {
+    // if(navigator.sendBeacon) {
+    //   navigator.sendBeacon(url, body)
+    // } else {
       fetch(url, {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
-          'API-Key': apiKey
+          'Authorization': apiKey
         },
         body,
         keepalive: true
+      }).then((res) => {
+        if (res.ok) {
+          console.log('Web vitals data sent successfully');
+        } else {
+          console.error('index.js .then error Error sending web vitals data:', res.statusText);
+        }
+      }).catch((error) => {
+        console.error('index.js .catch error Error sending web vitals data:', error);
       })
-    }
-    // switch (metric.name) {
-    //   case 'FCP': {
-    //     console.log('FCP val:', metric.value);
-        
-    //     break;
-    //   }
-    //   case 'TTFB': {
-    //     console.log('TTFB val:', metric.value);
-    //     console.log('TTFB:', metric);
-    //     break;
-    //   }
-    //   default: {
-    //     break;
-    //   }
     // }
   })
 }
