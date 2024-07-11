@@ -1,7 +1,12 @@
+/* body{
+  background-color: grey;
+} */
+
 .dashboardContainer {
   display: flex;
   height: 100vh;
   /* overflow: hidden; */
+  background-color: #e7e7e7;
 }
 
 .dashboardTitle {
@@ -10,7 +15,7 @@
 
 .sidebar {
   position: fixed;
-  top: 65px; /* Adjust this value to match the height of your top nav */
+  top: 70px; /* Adjust this value to match the height of your top nav */
   left: 0;
   bottom: 0;
   width: 15%;
