@@ -1,0 +1,21 @@
+.nextButton {
+    display: flex;
+    justify-content: center;
+    background-color: #2a6f91;
+    color: white;
+    padding: 8px 16px;
+    border-radius: 4px;
+    text-decoration: none;
+    position: fixed;
+    bottom: 30px;
+    right: 4%;
+    box-shadow: 0 5px 10px rgba(0, 0, 0, 0.273);
+    transition: background-color 0.3s, box-shadow 0.3s, transform 0.3s;
+    
+}
+  
+.nextButton:hover {
+    background-color: #8db7cb;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2); 
+    transform: translateY(2px);
+}

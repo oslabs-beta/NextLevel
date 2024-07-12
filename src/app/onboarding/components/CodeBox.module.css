@@ -1,0 +1,37 @@
+
+.container {
+  border-radius: 8px;
+  margin-bottom: 1rem;
+}
+
+.header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background-color: #f5f5f5;
+  padding: 0.5em 1em;
+  font-size: 0.9em;
+  border-bottom: 1px solid #eaeaea;
+  border-radius: 10px 10px 0px 0px;
+}
+
+.codeArea {
+  padding: 1em;
+  background-color: #fff;
+  overflow-x: auto;
+  border-radius: 0px 0px 10px 10px;
+}
+
+.copyButton {
+  background-color: #0070f3;
+  color: white;
+  border: none;
+  padding: 0.3em 0.6em;
+  border-radius: 4px;
+  cursor: pointer;
+  font-size: 0.8em;
+}
+
+.copyButton:hover {
+  background-color: #005bb5;
+}

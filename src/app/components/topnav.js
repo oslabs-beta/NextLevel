@@ -7,10 +7,10 @@ import Image from 'next/image';
 import logo from '/public/TopNavLogo.png';
 
 function TopNav({ userLoggedIn, handleLogout }) {
-  const [isClient, setIsClient] = useState(false);
+  const [isMounted, setIsMounted] = useState(false);
 
   useEffect(() => {
-    setIsClient(true);
+    setIsMounted(true);
   }, []);
 
   return (
@@ -23,11 +23,12 @@ function TopNav({ userLoggedIn, handleLogout }) {
         </div>
         <div className={styles.links}>
           <Link href="/">Home</Link>
-          {/* add logout logic?? or move to account page */}
-          {isClient && userLoggedIn ? (
-            <button onClick={handleLogout}>Logout</button>
-          ) : (
-            <Link href="/login">Login</Link>
+          {isMounted && (
+            userLoggedIn ? (
+              <button onClick={handleLogout}>Logout</button>
+            ) : (
+              <Link href="/login">Login</Link>
+            )
           )}
         </div>
       </nav>

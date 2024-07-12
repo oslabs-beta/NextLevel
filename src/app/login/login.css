@@ -5,7 +5,7 @@
   padding: 0;
   box-sizing: border-box;
 }
-body {
+body-login {
   font-family: 'Poppins', sans-serif;
   display: flex;
   justify-content: center;
@@ -13,7 +13,6 @@ body {
   min-height: 100vh;
   background: no-repeat;
   background-size: cover;
-  background-image: url('https://getwallpapers.com/wallpaper/full/2/8/f/537844.jpg');
   background-position: center;
 }
 
@@ -26,9 +25,24 @@ body {
   color: #fff;
   border-radius: 10px;
   padding: 30px 40px;
+  /* box-shadow: 0px 0px 10px rgba(255, 255, 255, 0.404); */
 }
+
+.logo-container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 20px; /* Adjust as needed */
+}
+
+.logo {
+  width: 60px; /* Adjust as needed */
+  height: 60px; /* Adjust as needed */
+  margin-right: 10px; /* Adjust as needed */
+}
+
 .wrapper h1 {
-  font-size: 40px;
+  font-size: 50px;
   text-align: center;
 }
 
@@ -64,6 +78,15 @@ body {
   font-size: 20px;
 }
 
+input:-webkit-autofill {
+  -webkit-box-shadow: 0 0 0 1000px transparent inset !important;
+  -webkit-text-fill-color: #fff !important;
+}
+
+input:-webkit-autofill ~ .icon {
+  color: #000 !important;
+}
+
 .wrapper .remember-forgot {
   display: flex;
   justify-content: space-between;
@@ -94,7 +117,7 @@ body {
   border-radius: 40px;
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
   cursor: pointer;
-  font-size: 16px;
+  font-size: 20px;
   color: #333;
   font-weight: 700;
 }
@@ -150,4 +173,12 @@ body {
 
 .register-link p a:hover {
   text-decoration: underline;
+  color: rgb(56, 128, 221)
+}
+
+.message {
+  text-align: center;
+  margin-top: 10px;
+  width: 100%;
+  margin-bottom: -20px;
 }
