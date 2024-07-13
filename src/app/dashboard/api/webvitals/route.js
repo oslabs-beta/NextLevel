@@ -1,5 +1,5 @@
-import dbConnect from '../../lib/connectDB.js';
-import User from '../../models/User.js';
+import dbConnect from '../../../lib/connectDB.js';
+import User from '../../../models/User.js';
 import { NextResponse } from 'next/server';
 
 export async function GET(request) {
