@@ -1,9 +1,9 @@
 //index.js
-
 'use client'
 
 import { useReportWebVitals } from 'next/web-vitals'
- 
+
+
 export default function NextWebVitals() {
   useReportWebVitals((metric) => {
     if (!process.env.NEXT_PUBLIC_API_KEY) {
@@ -12,8 +12,9 @@ export default function NextWebVitals() {
     }
     const apiKey = process.env.NEXT_PUBLIC_API_KEY;
     const data = {...metric, apiKey};
+    console.log('Web vitals data:', data);
     const body = JSON.stringify(data);
-    const url = 'https://www.nextlevel-dash.com/dashboard/api'
+    const url = 'https://www.nextlevel-dash.com/dashboard/api/webvitals';
 
     
     
@@ -22,6 +23,7 @@ export default function NextWebVitals() {
     // } else {
       fetch(url, {
         method: 'POST',
+        credentials: 'include',
         headers: {
           'Content-Type': 'application/json',
         },
