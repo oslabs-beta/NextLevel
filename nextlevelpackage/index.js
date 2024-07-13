@@ -18,13 +18,12 @@ export default function NextWebVitals() {
     
     
     // if(navigator.sendBeacon) {
-    //   navigator.sendBeacon(url, body)
+    //   navigator.sendBeacon(url, body);
     // } else {
       fetch(url, {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
-          'Authorization': apiKey
         },
         body,
         keepalive: true
