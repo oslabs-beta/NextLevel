@@ -5,23 +5,13 @@ import styles from './topnav.module.css';
 import Link from 'next/link';
 import Image from 'next/image';
 import logo from '/public/TransparentLogoLessSpace.png';
-import { useRouter } from 'next/navigation';    //added
+import { useSession, signOut } from 'next-auth/react';
 
 function TopNav() {
-  const [userLoggedIn, setUserLoggedIn] = useState(false);
-  const [isMounted, setIsMounted] = useState(false);
-  const router = useRouter();
+  const { data: session, status } = useSession();
 
-  useEffect(() => {
-    setIsMounted(true);
-    const isLoggedIn = Boolean(localStorage.getItem('userLoggedIn')); // Example check
-    setUserLoggedIn(isLoggedIn);
-  }, []);
-
-  const handleLogout = () => {
-    localStorage.removeItem('userLoggedIn'); // Example logout logic
-    setUserLoggedIn(false);
-    router.push('/'); // Redirect to home page
+  const handleLogout = async () => {
+    await signOut({ callbackUrl: '/login' });
   };
 
   return (
@@ -34,12 +24,10 @@ function TopNav() {
         </div>
         <div className={styles.links}>
           <Link href="/">Home</Link>
-          {isMounted && (
-            userLoggedIn ? (
-              <Link href="/" onClick={handleLogout}>Logout</Link>
-            ) : (
-              <Link href="/login">Login</Link>
-            )
+          {status === 'authenticated' ? (
+            <button onClick={handleLogout} className={styles.logoutButton}>Logout</button>
+          ) : (
+            <Link href="/login">Login</Link>
           )}
         </div>
       </nav>
@@ -48,3 +36,4 @@ function TopNav() {
 }
 
 export default TopNav;
+
