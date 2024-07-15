@@ -1,7 +1,10 @@
+"use client";
+
 import React from 'react';
 import Step from './components/Step';
 import styles from './Onboarding.module.css';
 import NextButton from './components/NextButton';
+import withAuth from '../components/withAuth';
 import Image from 'next/image';
 import Link from 'next/link';
 import logo from '/public/TransparentLogo.png';
@@ -91,7 +94,7 @@ export default withBundleAnalyzer(nextConfig);`,
   },
 ];
 
-export default function Onboarding () {
+function Onboarding () {
   return (
     <div className={styles.onboardingContainer}>
       <h1 className={styles.onboardingTitle}>NextLevel Onboarding Instructions</h1>
@@ -113,3 +116,5 @@ export default function Onboarding () {
     </div>
   );
 };
+
+export default withAuth(Onboarding);
