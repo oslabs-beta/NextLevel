@@ -3,7 +3,7 @@
   top: 0;
   left: 0;
   width: 100%;
-  background-color: hsla(0, 0%, 100%, 0.7);
+  background-color: hsl(0, 0%, 100%, .7);
   padding: 0px 20px;
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
   z-index: 1000; /* Ensure it appears above other content */
@@ -21,10 +21,10 @@
 }
 
 .logo img {
-  height: 40px; /* Adjust size as needed */
-  max-width: 160px; /* Adjust the maximum width as needed */
+  height: 400px; /* Adjust size as needed */
+  max-width: 400px; /* Adjust the maximum width as needed */
   width: auto; /* Ensure the aspect ratio is maintained */
-  max-height: 40px; /* Ensure the logo doesn't exceed the specified height */
+  max-height: 400px; /* Ensure the logo doesn't exceed the specified height */
 }
 
 .links {
@@ -41,21 +41,6 @@
 
 .links a:hover {
   color: #0070f3; /* Example link hover color */
-}
-
-.logoutButton {
-  background: none;
-  border: none;
-  color: #333333;
-  cursor: pointer;
-  text-decoration: none;
-  padding: 0;
-  font: inherit;
-  font-weight: bold;
-}
-
-.logoutButton:hover {
-  color: #0056b3;
 }
 
 /* Adjust styles for mobile or smaller screens */

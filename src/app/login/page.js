@@ -4,22 +4,16 @@ import React, { useState, useEffect } from 'react';
 import './login.css';
 import { FaCircleUser } from 'react-icons/fa6';
 import { Si1Password } from 'react-icons/si';
+// import { FcGoogle } from 'react-icons/fc';
 import { AiOutlineGoogle } from 'react-icons/ai';
 import { IoLogoGithub } from 'react-icons/io';
 import Link from 'next/link';
 import Modal from '../components/Modal';
-import { signIn, useSession } from 'next-auth/react';
+import { signIn } from 'next-auth/react';
 
 export default function Login() {
-  const { data: session, status } = useSession();
-  const [username, setUsername] = useState('');
-  const [password, setPassword] = useState('');
-  const [error, setError] = useState('');
-  const [isModalOpen, setIsModalOpen] = useState(false);
-
   useEffect(() => {
-    // Stops background/other css elements from bleeding to next page
-    console.log('Setting up login page styles');
+    //Stops background/other css elements from bleeding to next page
     document.body.style.fontFamily = "'Poppins', sans-serif";
     document.body.style.display = 'flex';
     document.body.style.justifyContent = 'center';
@@ -31,7 +25,6 @@ export default function Login() {
     document.body.style.backgroundPosition = 'center';
 
     return () => {
-      console.log('Cleaning up login page styles');
       document.body.style.fontFamily = '';
       document.body.style.display = '';
       document.body.style.justifyContent = '';
@@ -43,40 +36,44 @@ export default function Login() {
     };
   }, []);
 
-  useEffect(() => {
-    if (status === 'authenticated') {
-      window.location.href = '/dashboard'; // Redirect to dashboard if already logged in
-    }
-  }, [status]);
+  const [username, setUsername] = useState('');
+  const [password, setPassword] = useState('');
+  const [error, setError] = useState('');
+  const [success, setSuccess] = useState(false);
+  const [isModalOpen, setIsModalOpen] = useState(false);
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    console.log('Submitting login form with username:', username);
 
-    const result = await signIn('credentials', {
-      redirect: false,
-      username,
-      password,
-    });
+    try {
+      const response = await fetch('/api/login', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({ username, password }),
+      });
 
-    if (result.error) {
-      console.log('Login error:', result.error);
-      setError(result.error);
-    } else {
-      console.log('Login successful');
-      setError('');
-      setUsername('');
-      setPassword('');
-      window.location.href = '/dashboard';
+      if (response.ok) {
+        setSuccess(true);
+        setError('');
+        setUsername('');
+        setPassword('');
+        localStorage.setItem('userLoggedIn', 'true'); 
+        window.location.href = '/dashboard';
+      } else {
+        const errorData = await response.json();
+        setError(errorData.message);
+        setSuccess(false);
+      }
+    } catch (err) {
+      setError('An error occurred. Please try again.');
+      setSuccess(false);
     }
   };
 
   const handleOAuthSignIn = (provider) => {
-    console.log(`Signing in with ${provider}`);
-    signIn(provider, { callbackUrl: '/dashboard' }).catch((err) => {
-      console.log(`OAuth sign-in error with ${provider}:`, err);
-      setError(`Failed to sign in with ${provider}. Please try again.`);
-    });
+    signIn(provider, { callbackUrl: '/dashboard' });
   };
 
   const toggleModal = () => {
@@ -123,7 +120,11 @@ export default function Login() {
             {error}
           </p>
         )}
-
+        {success && (
+          <p className="message" style={{ color: 'green' }}>
+            Login successful!
+          </p>
+        )}
         <div className="oauth-link">
           <button
             type="button"
