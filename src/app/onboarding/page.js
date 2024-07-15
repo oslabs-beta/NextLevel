@@ -91,7 +91,10 @@ export default withBundleAnalyzer(nextConfig);`,
   },
 ];
 
-export default function Onboarding () {
+export default function Onboarding (props) {
+  console.log('Props onboarding page:', props);
+  const usernameData = props.searchParams.username;
+  console.log('Username:', usernameData);
   return (
     <div className={styles.onboardingContainer}>
       <h1 className={styles.onboardingTitle}>NextLevel Onboarding Instructions</h1>
@@ -107,9 +110,10 @@ export default function Onboarding () {
           code={step.code}
           language={step.language}
           api={step.api}
+          username={usernameData}
         />
       ))}
-      <NextButton />
+      <NextButton username={usernameData}/>
     </div>
   );
 };

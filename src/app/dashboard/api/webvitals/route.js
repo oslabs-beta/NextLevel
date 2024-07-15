@@ -20,7 +20,7 @@ export async function GET(request) {
       return NextResponse.json({ message: "User not found in web vitals route" }, { status: 404 });
     }
 
-    console.log("Found user: ", foundUser);
+    //console.log("Found user: ", foundUser);
 
     return NextResponse.json(foundUser[metricType]);
   } catch (error) {

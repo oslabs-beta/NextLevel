@@ -42,12 +42,13 @@ export default function SignUp() {
       });
 
       if (response.ok) {
+        const usernameData = username;
         setSuccess(true);
         setError('');
         setUsername('');
         setPassword('');
         setConfirmPass('');
-        window.location.href = '/onboarding';
+        window.location.href = `/onboarding?username=${usernameData}`;
       } else {
         const errorData = await response.json();
         setError(errorData.message);
