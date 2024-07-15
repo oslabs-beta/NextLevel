@@ -40,8 +40,7 @@ const bundleBuildAnalyzer = () => {
     console.log('Build time:', buildTime);
     sendToApi({ buildTime }, buildURL);
 
-    // Here you might need to parse bundleLog to extract specific metrics
-    // For simplicity, we're sending the entire log. Adjust based on your needs.
+    //sendinig whole bundle log to api
     sendToApi({ bundleLog }, bundleURL);
   });
 }

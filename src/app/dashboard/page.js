@@ -8,8 +8,12 @@ import BuildTimeContainer from './components/buildtimecontainer';
 import useWebVitalsData from './hooks/useWebVitalsData';
 import useBuildTimeData from './hooks/useBuildTimeData';
 import withAuth from '../components/withAuth';
+import SideBar from './components/sidebar';
 
-function Dashboard() {
+function Dashboard(props) {
+  console.log('Props:', props);
+  const username = props.searchParams.username;
+  console.log('Username:', username);
   // Add custom API key generation?
   const userAPIKey = 'XVAOgIvvFHSEf_B5CpOiC';
   const webVitalsData = useWebVitalsData();
@@ -27,11 +31,14 @@ function Dashboard() {
   }, [userAPIKey, webVitalsData, buildTimeData]);
 
   return (
-    <>
-      <APIKey api={userAPIKey} />
-      <WebVitalsChart data={webVitalsData} />
-      <BuildTimeContainer data={buildTimeData} />
-    </>
+    <div className={styles.dashboardContainer}>
+      <SideBar username={username}/>
+      <div className={styles.mainContent}>
+        <APIKey api={userAPIKey} />
+        <WebVitalsChart data={webVitalsData} />
+        <BuildTimeContainer data={buildTimeData} username={username}/>
+      </div>
+    </div>
   );
 }
 

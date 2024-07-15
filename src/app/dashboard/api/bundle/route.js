@@ -13,7 +13,7 @@ export async function GET(request) {
     if (!foundUser) {
       return NextResponse.json({ message: "User not found in bundle route" }, { status: 404 });
     }
-    console.log("Found user: ", foundUser);
+    //console.log("Found user: ", foundUser);
     return NextResponse.json(foundUser.bundleLog);
   } catch (error) {
     console.error(error);
