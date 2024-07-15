@@ -172,10 +172,10 @@ function BuildTimeMetrics({username}) {
     return date.toLocaleString();
   };
 
-  // Guard against rendering when bundleLogs is empty or currentIndex is out of bounds
-  if (bundleLogs.length === 0) {
-    return <div>Loading...</div>; // or any loading indicator
-  }
+  // // Guard against rendering when bundleLogs is empty or currentIndex is out of bounds
+  // if (bundleLogs.length === 0) {
+  //   return <div>Loading...</div>; // or any loading indicator
+  // }
 
   if (!currentLog) {
     return <div>No logs available.</div>; // or handle accordingly
