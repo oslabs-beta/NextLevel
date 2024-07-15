@@ -9,11 +9,24 @@
     "lint": "next lint"
   },
   "dependencies": {
+    "@supercharge/strings": "^2.0.0",
+    "bcrypt": "^5.1.1",
+    "bcryptjs": "^2.4.3",
+    "chart.js": "^4.4.3",
+    "chartjs-adapter-date-fns": "^3.0.0",
+    "date-fns": "^3.6.0",
+    "geist": "^1.3.1",
+    "mongoose": "^8.5.1",
     "next": "^14.2.4",
     "next-auth": "^4.24.7",
+    "nextjs-cors": "^2.2.0",
+    "nodemon": "^3.1.4",
+    "normalize.css": "^8.0.1",
     "react": "^18",
+    "react-chartjs-2": "^5.2.0",
     "react-dom": "^18",
     "react-icons": "^5.2.1",
+    "sharp": "^0.33.4",
     "web-vitals": "^4.2.1"
   },
   "devDependencies": {

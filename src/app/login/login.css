@@ -5,25 +5,44 @@
   padding: 0;
   box-sizing: border-box;
 }
-body {
+body-login {
   font-family: 'Poppins', sans-serif;
   display: flex;
   justify-content: center;
-  align-items: center;
+  align-items: center; 
   min-height: 100vh;
-  background: seagreen;
+  background: no-repeat;
+  background-size: cover;
+  background-position: center;
 }
 
 .wrapper {
   width: 420px;
-  background: slateblue;
+  background: transparent;
+  border: 2px solid rgba(255, 255, 255, 0.2);
+  backdrop-filter: blur(30px);
+  box-shadow: 0 0 30px rgba(0,0,0,.2);
   color: #fff;
   border-radius: 10px;
   padding: 30px 40px;
+  /* box-shadow: 0px 0px 10px rgba(255, 255, 255, 0.404); */
+}
+
+.logo-container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 20px; /* Adjust as needed */
+}
+
+.logo {
+  width: 60px; /* Adjust as needed */
+  height: 60px; /* Adjust as needed */
+  margin-right: 10px; /* Adjust as needed */
 }
 
 .wrapper h1 {
-  font-size: 36px;
+  font-size: 50px;
   text-align: center;
 }
 
@@ -40,7 +59,7 @@ body {
   background: transparent;
   border: none;
   outline: none;
-  border: 2px solid rgba(255, 255, 255, 0.2);
+  border: 2px solid rgba(233, 225, 225, 0.2);
   border-radius: 40px;
   font-size: 16px;
   color: #fff;
@@ -57,6 +76,15 @@ body {
   top: 50%;
   transform: translateY(-50%);
   font-size: 20px;
+}
+
+input:-webkit-autofill {
+  -webkit-box-shadow: 0 0 0 1000px transparent inset !important;
+  -webkit-text-fill-color: #fff !important;
+}
+
+input:-webkit-autofill ~ .icon {
+  color: #000 !important;
 }
 
 .wrapper .remember-forgot {
@@ -89,32 +117,46 @@ body {
   border-radius: 40px;
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
   cursor: pointer;
-  font-size: 16px;
+  font-size: 20px;
   color: #333;
   font-weight: 700;
 }
 
+.wrapper button:hover {
+  background-color: rgb(56, 128, 221);
+  color: white;
+}
 .oauth-link {
   text-align: center;
   margin-top: 20px;
   margin-bottom: 20px;
+  text-decoration: none;
 }
 
 .oauth-button {
   background-color: #ffffff;
   border: 1px solid #dddddd;
-  padding: 10px 20px;
-  display: flex;
+  padding: 7px;
+  padding-left: 15px;
+  gap: 100px !important;
+  display: inline-block;
+  width: 140px !important;
   align-items: center;
   justify-content: center;
   cursor: pointer;
   font-size: 16px;
   color: #333;
+  margin-right: 10px;
+  margin-left: 10px;
 }
 
 .google-icon {
   margin-right: 8px;
-  font-size: 20px;
+  font-size: 30px;
+}
+.github-icon {
+  margin-right: 8px;
+  font-size: 30px;
 }
 
 .wrapper .register-link {
@@ -131,4 +173,12 @@ body {
 
 .register-link p a:hover {
   text-decoration: underline;
+  color: rgb(56, 128, 221)
+}
+
+.message {
+  text-align: center;
+  margin-top: 5px;
+  width: 100%;
+  margin-bottom: -15px;
 }

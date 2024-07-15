@@ -1,37 +1,44 @@
 //index.js
-
 'use client'
 
 import { useReportWebVitals } from 'next/web-vitals'
- 
+
+
 export default function NextWebVitals() {
   useReportWebVitals((metric) => {
-    const body = JSON.stringify(metric)
-    const url = 'http://localhost:3000/dashboard/api'
+    if (!process.env.NEXT_PUBLIC_API_KEY) {
+      console.log('API key not found in environment variables');
+      return;
+    }
+    const apiKey = process.env.NEXT_PUBLIC_API_KEY;
+    const data = {
+      "metricType": metric.name,
+      "metricValue": metric.value, 
+      apiKey};
+    console.log('Web vitals data:', data);
+    const body = JSON.stringify(data);
+    const url = 'https://www.nextlevel-dash.com/dashboard/api/webvitals';
 
-    if(navigator.sendBeacon) {
-      navigator.sendBeacon(url, body)
-    } else {
+    
+    // if(navigator.sendBeacon) {
+    //   navigator.sendBeacon(url, body);
+    // } else {
       fetch(url, {
         method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
         body,
         keepalive: true
+      }).then((res) => {
+        if (res.ok) {
+          console.log('Web vitals data sent successfully');
+        } else {
+          console.error('index.js .then error Error sending web vitals data:', res.statusText);
+        }
+      }).catch((error) => {
+        console.error('index.js .catch error Error sending web vitals data:', error);
       })
-    }
-    // switch (metric.name) {
-    //   case 'FCP': {
-    //     console.log('FCP val:', metric.value);
-        
-    //     break;
-    //   }
-    //   case 'TTFB': {
-    //     console.log('TTFB val:', metric.value);
-    //     console.log('TTFB:', metric);
-    //     break;
-    //   }
-    //   default: {
-    //     break;
-    //   }
     // }
   })
 }
