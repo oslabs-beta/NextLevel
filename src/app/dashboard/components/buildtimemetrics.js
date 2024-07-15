@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import styles from '../dashboard.module.css';
 import useBundleData from '../hooks/useBundleData';
+import { set } from 'mongoose';
 
 // const bundleLogs = [
 //   {
@@ -142,17 +143,27 @@ function BuildTimeMetrics({username}) {
     // fetchData();
   }, []);
 
+  useEffect(() => {
+    const logsLength = bundleLogs.length;
+    setCurrentIndex(logsLength - 1);
+    console.log('Current Index:', currentIndex);
+    setCurrentLog(bundleLogs[currentIndex]);
+    console.log('Current Log:', currentLog);
+  }, [bundleLogs]);
+
   // const currentLog = bundleLogs[currentIndex];
 
   const toggleBack = () => {
     if (currentIndex > 0) {
       setCurrentIndex(currentIndex - 1);
+      setCurrentLog(bundleLogs[currentIndex - 1]);
     }
   }
 
   const toggleForward = () => {
     if (currentIndex < bundleLogs.length - 1) {
       setCurrentIndex(currentIndex + 1);
+      setCurrentLog(bundleLogs[currentIndex + 1]);
     }
   }
 
