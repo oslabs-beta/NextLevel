@@ -1,7 +1,6 @@
-import dbConnect from '../../lib/connectDB.js';
-import User from '../../models/User.js';
+import dbConnect from '../../../lib/connectDB.js';
+import User from '../../../models/User.js';
 import { NextResponse } from 'next/server';
-import middleware from './middleware.js';
 
 export async function GET(request) {
   try {
