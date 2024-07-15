@@ -47,9 +47,13 @@ const UserSchema = new mongoose.Schema({
     required: [true, 'Please provide a username'],
     unique: true,
   },
+  email: {
+    type: String,
+    required: [true, 'Please provide a email'],
+    unique: true,
+  },
   password: {
     type: String,
-    required: [true, 'Please provide a password'],
   },
   APIkey: {
     type: String,
@@ -67,21 +71,21 @@ const UserSchema = new mongoose.Schema({
 });
 
 // Pre-save middleware to hash the password before saving
-UserSchema.pre('save', async function (next) {
-  if (!this.isModified('password')) {
-    return next();
-  }
+// UserSchema.pre('save', async function (next) {
+//   if (!this.isModified('password')) {
+//     return next();
+//   }
 
-  console.log('Hashing password before saving user');
-  const salt = await bcrypt.genSalt(10);
-  this.password = await bcrypt.hash(this.password, salt);
-  next();
-});
+//   console.log('Hashing password before saving user');
+//   const salt = await bcrypt.genSalt(10);
+//   this.password = await bcrypt.hash(this.password, salt);
+//   next();
+// });
 
-// Method to compare the password
-UserSchema.methods.comparePassword = async function (enteredPassword) {
-  console.log('Comparing passwords');
-  return await bcrypt.compare(enteredPassword, this.password);
-};
+// // Method to compare the password
+// UserSchema.methods.comparePassword = async function (enteredPassword) {
+//   console.log('Comparing passwords');
+//   return await bcrypt.compare(enteredPassword, this.password);
+// };
 
 export default mongoose.models.User || mongoose.model('User', UserSchema, 'Users');

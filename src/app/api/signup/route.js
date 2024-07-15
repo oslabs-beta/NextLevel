@@ -6,16 +6,16 @@ import Str from '@supercharge/strings';
 
 
 export async function POST(req) {
-  const { username, password } = await req.json();
+  const { username, email, password } = await req.json();
 
-  if (!username || !password) {
+  if (!username || !password || !email ) {
     return NextResponse.json({ message: 'Missing required fields' }, { status: 400 });
   }
 
   await dbConnect();
 
   try {
-    const existingUser = await User.findOne({ username });
+    const existingUser = await User.findOne({ email });
 
     if (existingUser) { //if user already exsists
       return NextResponse.json({ message: 'User already exists' }, { status: 409 });
