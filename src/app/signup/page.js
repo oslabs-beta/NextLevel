@@ -6,6 +6,7 @@ import { FaCircleUser } from 'react-icons/fa6';
 import { Si1Password } from 'react-icons/si';
 import { AiOutlineGoogle } from 'react-icons/ai';
 import { IoLogoGithub } from 'react-icons/io';
+import { ImMail4 } from "react-icons/im";
 import Link from 'next/link';
 import Modal from "../components/Modal.js";
 import { signIn } from "next-auth/react";
@@ -13,6 +14,7 @@ import Str from '@supercharge/strings';
 
 export default function SignUp() {
   const [username, setUsername] = useState('');
+  const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [APIkey, setAPIkey] = useState('');
   const [confirmPass, setConfirmPass] = useState('');
@@ -38,16 +40,18 @@ export default function SignUp() {
         headers: {
           'Content-Type': 'application/json',
         },
-        body: JSON.stringify({ username, password, APIkey}),
+        body: JSON.stringify({ username, email, password, APIkey}),
       });
 
       if (response.ok) {
+        const usernameData = username;
         setSuccess(true);
         setError('');
         setUsername('');
+        setEmail('');
         setPassword('');
         setConfirmPass('');
-        window.location.href = '/onboarding';
+        window.location.href = `/onboarding?username=${usernameData}`;
       } else {
         const errorData = await response.json();
         setError(errorData.message);
@@ -80,6 +84,16 @@ export default function SignUp() {
             required
           />
           <FaCircleUser className="icon" />
+        </div>
+        <div className="input-box">
+          <input
+            type="text"
+            placeholder="Email"
+            value={email}
+            onChange={(e) => setEmail(e.target.value)}
+            required
+          />
+          <ImMail4 className="icon" />
         </div>
         <div className="input-box">
           <input

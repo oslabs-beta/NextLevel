@@ -1,8 +1,8 @@
 'use client';
 
-import { useEffect } from 'react';
 import { useSession } from 'next-auth/react';
 import { useRouter } from 'next/navigation';
+import { useEffect } from 'react';
 
 const withAuth = (WrappedComponent) => {
   return (props) => {
@@ -10,22 +10,23 @@ const withAuth = (WrappedComponent) => {
     const router = useRouter();
 
     useEffect(() => {
-      console.log('Checking session status:', status);
-      if (status === 'loading') return; // Do nothing while loading
-
-      if (!session) {
-        console.log('No session found, redirecting to login');
-        router.replace('/login');
+      if (status === 'unauthenticated') {
+        router.push('/login');
       }
-    }, [session, status, router]);
+    }, [status]);
 
-    if (status === 'loading' || !session) {
+    if (status === 'loading') {
       return <div>Loading...</div>;
     }
 
-    return <WrappedComponent {...props} />;
+    if (status === 'authenticated') {
+      return <WrappedComponent {...props} />;
+    }
+
+    return null;
   };
 };
 
 export default withAuth;
+
 

@@ -1,6 +1,6 @@
 'use client';
 
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useState, useRef } from 'react';
 import styles from '../dashboard.module.css';
 import { Line } from 'react-chartjs-2';
 import {
@@ -30,6 +30,7 @@ ChartJS.register(
 
 
 function WebVitalsChart({ data }) {
+  const chartRef = useRef(null);
 
   const chartData = {
     labels: data.map(entry => new Date(entry.timestamp)),
@@ -109,6 +110,16 @@ function WebVitalsChart({ data }) {
       },
     },
   };
+
+  const downloadChart = () => {
+    const chartInstance = chartRef.current;
+    if (chartInstance) {
+      const link = document.createElement('a');
+      link.href = chartInstance.toBase64Image();
+      link.download = 'web-vitals-chart.png';
+      link.click();
+    }
+  };
   
   return (
     <div className={styles.chartContainer}>
@@ -118,9 +129,10 @@ function WebVitalsChart({ data }) {
         {allData.map(webVital => <li key={webVital.id}> {webVital.title} </li>)}
       </ul> */}
       <div className={styles.chart}> 
-        <Line data={chartData} options={options} />
+        <Line ref={chartRef} data={chartData} options={options} />
        {/* {children} */}
       </div>
+      <button onClick={downloadChart} className={styles.downloadButton}>Download Chart</button>
     </div>
   );
 }

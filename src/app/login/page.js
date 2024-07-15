@@ -8,9 +8,15 @@ import { AiOutlineGoogle } from 'react-icons/ai';
 import { IoLogoGithub } from 'react-icons/io';
 import Link from 'next/link';
 import Modal from '../components/Modal';
-import { signIn } from 'next-auth/react';
+import { signIn, useSession } from 'next-auth/react';
 
 export default function Login() {
+  const { data: session, status } = useSession();
+  const [username, setUsername] = useState('');
+  const [password, setPassword] = useState('');
+  const [error, setError] = useState('');
+  const [isModalOpen, setIsModalOpen] = useState(false);
+
   useEffect(() => {
     // Stops background/other css elements from bleeding to next page
     console.log('Setting up login page styles');
@@ -37,11 +43,11 @@ export default function Login() {
     };
   }, []);
 
-  const [username, setUsername] = useState('');
-  const [password, setPassword] = useState('');
-  const [error, setError] = useState('');
-  const [success, setSuccess] = useState(false);
-  const [isModalOpen, setIsModalOpen] = useState(false);
+  useEffect(() => {
+    if (status === 'authenticated') {
+      window.location.href = '/dashboard'; // Redirect to dashboard if already logged in
+    }
+  }, [status]);
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -56,10 +62,8 @@ export default function Login() {
     if (result.error) {
       console.log('Login error:', result.error);
       setError(result.error);
-      setSuccess(false);
     } else {
       console.log('Login successful');
-      setSuccess(true);
       setError('');
       setUsername('');
       setPassword('');
@@ -69,7 +73,10 @@ export default function Login() {
 
   const handleOAuthSignIn = (provider) => {
     console.log(`Signing in with ${provider}`);
-    signIn(provider, { callbackUrl: '/dashboard' });
+    signIn(provider, { callbackUrl: '/dashboard' }).catch((err) => {
+      console.log(`OAuth sign-in error with ${provider}:`, err);
+      setError(`Failed to sign in with ${provider}. Please try again.`);
+    });
   };
 
   const toggleModal = () => {
@@ -116,11 +123,7 @@ export default function Login() {
             {error}
           </p>
         )}
-        {success && (
-          <p className="message" style={{ color: 'green' }}>
-            Login successful!
-          </p>
-        )}
+
         <div className="oauth-link">
           <button
             type="button"

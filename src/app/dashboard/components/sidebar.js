@@ -1,16 +1,22 @@
-import React from 'react';
 import styles from '../dashboard.module.css';
 import { IoSettingsOutline } from "react-icons/io5";
 import Link from 'next/link';
 
-function SideBar() {
+function SideBar(props) {
+  console.log('Props sidebar:', props);
+  const username = props.username;
+  console.log('Username sidebar:', username);
   return (
     <div className={styles.sidebar}>
       <div className={styles.sidebarTop}>
       <Link href="/dashboard/onboarding">
         <ul className={styles.sidebarTop}>
-          <li className={styles.sidebarListItems}></li>
+          <Link className={styles.link} href={`/onboarding?username=${username}`}>
           <li className={styles.sidebarListItems}>Onboarding</li>
+          </Link>
+          <Link className={styles.link} href={`/onboarding?username=${username}`}>
+          <li className={styles.sidebarListItems}>History</li>
+          </Link>
         </ul>
         </Link>
       </div> 
