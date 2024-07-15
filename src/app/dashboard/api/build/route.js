@@ -1,4 +1,4 @@
-import dbConnect from '../../../lib/connectDB';
+import dbConnect from '../../../lib/connectDB.js';
 import User from '../../../models/User.js';
 import { NextResponse } from 'next/server';
 
