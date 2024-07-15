@@ -65,17 +65,10 @@ export default withBundleAnalyzer(nextConfig);`,
   },
   {
     stepNumber: 3,
-<<<<<<< HEAD
-    title: "Configure Environment Variables",
-    description: "Add the following line to your .env.local file:",
-    code: `NEXT_PUBLIC_API_KEY=your-api-key-here`,
-    language: ".env.local",
-=======
     title: 'Configure Environment Variables',
     description: 'Add the following line to your .env.local file:',
     code: `NEXT_PUBLIC_API_KEY=<your-api-key>`,
     language: '.env.local',
->>>>>>> e98f378d41afee9efc703e838acce74f0227f565
     api: true,
   },
   {
@@ -89,16 +82,9 @@ export default withBundleAnalyzer(nextConfig);`,
     api: false,
   },
   {
-<<<<<<< HEAD
-    stepNumber: "",
-    title: "",
-    description:
-      "Run this build script instead of npm next build to track metrics in the dashboard:",
-=======
     stepNumber: '',
     title: '',
     description: 'Run this build script instead of \'npm next build\' to track metrics in the dashboard:',
->>>>>>> e98f378d41afee9efc703e838acce74f0227f565
     code: `npm run nextlevelbuild`,
     language: "terminal",
     api: false,
