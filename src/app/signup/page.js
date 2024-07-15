@@ -78,19 +78,12 @@ export default function SignUp() {
         <div className="input-box">
           <input
             type="text"
-            placeholder="Username"
-            value={username}
-            onChange={(e) => setUsername(e.target.value)}
-            required
-          />
-          <FaCircleUser className="icon" />
-        </div>
-        <div className="input-box">
-          <input
-            type="text"
             placeholder="Email"
-            value={email}
-            onChange={(e) => setEmail(e.target.value)}
+            value={username}
+            onChange={(e) => {
+              setUsername(e.target.value)
+              setEmail(e.target.value)}
+            }
             required
           />
           <ImMail4 className="icon" />
@@ -123,10 +116,10 @@ export default function SignUp() {
           </p>
         )}
         <div className="oauth-link">
-          <button type="button" className="oauth-button" onClick={toggleModal}>
+          <button type="button" className="oauth-button" onClick={handleOAuthSignIn('google')}>
             <AiOutlineGoogle className="google-icon" />
           </button>
-          <button type="button" className="oauth-button" onClick={toggleModal}>
+          <button type="button" className="oauth-button" onClick={handleOAuthSignIn('github')}>
             <IoLogoGithub className="github-icon" />
           </button>
         </div>
@@ -136,7 +129,7 @@ export default function SignUp() {
           </p>
         </div>
       </form>
-      <Modal isOpen={isModalOpen} onClose={toggleModal} handleOAuthSignIn={handleOAuthSignIn} />
+      {/* <Modal isOpen={isModalOpen} onClose={toggleModal} handleOAuthSignIn={handleOAuthSignIn} /> */}
     </div>
   );
 }
