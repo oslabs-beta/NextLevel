@@ -212,3 +212,23 @@
   overflow-x: auto;
   border-radius: 0px 0px 10px 10px ;
 }
+
+.downloadButton {
+  margin-top: 10px;
+  padding: 10px 20px;
+  background-color: #007bff;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  width: auto;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.downloadButton:hover {
+  background-color: #0056b3;
+}

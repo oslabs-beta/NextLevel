@@ -1,9 +1,9 @@
 //index.js
-
 'use client'
 
 import { useReportWebVitals } from 'next/web-vitals'
- 
+
+
 export default function NextWebVitals() {
   useReportWebVitals((metric) => {
     if (!process.env.NEXT_PUBLIC_API_KEY) {
@@ -11,20 +11,22 @@ export default function NextWebVitals() {
       return;
     }
     const apiKey = process.env.NEXT_PUBLIC_API_KEY;
-    const data = {...metric, apiKey};
+    const data = {
+      "metricType": metric.name,
+      "metricValue": metric.value, 
+      apiKey};
+    console.log('Web vitals data:', data);
     const body = JSON.stringify(data);
-    const url = 'https://www.nextlevel-dash.com/dashboard/api'
+    const url = 'https://www.nextlevel-dash.com/dashboard/api/webvitals';
 
     
-    
     // if(navigator.sendBeacon) {
-    //   navigator.sendBeacon(url, body)
+    //   navigator.sendBeacon(url, body);
     // } else {
       fetch(url, {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
-          'Authorization': apiKey
         },
         body,
         keepalive: true
