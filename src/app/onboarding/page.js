@@ -94,7 +94,7 @@ export default withBundleAnalyzer(nextConfig);`,
   },
 ];
 
-export default function Onboarding (props) {
+ function Onboarding (props) {
   console.log('Props onboarding page:', props);
   const usernameData = props.searchParams.username;
   console.log('Username:', usernameData);
