@@ -60,6 +60,10 @@ const UserSchema = new mongoose.Schema({
     required: [true, 'API key was not provided'],
     unique: true,
   },
+  image: {
+    type: String,
+  },
+
   FCP: [MetricSchema],
   LCP: [MetricSchema],
   TTFB: [MetricSchema],

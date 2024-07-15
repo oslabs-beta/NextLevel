@@ -33,6 +33,7 @@ export async function POST(req) {
  
     const user = new User({ //creating the new user
       username,
+      email,
       password: hashedPassword,
       APIkey,
     });
