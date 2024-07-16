@@ -29,13 +29,27 @@ ChartJS.register(
 );
 
 
-function BuildTimeChart({ data }) {
+function BuildTimeChart({ username }) {
+  const [buildTimeData, setBuildTimeData] = useState([]);
+  useEffect(() => {
+    useBuildTimeData(username)
+    .then(data => {
+      // console.log('Bundle Logs:', logs);
+      setBuildTimeData(data);
+      return data;
+    }).catch(error => {
+      console.error('Error fetching build time:', error);
+    });
+  }, []);
+
+  console.log('Build Time Data:', buildTimeData);
+
   const chartData = {
-    labels: data.map(entry => new Date(entry.buildDate)),
+    labels: buildTimeData.map(entry => new Date(entry.buildDate)),
     datasets: [
       {
         label: 'Build Time',
-        data: data.map(entry => entry.buildTime),
+        data: buildTimeData.map(entry => entry.buildTime),
         fill: false,
         borderColor: 'rgb(75, 192, 192)',
         tension: 0.1,

@@ -72,12 +72,12 @@ const handler = NextAuth({
       }
     },
     async session({ session, token }) {
-      console.log('Session callback:', session, token);
+      // console.log('Session callback:', session, token);
       session.user = token.user;
       return session;
     },
     async jwt({ token, user }) {
-      console.log('JWT callback:', token, user);
+      // console.log('JWT callback:', token, user);
       if (user) {
         token.user = user;
       }

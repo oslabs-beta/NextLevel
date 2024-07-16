@@ -45,13 +45,13 @@ export default function Login() {
 
   useEffect(() => {
     if (status === 'authenticated') {
-      window.location.href = '/dashboard'; // Redirect to dashboard if already logged in
+      window.location.href = `/dashboard/?username=${username}`; // Redirect to dashboard if already logged in
     }
   }, [status]);
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    console.log('Submitting login form with username:', username);
+    console.log("Submitting login form with username:", username);
 
     const result = await signIn('credentials', {
       redirect: false,
@@ -67,20 +67,16 @@ export default function Login() {
       setError('');
       setUsername('');
       setPassword('');
-      window.location.href = '/dashboard';
+      window.location.href = `/dashboard/?username=${username}`;
     }
   };
 
   const handleOAuthSignIn = (provider) => {
     console.log(`Signing in with ${provider}`);
-    signIn(provider, { callbackUrl: '/dashboard' }).catch((err) => {
+    signIn(provider, { callbackUrl: `/dashboard/?username=${username}` }).catch((err) => {
       console.log(`OAuth sign-in error with ${provider}:`, err);
       setError(`Failed to sign in with ${provider}. Please try again.`);
     });
-  };
-
-  const toggleModal = () => {
-    setIsModalOpen(!isModalOpen);
   };
 
   return (
@@ -146,11 +142,6 @@ export default function Login() {
           </p>
         </div>
       </form>
-      <Modal
-        isOpen={isModalOpen}
-        onClose={toggleModal}
-        handleOAuthSignIn={handleOAuthSignIn}
-      />
     </div>
   );
 }

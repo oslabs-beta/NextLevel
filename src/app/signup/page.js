@@ -1,6 +1,6 @@
 'use client';
 
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import './signUp.css';
 import { FaCircleUser } from 'react-icons/fa6';
 import { Si1Password } from 'react-icons/si';
@@ -9,10 +9,11 @@ import { IoLogoGithub } from 'react-icons/io';
 import { ImMail4 } from "react-icons/im";
 import Link from 'next/link';
 import Modal from "../components/Modal.js";
-import { signIn } from "next-auth/react";
+import { signIn, useSession } from "next-auth/react";
 import Str from '@supercharge/strings';
 
 export default function SignUp() {
+  const { data: session, status } = useSession();
   const [username, setUsername] = useState('');
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
@@ -21,6 +22,12 @@ export default function SignUp() {
   const [error, setError] = useState('');
   const [success, setSuccess] = useState(false);
   const [isModalOpen, setIsModalOpen] = useState(false);
+
+  useEffect(() => {
+    if (status === 'authenticated') {
+      window.location.href = `/dashboard/?username=${username}`; // Redirect to dashboard if already logged in
+    }
+  }, [status]);
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -40,7 +47,7 @@ export default function SignUp() {
         headers: {
           'Content-Type': 'application/json',
         },
-        body: JSON.stringify({ username, email, password, APIkey}),
+        body: JSON.stringify({ username, email, password, APIkey }),
       });
 
       if (response.ok) {
@@ -63,13 +70,19 @@ export default function SignUp() {
     }
   };
 
-  const handleOAuthSignIn = (provider) => {
-    signIn(provider, { callbackUrl: '/dashboard' });
-  };
+  const handleOAuthSignIn = async (provider) => {
+    await signIn(provider, { redirect: false });
+    // Wait for the session to be updated
+    const interval = setInterval(() => {
+      if (session) {
+        clearInterval(interval);
+        const userNameFromSession = session.user.name  //|| session.user.email;
+        console.log('USERNAME OAUTH', userNameFromSession);
+        window.location.href = `/onboarding?username=${userNameFromSession}`;
+      }
+    }, 100); // Check every 100mss
+  }
 
-  const toggleModal = () => {
-    setIsModalOpen(!isModalOpen);
-  };
 
   return (
     <div className="wrapper">
@@ -116,10 +129,10 @@ export default function SignUp() {
           </p>
         )}
         <div className="oauth-link">
-          <button type="button" className="oauth-button" onClick={handleOAuthSignIn('google')}>
+          <button type="button" className="oauth-button" onClick={() => handleOAuthSignIn('google')}>
             <AiOutlineGoogle className="google-icon" />
           </button>
-          <button type="button" className="oauth-button" onClick={handleOAuthSignIn('github')}>
+          <button type="button" className="oauth-button" onClick={() => handleOAuthSignIn('github')}>
             <IoLogoGithub className="github-icon" />
           </button>
         </div>
@@ -129,7 +142,6 @@ export default function SignUp() {
           </p>
         </div>
       </form>
-      {/* <Modal isOpen={isModalOpen} onClose={toggleModal} handleOAuthSignIn={handleOAuthSignIn} /> */}
     </div>
   );
 }

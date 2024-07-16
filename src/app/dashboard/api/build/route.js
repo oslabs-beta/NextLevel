@@ -16,7 +16,7 @@ export async function GET(request) {
       return NextResponse.json({ message: "User not found in build route" }, { status: 404 });
     }
 
-    console.log("Found user: ", foundUser);
+    // console.log("Found user: ", foundUser);
     return NextResponse.json(foundUser.buildTime);
   } catch (error) {
     console.error(error);
