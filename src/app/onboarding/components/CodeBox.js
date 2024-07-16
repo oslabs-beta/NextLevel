@@ -10,7 +10,7 @@ const CodeBox = ({ fileName, codeText }) => {
         <CopyButton text={codeText} />
       </div>
       <div className={styles.codeArea}>
-        <code>{codeText}</code>
+        <pre>{codeText}</pre>
       </div>
     </div>
   );
