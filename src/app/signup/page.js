@@ -8,6 +8,7 @@ import { IoLogoGithub } from 'react-icons/io';
 import { ImMail4 } from "react-icons/im";
 import Link from 'next/link';
 import Modal from "../components/Modal.js";
+import { signIn, useSession } from 'next-auth/react';
 
 export default function Signup () {
   const { data: session, status } = useSession();

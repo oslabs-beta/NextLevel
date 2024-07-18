@@ -28,54 +28,85 @@ ChartJS.register(
   TimeScale
 );
 
-
 function WebVitalsChart({ username }) {
   const [webVitalsData, setWebVitalsData] = useState([]);
+  
   useEffect(() => {
     useWebVitalsData(username)
     .then(data => {
       setWebVitalsData(data);
       return data;
-    })
-  }).catch(error => {
+    }).catch(error => {
     console.error('Error fetching web vitals', error);
-  });
-}, []);
+    });
+  }, [username]);
+
+console.log('Web Vitals Data:', webVitalsData);
 
   const chartData = {
-    labels: webVitalsData.map(entry => new Date(entry.timestamp)),
+    labels: webVitalsData.map(entry => new Date(entry.metricDate)),
     datasets: [
       {
         label: 'Time to First Byte (ms)',
-        data: data.map(entry => entry.ttfb),
+        data: webVitalsData.map(entry => {
+          if (entry.metricType === 'TTFB') {
+            return entry.metricValue;
+          } else {
+            return null;
+          }
+        }),
         fill: false,
         borderColor: 'rgb(75, 192, 192)',
         tension: 0.1,
       },
       {
         label: 'Largest Contentful Paint (ms)',
-        data: data.map(entry => entry.lcp),
+        data: webVitalsData.map(entry => {
+          if (entry.metricType === 'LCP') {
+            return entry.metricValue;
+          } else {
+            return null;
+          }
+        }),
         fill: false,
         borderColor: 'rgb(199,235,185)',
         tension: 0.1,
       },
       {
         label: 'First Contentful Paint (ms)',
-        data: data.map(entry => entry.fcp),
+        data: webVitalsData.map(entry => {
+          if (entry.metricType === 'FCP') {
+            return entry.metricValue;
+          } else {
+            return null;
+          }
+        }),
         fill: false,
         borderColor: 'rgb(255, 99, 132)',
         tension: 0.1,
       },
       {
         label: 'First Input Delay (ms)',
-        data: data.map(entry => entry.fid),
+        data: webVitalsData.map(entry => {
+          if (entry.metricType === 'FID') {
+            return entry.metricValue;
+          } else {
+            return null;
+          }
+        }),
         fill: false,
         borderColor: 'rgb(153, 102, 255)',
         tension: 0.1,
       },
       {
         label: 'Interaction to Next Paint (ms)',
-        data: data.map(entry => entry.inp),
+        data: webVitalsData.map(entry => {
+          if (entry.metricType === 'INP') {
+            return entry.metricValue;
+          } else {
+            return null;
+          }
+        }),
         fill: false,
         borderColor: 'rgb(54, 162, 235)',
         tension: 0.1,
@@ -139,7 +170,7 @@ function WebVitalsChart({ username }) {
         {allData.map(webVital => <li key={webVital.id}> {webVital.title} </li>)}
       </ul> */}
       <div className={styles.chart}> 
-        <Line ref={chartRef} data={chartData} options={options} />
+        <Line data={chartData} options={options} />
        {/* {children} */}
       </div>
       <button onClick={downloadChart} className={styles.downloadButton}>Download Chart</button>
@@ -148,3 +179,4 @@ function WebVitalsChart({ username }) {
 }
 
 export default WebVitalsChart;
+

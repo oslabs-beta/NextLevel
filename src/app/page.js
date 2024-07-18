@@ -47,7 +47,7 @@ export default function Home() {
         <img src="/Transparent Logo White.png" alt="Logo" className="static-logo" />
       </div>
       <section className='hidden-fade'>
-        <h2>Take your app to the NextLevel</h2>
+        <h2>Take your app to the</h2>
         <section className='hidden-fly-up'>
           <div className="buttonsDiv"> 
             <div className='homepageButtons'>
