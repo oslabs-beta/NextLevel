@@ -44,14 +44,16 @@ export default function Login() {
   }, []);
 
   useEffect(() => {
-    if (status === 'authenticated') {
-      window.location.href = '/dashboard'; // Redirect to dashboard if already logged in
+    if (status === 'authenticated' && session) {
+      const userNameFromSession = session.user.email;
+      console.log('USERNAME OAUTH', userNameFromSession);
+      window.location.href = `/dashboard/?username=${encodeURIComponent(userNameFromSession)}`;
     }
-  }, [status]);
+  }, [status, session]);
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    console.log('Submitting login form with username:', username);
+    console.log("Submitting login form with username:", username);
 
     const result = await signIn('credentials', {
       redirect: false,
@@ -67,16 +69,25 @@ export default function Login() {
       setError('');
       setUsername('');
       setPassword('');
-      window.location.href = '/dashboard';
+      window.location.href = `/dashboard/?username=${username}`;
     }
   };
 
-  const handleOAuthSignIn = (provider) => {
-    console.log(`Signing in with ${provider}`);
-    signIn(provider, { callbackUrl: '/dashboard' }).catch((err) => {
-      console.log(`OAuth sign-in error with ${provider}:`, err);
+  const handleOAuthSignIn = async (provider) => {
+    const result = await signIn(provider, { redirect: false });
+    console.log('RESULT', result);
+    if (!result.error) {
+      const interval = setInterval(() => {
+        if (status === 'authenticated' && session) {
+          clearInterval(interval);
+          const userNameFromSession = session.user.email;
+          window.location.href = `/dashboard/?username=${encodeURIComponent(userNameFromSession)}`;
+        }
+      }, 100); // Check every 100ms
+    } else {
+      console.log(`OAuth sign-in error with ${provider}:`, result.error);
       setError(`Failed to sign in with ${provider}. Please try again.`);
-    });
+    }
   };
 
   return (

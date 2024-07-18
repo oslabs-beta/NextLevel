@@ -23,7 +23,7 @@ const onboardingSteps = [
     title: "",
     description: "Configure next.config.mjs file:",
     code: `import pkg from '@next/bundle-analyzer';
- const withBundleAnalyzer = pkg({
+  const withBundleAnalyzer = pkg({
   enabled: process.env.ANALYZE === 'true',
 });
 

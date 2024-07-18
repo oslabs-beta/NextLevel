@@ -21,6 +21,7 @@
   display: flex;
   flex-direction: column;
   justify-content: space-between;
+  text-decoration: none;
 }
 .top-section{
   padding: 20px;
@@ -32,7 +33,8 @@
   border: 3px solid yellow;
 }
 .sidebarTop{
-  margin-left: -40px;
+  margin-left: -20px;
+  text-decoration: none;
 }
 
 .bottom-section {
@@ -43,6 +45,13 @@
   box-sizing: border-box;
   border: 3px solid red;
 }
+
+.sidebarBottom{
+  display: flex;
+  flex-direction: row;
+  margin-left: -20px;
+}
+
 .sidebarLink {
   display: flex;
   align-items: center;
@@ -60,7 +69,8 @@
   color: #e7e7e7;
   display: block;
   font-size: 20px;
-  text-decoration: none;
+  text-decoration: none !important;
+
 }
 
 .sidebarListIcons {
@@ -68,6 +78,8 @@
   margin-right: 5px;
   display: inline-block;
   vertical-align: middle;
+  margin-top: 2px;
+  font-size: 25px;
 }
 
 .mainContent {

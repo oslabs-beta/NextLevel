@@ -7,10 +7,9 @@ import { AiOutlineGoogle } from 'react-icons/ai';
 import { IoLogoGithub } from 'react-icons/io';
 import { ImMail4 } from "react-icons/im";
 import Link from 'next/link';
-import { signIn, useSession } from "next-auth/react";
-import Str from '@supercharge/strings';
+import Modal from "../components/Modal.js";
 
-export default function SignUp() {
+export default function Signup () {
   const { data: session, status } = useSession();
   const [username, setUsername] = useState('');
   const [email, setEmail] = useState('');
@@ -21,11 +20,14 @@ export default function SignUp() {
   const [success, setSuccess] = useState(false);
 
   useEffect(() => {
-    if (status === 'authenticated') {
-      window.location.href = `/dashboard/?username=${session.user.name || session.user.email}`; // Redirect to dashboard if already logged in
+    if (status === 'authenticated' && session) {
+      const userNameFromSession = session.user.email;
+      console.log('USERNAME OAUTH', userNameFromSession);
+      window.location.href = `/onboarding?username=${encodeURIComponent(userNameFromSession)}`;
     }
   }, [status, session]);
 
+  
   const handleSubmit = async (e) => {
     e.preventDefault();
 
@@ -66,16 +68,20 @@ export default function SignUp() {
   };
 
   const handleOAuthSignIn = async (provider) => {
-    await signIn(provider, { redirect: false });
-  };
-
-  useEffect(() => {
-    if (session) {
-      const userNameFromSession = session.user.name || session.user.email;
-      console.log('USERNAME OAUTH', userNameFromSession);
-      window.location.href = `/onboarding?username=${userNameFromSession}`;
+    const result = await signIn(provider, { redirect: false });
+    if (!result.error) {
+      const interval = setInterval(() => {
+        if (session) {
+          clearInterval(interval);
+          const userNameFromSession = session.user.username || session.user.email;
+          window.location.href = `/onboarding?username=${encodeURIComponent(userNameFromSession)}`;
+        }
+      }, 100); // Check every 100ms
+    } else {
+      console.log(`OAuth sign-in error with ${provider}:`, result.error);
+      setError(`Failed to sign in with ${provider}. Please try again.`);
     }
-  }, [session]);
+  };
 
   return (
     <div className="wrapper">
@@ -84,21 +90,15 @@ export default function SignUp() {
         <div className="input-box">
           <input
             type="text"
-            placeholder="Username"
+            placeholder="Email"
             value={username}
-            onChange={(e) => setUsername(e.target.value)}
+            onChange={(e) => {
+              setUsername(e.target.value)
+              setEmail(e.target.value)}
+            }
             required
           />
           <ImMail4 className="icon" />
-        </div>
-        <div className="input-box">
-          <input
-            type="email"
-            placeholder="Email"
-            value={email}
-            onChange={(e) => setEmail(e.target.value)}
-            required
-          />
         </div>
         <div className="input-box">
           <input

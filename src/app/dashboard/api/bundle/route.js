@@ -38,9 +38,13 @@ export async function POST(request) {
     if (!user) { 
       return NextResponse.json({ message: 'API key was not found' }, { status: 409 });
     }
-    // maybe make new schema with bundleLog
+
+    const parsedLog = bundleLog.match(/(Route \(app\)|Page)[\s\S]*/)?.[0] || 'No Bundle Information Found for This Build';
+    //match anything starting with Route(app) or Page, keeping everything afterwards including white spaces. 
+    // if no match then display 'No Bundle Information Found for This Build' to render on dashboard
+
     const newBundle = {
-      bundleLog: bundleLog,
+      bundleLog: parsedLog,
       bundleDate: Date.now()
     }
     user.bundleLog.push(newBundle);

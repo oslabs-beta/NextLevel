@@ -9,7 +9,6 @@ body {
   height: 100%;
 }
 
-
 .navbar-gap {
     width: 100%;
     height: 50px;
@@ -32,7 +31,6 @@ section {
     font-size: 50px;
     padding-left: 20px;
     padding-right: 20px;
-
 }
 
 .buttonsDiv {
@@ -53,44 +51,89 @@ section {
 .homepage-link {
   color: #5174e7;
   text-decoration: none;
-
 }
-.hidden-fade{
+
+/* Container for the GIF and static logo */
+.gif-container {
+  position: relative;
+  display: inline-block;
+}
+
+/* GIF styling */
+.gif {
+  width: 100%; /* Adjust as necessary */
+  height: auto; /* Adjust as necessary */
+  animation: play-gif 5s forwards; /* Adjust 5s to the duration of your GIF */
+}
+
+/* Static logo styling */
+.static-logo {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%; /* Adjust as necessary */
+  height: auto; /* Adjust as necessary */
+  opacity: 0; /* Initially hidden */
+  animation: show-logo 5s forwards; /* Adjust 5s to the duration of your GIF */
+}
+
+/* Keyframe animation to hide GIF */
+@keyframes play-gif {
+  0% {
+    opacity: 1;
+  }
+  100% {
+    opacity: 0;
+  }
+}
+
+/* Keyframe animation to show static logo */
+@keyframes show-logo {
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+
+.hidden-fade {
   opacity: 0;
   transition: all 3s;
 }
 
-.hidden-fly-left{
+.hidden-fly-left {
   opacity: 0;
   filter: blur(5px);
   transform: translateX(-100%);
   transition: all 2s;
 }
 
-.hidden-fly-right{
+.hidden-fly-right {
   opacity: 0;
   filter: blur(5px);
   transform: translateX(100%);
   transition: all 2s;
 }
 
-.hidden-fly-up{
+.hidden-fly-up {
   opacity: 0;
   filter: blur(5px);
   transform: translateY(100%);
   transition: all 2s;
   min-height: 80vh !important;
 }
+
 @media(prefers-reduced-motion) {
   .hidden {
     transition: none;
-  } 
+  }
 }
-
 
 .show {
   opacity: 1;
   filter: blur(0);
   transform: translateX(0);
 }
+
 

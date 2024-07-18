@@ -1,11 +1,28 @@
 'use client';
 
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import styles from '../dashboard.module.css';
 
-function APIKey({ api }) {
+function APIKey({ username }) {
   //new code
   const [ copySuccess, setCopySuccess ] = useState('');
+  const [ api, setApi ] = useState('');
+
+  useEffect(() => {
+    fetch(`http://localhost:3000/onboarding/api?username=${username}`)
+    .then((res) => {
+      if (res.ok) {
+        console.log('res:', res);
+        return res.json(); // not res.json() because its returning
+      }
+    })
+    .then((data) => {
+      setApi(data.APIkey);
+    })
+    .catch((error) => {
+      console.error('Error fetching API key:', error);
+    });
+  }, [username]);
 
   const copyToClipboard = () => { 
     navigator.clipboard.writeText(api).then(() => {

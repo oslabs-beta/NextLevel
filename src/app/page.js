@@ -42,8 +42,11 @@ export default function Home() {
   return (
     <main>
       <div className='navbar-gap'></div>
+      <div className="gif-container">
+        <img src="/transparent gif v2 (1).gif" alt="GIF" className="gif" />
+        <img src="/Transparent Logo White.png" alt="Logo" className="static-logo" />
+      </div>
       <section className='hidden-fade'>
-        <img src = '/Transparent Logo White.png' className = "home-logo"></img>
         <h2>Take your app to the NextLevel</h2>
         <section className='hidden-fly-up'>
           <div className="buttonsDiv"> 
@@ -54,7 +57,7 @@ export default function Home() {
             </div>
             <div className='or'> or </div>
             <div className='homepageButtons'>
-              <Link className='homepage-link'  href="/signup">
+              <Link className='homepage-link' href="/signup">
                 <div className="signup-button">Get Started</div> {/* Added button to route to the login page */}
               </Link>
             </div>
