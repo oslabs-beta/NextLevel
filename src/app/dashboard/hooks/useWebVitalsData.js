@@ -2,7 +2,8 @@
 
 async function fetchWebVitals (username, metricType) {
   try {
-    const res = await fetch(`https://nextlevel-dash.com/dashboard/api/webvitals?username=${username}&metricType=${metricType}`);
+    // const res = await fetch(`https://nextlevel-dash.com/dashboard/api/webvitals?username=${username}&metricType=${metricType}`);
+    const res = await fetch(`http://localhost:3000/dashboard/api/webvitals?username=${username}&metricType=${metricType}`);
       if (res.ok) {
         console.log('Res from useWebVitalsData:', res);
         const resData = await res.json();

@@ -7,7 +7,6 @@ import { Si1Password } from 'react-icons/si';
 import { AiOutlineGoogle } from 'react-icons/ai';
 import { IoLogoGithub } from 'react-icons/io';
 import Link from 'next/link';
-import Modal from '../components/Modal';
 import { signIn, useSession } from 'next-auth/react';
 
 export default function Login() {
@@ -15,11 +14,10 @@ export default function Login() {
   const [username, setUsername] = useState('');
   const [password, setPassword] = useState('');
   const [error, setError] = useState('');
-  const [isModalOpen, setIsModalOpen] = useState(false);
+  const [success, setSuccess] = useState('');
+  const [loading, setLoading] = useState(false);
 
   useEffect(() => {
-    // Stops background/other css elements from bleeding to next page
-    console.log('Setting up login page styles');
     document.body.style.fontFamily = "'Poppins', sans-serif";
     document.body.style.display = 'flex';
     document.body.style.justifyContent = 'center';
@@ -31,7 +29,6 @@ export default function Login() {
     document.body.style.backgroundPosition = 'center';
 
     return () => {
-      console.log('Cleaning up login page styles');
       document.body.style.fontFamily = '';
       document.body.style.display = '';
       document.body.style.justifyContent = '';
@@ -53,6 +50,7 @@ export default function Login() {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
+    setLoading(true); // Show preloader
     console.log("Submitting login form with username:", username);
 
     const result = await signIn('credentials', {
@@ -60,6 +58,8 @@ export default function Login() {
       username,
       password,
     });
+
+    setLoading(false); // Hide preloader
 
     if (result.error) {
       console.log('Login error:', result.error);
@@ -74,17 +74,21 @@ export default function Login() {
   };
 
   const handleOAuthSignIn = async (provider) => {
+    setLoading(true); // Show preloader
     const result = await signIn(provider, { redirect: false });
     console.log('RESULT', result);
+
     if (!result.error) {
       const interval = setInterval(() => {
         if (status === 'authenticated' && session) {
           clearInterval(interval);
           const userNameFromSession = session.user.email;
+          setLoading(false); // Hide preloader
           window.location.href = `/dashboard/?username=${encodeURIComponent(userNameFromSession)}`;
         }
       }, 100); // Check every 100ms
     } else {
+      setLoading(false); // Hide preloader
       console.log(`OAuth sign-in error with ${provider}:`, result.error);
       setError(`Failed to sign in with ${provider}. Please try again.`);
     }
@@ -130,7 +134,11 @@ export default function Login() {
             {error}
           </p>
         )}
-
+        {success && (
+          <p className="message" style={{ color: 'green' }}>
+            Login successful!
+          </p>
+        )}
         <div className="oauth-link">
           <button
             type="button"

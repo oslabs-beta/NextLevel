@@ -9,7 +9,7 @@ function SideBar(props) {
   return (
     <div className={styles.sidebar}>
       <div className={styles.sidebarTop}>
-      <Link href="/dashboard/onboarding">
+      <Link href={`/onboarding?username=${username}`}>
         <ul className={styles.sidebarTop}>
           <Link className={styles.link} href={`/onboarding?username=${username}`}>
           <li className={styles.sidebarListItems}>Onboarding</li>
