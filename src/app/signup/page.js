@@ -2,17 +2,14 @@
 
 import { useState, useEffect } from 'react';
 import './signUp.css';
-import { FaCircleUser } from 'react-icons/fa6';
 import { Si1Password } from 'react-icons/si';
 import { AiOutlineGoogle } from 'react-icons/ai';
 import { IoLogoGithub } from 'react-icons/io';
 import { ImMail4 } from "react-icons/im";
 import Link from 'next/link';
 import Modal from "../components/Modal.js";
-import { signIn, useSession } from "next-auth/react";
-import Str from '@supercharge/strings';
 
-export default function SignUp() {
+export default function Signup () {
   const { data: session, status } = useSession();
   const [username, setUsername] = useState('');
   const [email, setEmail] = useState('');
@@ -21,14 +18,16 @@ export default function SignUp() {
   const [confirmPass, setConfirmPass] = useState('');
   const [error, setError] = useState('');
   const [success, setSuccess] = useState(false);
-  const [isModalOpen, setIsModalOpen] = useState(false);
 
   useEffect(() => {
-    if (status === 'authenticated') {
-      window.location.href = `/dashboard/?username=${username}`; // Redirect to dashboard if already logged in
+    if (status === 'authenticated' && session) {
+      const userNameFromSession = session.user.email;
+      console.log('USERNAME OAUTH', userNameFromSession);
+      window.location.href = `/onboarding?username=${encodeURIComponent(userNameFromSession)}`;
     }
-  }, [status]);
+  }, [status, session]);
 
+  
   const handleSubmit = async (e) => {
     e.preventDefault();
 
@@ -38,7 +37,6 @@ export default function SignUp() {
     }
 
     const randomAPI = Str.random();
-
     setAPIkey(randomAPI);
 
     try {
@@ -51,14 +49,13 @@ export default function SignUp() {
       });
 
       if (response.ok) {
-        const usernameData = username;
         setSuccess(true);
         setError('');
         setUsername('');
         setEmail('');
         setPassword('');
         setConfirmPass('');
-        window.location.href = `/onboarding?username=${usernameData}`;
+        window.location.href = `/onboarding?username=${username}`;
       } else {
         const errorData = await response.json();
         setError(errorData.message);
@@ -71,18 +68,20 @@ export default function SignUp() {
   };
 
   const handleOAuthSignIn = async (provider) => {
-    await signIn(provider, { redirect: false });
-    // Wait for the session to be updated
-    const interval = setInterval(() => {
-      if (session) {
-        clearInterval(interval);
-        const userNameFromSession = session.user.name  //|| session.user.email;
-        console.log('USERNAME OAUTH', userNameFromSession);
-        window.location.href = `/onboarding?username=${userNameFromSession}`;
-      }
-    }, 100); // Check every 100mss
-  }
-
+    const result = await signIn(provider, { redirect: false });
+    if (!result.error) {
+      const interval = setInterval(() => {
+        if (session) {
+          clearInterval(interval);
+          const userNameFromSession = session.user.username || session.user.email;
+          window.location.href = `/onboarding?username=${encodeURIComponent(userNameFromSession)}`;
+        }
+      }, 100); // Check every 100ms
+    } else {
+      console.log(`OAuth sign-in error with ${provider}:`, result.error);
+      setError(`Failed to sign in with ${provider}. Please try again.`);
+    }
+  };
 
   return (
     <div className="wrapper">

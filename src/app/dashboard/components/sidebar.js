@@ -8,7 +8,8 @@ function SideBar(props) {
   console.log('Username sidebar:', username);
   return (
     <div className={styles.sidebar}>
-      <div className={styles.topSection}>
+      <div className={styles.sidebarTop}>
+      <Link href="/dashboard/onboarding">
         <ul className={styles.sidebarTop}>
           <Link className={styles.link} href={`/onboarding?username=${username}`}>
           <li className={styles.sidebarListItems}>Onboarding</li>
@@ -17,13 +18,15 @@ function SideBar(props) {
           <li className={styles.sidebarListItems}>History</li>
           </Link>
         </ul>
+        </Link>
       </div> 
-      <div className={styles.bottomSection}>
-        <Link className={styles.link} href="/dashboard/settings">
-          <div className={styles.sidebarLink}>
-            <IoSettingsOutline className={styles.sidebarListIcons} />
-            <span className={styles.sidebarListItems}>Settings</span>
-          </div>
+      <div className={styles.sidebarBottom}>
+        <Link href="/dashboard/settings">
+        <ul className={styles.sidebarBottom}>
+          <IoSettingsOutline className={styles.sidebarListIcons} />
+          <li className={styles.sidebarListItems}></li>
+          <li className={styles.sidebarListItems}>Settings</li>
+        </ul>
         </Link>
       </div>
     </div>

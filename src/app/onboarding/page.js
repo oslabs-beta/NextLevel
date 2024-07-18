@@ -12,16 +12,16 @@ import logo from '/public/TransparentLogo.png';
 const onboardingSteps = [
   {
     stepNumber: 1,
-    title: 'Install and Configure Next.js Bundle Analyzer',
-    description: 'NPM install Next.js Bundle Analyzer:',
+    title: "Install and Configure Next.js Bundle Analyzer",
+    description: "NPM install Next.js Bundle Analyzer:",
     code: `npm install @next/bundle-analyzer`,
-    language: 'terminal',
+    language: "terminal",
     api: false,
   },
   {
-    stepNumber: '',
-    title: '',
-    description: 'Configure next.config.mjs file:',
+    stepNumber: "",
+    title: "",
+    description: "Configure next.config.mjs file:",
     code: `import pkg from '@next/bundle-analyzer';
   const withBundleAnalyzer = pkg({
   enabled: process.env.ANALYZE === 'true',
@@ -30,29 +30,29 @@ const onboardingSteps = [
 const nextConfig = {};
 
 export default withBundleAnalyzer(nextConfig);`,
-    language: 'next.config.mjs',
+    language: "next.config.mjs",
     api: false,
   },
   {
     stepNumber: 2,
-    title: 'Install and configure NextLevelPackage',
-    description: 'NPM Install NextLevelPackage:',
+    title: "Install and configure NextLevelPackage",
+    description: "NPM Install NextLevelPackage:",
     code: `npm install nextlevelpackage`,
-    language: 'terminal',
+    language: "terminal",
     api: false,
   },
   {
-    stepNumber: '',
-    title: '',
-    description: 'Import NextLevelPackage in layout.js:',
+    stepNumber: "",
+    title: "",
+    description: "Import NextLevelPackage in layout.js:",
     code: `import NextWebVitals from 'nextlevelpackage';`,
-    language: 'layout.js',
+    language: "layout.js",
     api: false,
   },
   {
-    stepNumber: '',
-    title: '',
-    description: 'Add NextWebVitals component in RootLayout body:',
+    stepNumber: "",
+    title: "",
+    description: "Add NextWebVitals component in RootLayout body:",
     code: `export default function RootLayout({ children }) {
   return (
     <html lang="en">
@@ -63,7 +63,7 @@ export default withBundleAnalyzer(nextConfig);`,
     </html>
   );
 }`,
-    language: 'layout.js',
+    language: "layout.js",
     api: false,
   },
   {
@@ -76,12 +76,12 @@ export default withBundleAnalyzer(nextConfig);`,
   },
   {
     stepNumber: 4,
-    title: 'Add Build Script to package.json',
-    description: 'Add the following script to your package.json:',
+    title: "Add Build Script to package.json",
+    description: "Add the following script to your package.json:",
     code: `"scripts": {
   "nextlevelbuild": "node ./node_modules/nextlevelpackage/cli.js"
 }`,
-    language: 'terminal',
+    language: "terminal",
     api: false,
   },
   {
@@ -89,7 +89,7 @@ export default withBundleAnalyzer(nextConfig);`,
     title: '',
     description: 'Run this build script instead of \'npm next build\' to track metrics in the dashboard:',
     code: `npm run nextlevelbuild`,
-    language: 'terminal',
+    language: "terminal",
     api: false,
   },
 ];
@@ -100,7 +100,9 @@ export default withBundleAnalyzer(nextConfig);`,
   console.log('Username:', usernameData);
   return (
     <div className={styles.onboardingContainer}>
-      <h1 className={styles.onboardingTitle}>NextLevel Onboarding Instructions</h1>
+      <h1 className={styles.onboardingTitle}>
+        NextLevel Onboarding Instructions
+      </h1>
       {onboardingSteps.map((step, index) => (
         <Step
           key={index}

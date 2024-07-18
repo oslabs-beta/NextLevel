@@ -29,7 +29,7 @@ function Dashboard(props) {
     <div className={styles.dashboardContainer}>
       <SideBar username={username}/>
       <div className={styles.mainContent}>
-        <APIKey api={userAPIKey} />
+        <APIKey username={username} />
         <WebVitalsChart data={webVitalsData} />
         <BuildTimeContainer username={username}/>
       </div>

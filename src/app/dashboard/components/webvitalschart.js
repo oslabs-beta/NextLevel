@@ -15,7 +15,7 @@ import {
   TimeScale
 } from 'chart.js';
 import 'chartjs-adapter-date-fns';
-import useWebVitalsData from '../hooks/useWebVitalsData'
+import useWebVitalsData from '../hooks/useWebVitalsData';
 
 ChartJS.register(
   CategoryScale,
@@ -29,11 +29,21 @@ ChartJS.register(
 );
 
 
-function WebVitalsChart({ data }) {
-  const chartRef = useRef(null);
+function WebVitalsChart({ username }) {
+  const [webVitalsData, setWebVitalsData] = useState([]);
+  useEffect(() => {
+    useWebVitalsData(username)
+    .then(data => {
+      setWebVitalsData(data);
+      return data;
+    })
+  }).catch(error => {
+    console.error('Error fetching web vitals', error);
+  });
+}, []);
 
   const chartData = {
-    labels: data.map(entry => new Date(entry.timestamp)),
+    labels: webVitalsData.map(entry => new Date(entry.timestamp)),
     datasets: [
       {
         label: 'Time to First Byte (ms)',

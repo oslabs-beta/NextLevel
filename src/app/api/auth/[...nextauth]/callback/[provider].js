@@ -8,7 +8,7 @@ export default async function handler(req, res) {
     return;
   }
 
-  const username = session.user.name || session.user.email; // Assuming the OAuth provider returns a `name` field
+  const username = session.user.email; // Assuming the OAuth provider returns a `name` field
 
   // Redirect to the onboarding page with the username
   res.redirect(`/onboarding?username=${encodeURIComponent(username)}`);
