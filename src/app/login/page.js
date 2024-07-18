@@ -96,7 +96,6 @@ export default function Login() {
 
   return (
     <div className="wrapper">
-      {loading && <Preloader />}
       <form onSubmit={handleSubmit}>
         <div className="logo-container">
           <img src="./TransparentIcon.png" alt="Logo" className="logo" />
