@@ -2,7 +2,6 @@
 
 import React, { useEffect } from 'react';
 import './home.css';
-import { IoMdVideocam } from 'react-icons/io';
 import Link from 'next/link';
 
 export default function Home() {
@@ -42,23 +41,19 @@ export default function Home() {
   return (
     <main>
       <div className='navbar-gap'></div>
-      <div className="gif-container">
-        <img src="/transparent gif v2 (1).gif" alt="GIF" className="gif" />
-        <img src="/Transparent Logo White.png" alt="Logo" className="static-logo" />
-      </div>
       <section className='hidden-fade'>
         <h2>Take your app to the</h2>
         <section className='hidden-fly-up'>
           <div className="buttonsDiv"> 
             <div className='homepageButtons'>
               <Link className='homepage-link' href="/login">
-                <div className="login-button">Login</div> {/* Added button to route to the login page */}
+                <div className="login-button">Login</div> 
               </Link>
             </div>
             <div className='or'> or </div>
             <div className='homepageButtons'>
               <Link className='homepage-link' href="/signup">
-                <div className="signup-button">Get Started</div> {/* Added button to route to the login page */}
+                <div className="signup-button">Get Started</div>
               </Link>
             </div>
           </div>

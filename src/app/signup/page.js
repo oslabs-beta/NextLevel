@@ -1,6 +1,7 @@
 'use client';
 
 import { useState, useEffect } from 'react';
+import { useSession, signIn } from 'next-auth/react';
 import './signUp.css';
 import { Si1Password } from 'react-icons/si';
 import { AiOutlineGoogle } from 'react-icons/ai';
@@ -18,6 +19,30 @@ export default function Signup () {
   const [confirmPass, setConfirmPass] = useState('');
   const [error, setError] = useState('');
   const [success, setSuccess] = useState(false);
+
+  useEffect(() => {
+    //Stops background/other css elements from bleeding to next page
+    document.body.style.fontFamily = "'Poppins', sans-serif";
+    document.body.style.display = 'flex';
+    document.body.style.justifyContent = 'center';
+    document.body.style.alignItems = 'center';
+    document.body.style.minHeight = '100vh';
+    document.body.style.background =
+      'url("https://getwallpapers.com/wallpaper/full/2/8/f/537844.jpg") no-repeat';
+    document.body.style.backgroundSize = 'cover';
+    document.body.style.backgroundPosition = 'center';
+
+    return () => {
+      document.body.style.fontFamily = '';
+      document.body.style.display = '';
+      document.body.style.justifyContent = '';
+      document.body.style.alignItems = '';
+      document.body.style.minHeight = '';
+      document.body.style.background = '';
+      document.body.style.backgroundSize = '';
+      document.body.style.backgroundPosition = '';
+    };
+  }, []);
 
   useEffect(() => {
     if (status === 'authenticated' && session) {

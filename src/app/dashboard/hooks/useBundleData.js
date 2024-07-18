@@ -5,7 +5,8 @@ import React, { useEffect, useState } from 'react';
 const useBundleData = async (username) => {
   console.log('entering use effect usebundledata for:', username);
   try {
-    const res = await fetch(`https://nextlevel-dash.com/dashboard/api/bundle?username=${username}`);
+    // const res = await fetch(`https://nextlevel-dash.com/dashboard/api/bundle?username=${username}`);
+    const res = await fetch(`http://localhost:3000/dashboard/api/bundle?username=${username}`);
     if (res.ok) {
       console.log('res from useBundleData:', res);
       const data = await res.json();
