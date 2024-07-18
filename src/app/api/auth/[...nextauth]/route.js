@@ -58,7 +58,7 @@ const handler = NextAuth({
             existingAPI = await User.findOne({ APIkey });
           }
           const newUser = new User({
-            username: user.name || profile.name,
+            username: user.email || profile.name,
             email: user.email,
             APIkey,
           });

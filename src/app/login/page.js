@@ -79,10 +79,6 @@ export default function Login() {
     });
   };
 
-  const toggleModal = () => {
-    setIsModalOpen(!isModalOpen);
-  };
-
   return (
     <div className="wrapper">
       <form onSubmit={handleSubmit}>
@@ -146,11 +142,6 @@ export default function Login() {
           </p>
         </div>
       </form>
-      <Modal
-        isOpen={isModalOpen}
-        onClose={toggleModal}
-        handleOAuthSignIn={handleOAuthSignIn}
-      />
     </div>
   );
 }
