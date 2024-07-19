@@ -160,20 +160,26 @@ input:-webkit-autofill ~ .icon {
 }
 
 .wrapper .register-link {
-  font-size: 14.5px;
-  text-align: center;
-  margin: 20px 0 15px;
+  font-size: 14.5px !important;
+  text-align: center !important;
+  margin: 20px 0 15px !important;
 }
 
-.register-link p a {
-  color: #fff;
-  text-decoration: none;
-  font-weight: 600;
+.wrapper .register-link p {
+  color: #fff !important;
+  font-size: 14.5px !important; /* Explicitly setting font size */
 }
 
-.register-link p a:hover {
-  text-decoration: underline;
-  color: rgb(56, 128, 221)
+.wrapper .register-link a {
+  color: #fff !important;
+  text-decoration: none !important;
+  font-weight: 600 !important;
+  font-size: 14.5px !important; /* Explicitly setting font size */
+}
+
+.wrapper .register-link a:hover {
+  text-decoration: underline !important;
+  color: rgb(56, 128, 221) !important;
 }
 
 .message {
@@ -182,3 +188,5 @@ input:-webkit-autofill ~ .icon {
   width: 100%;
   margin-bottom: -15px;
 }
+
+

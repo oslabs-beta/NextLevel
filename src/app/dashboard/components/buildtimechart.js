@@ -1,6 +1,6 @@
 'use client';
 
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useState, useRef } from 'react';
 import styles from '../dashboard.module.css';
 import { Line } from 'react-chartjs-2';
 import {
@@ -31,6 +31,8 @@ ChartJS.register(
 
 function BuildTimeChart({ username }) {
   const [buildTimeData, setBuildTimeData] = useState([]);
+  const chartRef = useRef(null);
+
   useEffect(() => {
     useBuildTimeData(username)
     .then(data => {
@@ -63,12 +65,29 @@ function BuildTimeChart({ username }) {
         type: 'time',
         time: {
           unit: 'minute',
+          tooltipFormat: 'MMM dd, yyyy HH:mm', // Format the tooltip
+          displayFormats: {
+            minute: 'MMM dd, yyyy HH:mm', // Format for the x-axis labels
+          },
         },
         title: {
           display: true,
           text: 'Date/Time',
         },
+        // ticks: {
+        //   source: 'data', // Ensures only data points are used for ticks
+        // },
       },
+      // x: {
+      //   type: 'time',
+      //   time: {
+      //     unit: 'minute',
+      //   },
+      //   title: {
+      //     display: true,
+      //     text: 'Date/Time',
+      //   },
+      // },
       y: {
         title: {
           display: true,
@@ -83,16 +102,26 @@ function BuildTimeChart({ username }) {
       },
       title: {
         display: true,
-
       },
     },
   };
 
+  const downloadChart = () => {
+    const chartInstance = chartRef.current;
+    if (chartInstance) {
+      const link = document.createElement('a');
+      link.href = chartInstance.toBase64Image();
+      link.download = 'build-time-chart.png';
+      link.click();
+    }
+  };
+
   return (
-    <div className={styles.chart}>
-
-      <Line data={chartData} options={options} />
-
+    <div className={styles.buildTimeDiv}>
+      <div className={styles.buildTimeChart}>
+        <Line className={styles.chart} data={chartData} options={options} ref={chartRef}/>
+      </div>
+      <button onClick={downloadChart} className={styles.downloadButton}>Download</button>
     </div>
   );
 }

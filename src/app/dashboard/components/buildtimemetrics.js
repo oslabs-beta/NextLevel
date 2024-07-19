@@ -66,7 +66,7 @@ function BuildTimeMetrics({username}) {
 
   return (
     <div className={styles.bundleLogContainer}>
-      <h3>Bundle Logs</h3>
+      <h3 className={styles.bundleLogTitle}>Bundle Logs</h3>
       <div className={styles.bundleToggleBox}>
         <div className={styles.bundleHeader}>
           <button className={styles.toggleButton} onClick={toggleBack} disabled={currentIndex === 0}>{`<`}</button> 

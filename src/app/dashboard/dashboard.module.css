@@ -1,7 +1,3 @@
-/* body{
-  background-color: grey;
-} */
-
 .dashboardContainer {
   display: flex;
   height: 100vh;
@@ -21,8 +17,10 @@
   display: flex;
   flex-direction: column;
   justify-content: space-between;
+  overflow: hidden;
   text-decoration: none;
 }
+
 .top-section{
   padding: 20px;
   display: flex;
@@ -30,8 +28,9 @@
   justify-content: flex-start;
   box-sizing: border-box;
   margin-left: -10px;
-  border: 3px solid yellow;
+  /* border: 3px solid yellow; */
 }
+
 .sidebarTop{
   margin-left: -20px;
   text-decoration: none;
@@ -43,7 +42,7 @@
   flex-direction: column;
   justify-content: flex-end;
   box-sizing: border-box;
-  border: 3px solid red;
+  /* border: 3px solid red; */
 }
 
 .sidebarBottom{
@@ -58,11 +57,17 @@
   text-decoration: none;
   color: white;
   padding: 10px 0;
+  overflow: hidden; /* Prevent content from bleeding out */
+  white-space: nowrap; /* Prevent text from wrapping */
+  text-overflow: ellipsis; /* Show ellipsis for overflow text */
 }
 
 .link {
   color: #e7e7e7;
   text-decoration: none;
+  overflow: hidden; /* Prevent content from bleeding out */
+  white-space: nowrap; /* Prevent text from wrapping */
+  text-overflow: ellipsis; /* Show ellipsis for overflow text */
 }
 
 .sidebarListItems {
@@ -70,7 +75,9 @@
   display: block;
   font-size: 20px;
   text-decoration: none;
-
+  overflow: hidden; /* Prevent content from bleeding out */
+  white-space: nowrap; /* Prevent text from wrapping */
+  text-overflow: ellipsis; /* Show ellipsis for overflow text */
 }
 
 .sidebarListIcons {
@@ -80,6 +87,9 @@
   vertical-align: middle;
   margin-top: 2px;
   font-size: 25px;
+  overflow: hidden; /* Prevent content from bleeding out */
+  white-space: nowrap; /* Prevent text from wrapping */
+  text-overflow: ellipsis; /* Show ellipsis for overflow text */
 }
 
 .mainContent {
@@ -128,6 +138,7 @@
 
 .copyButton:hover {
   background-color: #0056b3;
+  transform: translateY(2px);
 }
 
 .copySuccess {
@@ -137,6 +148,7 @@
 }
 
 .chartContainer {
+  position: relative;
   background-color: #ffffff;
   border: 1px solid #ddd;
   border-radius: 8px;
@@ -146,43 +158,78 @@
   flex-direction: column;
   gap: 20px;
   margin: 10px;
-  justify-content: center;
-  flex-grow: 1;
-  width: 100%;
-  height: 100%;
+  justify-content: flex-start;
+  align-items: stretch; 
+  width: 98%;
+  height: auto;
+  box-sizing: border-box;
+}
+
+.chartHeader {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0 0 10px 0;
+
 }
 
 .chartTitle {
   margin: 0 0 5px 0; /* Add bottom margin to space title from the chart */
+  flex-shrink: 0; /* Prevent title from shrinking */
+
 }
 
-.chart {
-  flex: 2;
+.webVitalsChart {
   display: flex;
   align-items: center;
+  align-self: center;
   justify-content: center;
-  width: 100%;
-  height: 100%;
+  width: 80%;
+  min-width: 300px; /* Minimum width to prevent them from getting too small */
+  box-sizing: border-box;
 }
+
 
 .buildCharts {
   display: flex;
-  flex-direction: row;
-  align-items: flex-start;
+  gap: 20px;
+  flex-wrap: nowrap;
+  width: 100%;
+  height: auto; /* Allow the container to adjust its height based on its content */
+  align-items: stretch; /* Ensures all children stretch to fill the container vertically */
+  overflow: hidden; /* Prevents children from overflowing */
 }
 
-.buildCharts > *:not(:last-child) {
-  margin-right: 15px;
+.buildTimeDiv {
+  width: 50%;
+  height: auto;
+}
+.buildTimeChart {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 100%;
+  width: 100%;
+  min-width: 300px; /* Minimum width to prevent them from getting too small */
+  box-sizing: border-box;
+  overflow: hidden; /* Additional overflow handling within the chart area */
 }
 
 .bundleLogContainer {
   flex: 1;
   display: flex;
   flex-direction: column;
-  align-items: center;
-  justify-content: center;
+  align-items: stretch;
+  height: 100%;
+  width: 100%;
+  min-width: 300px; /* Minimum width to prevent them from getting too small */
+  box-sizing: border-box;
+  overflow: hidden; /* Prevent content from bleeding out */
 }
 
+.bundleLogTitle {
+  align-self: center;
+}
 .bundleToggleBox {
   background-color: #ffffff;
   width: 100%;
@@ -197,12 +244,20 @@
   font-size: 0.9em;
   border-bottom: 1px solid #eaeaea;
   border-radius: 10px 10px 0px 0px;
+  box-sizing: border-box;
+}
+
+.bundleLogTitle {
+  margin: 2px;
 }
 
 .bundleLogContent {
   padding: 1em;
   background-color: #ffffff;
   border-radius: 0px 0px 10px 10px;
+  flex: 1; /* Allow the chart to grow and take up remaining space */
+  overflow: auto; /* Add overflow auto to handle any content overflow */
+  box-sizing: border-box;
 }
 
 .toggleButton {
@@ -219,13 +274,14 @@
 }
 
 .bundleLog {
+  display: flex;
   padding: 0 15px;
   background-color: #e9e9e9;
   overflow-x: auto;
   border-radius: 0px 0px 10px 10px ;
 }
 
-.downloadButton {
+/* .downloadButton {
   margin-top: 10px;
   padding: 10px 20px;
   background-color: #007bff;
@@ -235,12 +291,59 @@
   cursor: pointer;
   width: auto;
   display: flex;
-  justify-content: center;
-  align-items: center;
+  justify-content: flex-start;
   margin-left: auto;
   margin-right: auto;
+} */
+
+.downloadButton {
+  position: absolute; /* Added for absolute positioning within the container */
+  bottom: 10px; /* Positioned 10px from the bottom */
+  left: 20px; /* Positioned 20px from the left */
+  padding: 5px 10px;
+  margin: 3px;
+  margin-top: 25px;
+  background-color: #ffffff; /* Set background to white */
+  color: #7e7e7e; /* Set text color to grey */
+  border: 1px solid #7e7e7e; /* Set border color to grey */
+  border-radius: 5px;
+  cursor: pointer;
+  width: auto;
+  display: flex;
+  justify-content: flex-start;
 }
 
 .downloadButton:hover {
-  background-color: #0056b3;
+  background-color: #007bff; /* Set background color to blue on hover */
+  color: white; /* Set text color to white on hover */
+  border: 1px solid #007bff; /* Set border color to blue on hover */
+  transform: translateY(2px);
+}
+
+.webVitalsFilter {
+  display: flex;
+  flex-direction: row;
+}
+
+.dateFilter {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin: 0 5px;
+  padding: 0 10px;
+}
+
+.filterDateSubmit {
+  padding: 5px 10px;
+  margin-left: 10px;
+  background-color: #007bff;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+.filterDateSubmit:hover {
+  background-color: #4b8acf;
+  transform: translateY(2px);
 }

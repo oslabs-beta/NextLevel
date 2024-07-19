@@ -20,6 +20,7 @@ section {
   color: #ffffff;
   box-sizing: border-box;
   font-family: 'Poppins', sans-serif;
+  overflow-x: hidden;
 }
 
 h1 {
@@ -32,6 +33,60 @@ p {
   font-size: 35px;
   color: #0ef;
   font-weight: 600;
+}
+
+section .animate {
+  opacity: 0;
+  filter: blur(5px);
+  transition: .75s;
+}
+
+section.show-animate .animate {
+  opacity: 1;
+  filter: blur(0px)
+}
+
+.sec-1 .animate {
+  opacity: 0;
+}
+
+.sec-1.show-animate .animate {
+  opacity: 1;
+}
+
+.sec-2 .animate {
+  transform: translateX(1000%);
+}
+
+.sec-2.show-animate .animate {
+  transform: translateX(0);
+}
+
+.sec-3 .animate {
+  transform: translateX(-1000%);
+}
+
+.sec-3.show-animate .animate {
+  transform: translateX(0);
+}
+
+.sec-4 .animate {
+  transform: scale(0);
+}
+
+.sec-4.show-animate .animate {
+  transform: scale(1);
+}
+
+.sec-5 .images img{
+  max-width: 250px;
+  margin: 0;
+  transform: translateX(-1000%);
+  transition-delay: calc(.2s * var())
+}
+
+.sec-5.show-animate .images img{
+  transform: translateX(0);
 }
 
 
