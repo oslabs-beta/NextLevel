@@ -8,6 +8,8 @@ import { AiOutlineGoogle } from 'react-icons/ai';
 import { IoLogoGithub } from 'react-icons/io';
 import Link from 'next/link';
 import { signIn, useSession } from 'next-auth/react';
+import Spinner from './Spinner.js'
+import Image from 'next/image'
 
 export default function Login() {
   const { data: session, status } = useSession();
@@ -27,6 +29,7 @@ export default function Login() {
       'url("https://getwallpapers.com/wallpaper/full/2/8/f/537844.jpg") no-repeat';
     document.body.style.backgroundSize = 'cover';
     document.body.style.backgroundPosition = 'center';
+    document.body.style.color = '#fff';
 
     return () => {
       document.body.style.fontFamily = '';
@@ -37,6 +40,7 @@ export default function Login() {
       document.body.style.background = '';
       document.body.style.backgroundSize = '';
       document.body.style.backgroundPosition = '';
+      document.body.style.color = '';
     };
   }, []);
 
@@ -96,6 +100,7 @@ export default function Login() {
 
   return (
     <div className="wrapper">
+      {loading && <Spinner/>}
       <form onSubmit={handleSubmit}>
         <div className="logo-container">
           <img src="./TransparentIcon.png" alt="Logo" className="logo" />
@@ -155,12 +160,26 @@ export default function Login() {
             <IoLogoGithub className="github-icon" />
           </button>
         </div>
-        <div className="register-link">
-          <p>
-            Don't have an account? <Link href="/signup">Register</Link>
+        <div
+          className="register-link"
+          style={{
+            fontSize: '14.5px',
+            textAlign: 'center',
+            margin: '20px 0 15px',
+          }}
+        >
+          <p style={{ margin: 0, color: '#fff', fontSize: '14.5px' }}>
+            Don't have an account?{' '}
+            <Link href="/signup" style={{ color: '#fff', textDecoration: 'none', fontWeight: '600', fontSize: '14.5px' }}>
+              Register
+            </Link>
           </p>
         </div>
       </form>
     </div>
   );
 }
+
+
+
+

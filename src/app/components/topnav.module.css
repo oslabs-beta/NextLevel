@@ -14,9 +14,12 @@
   justify-content: space-between;
   align-items: center;
   height: 70px;
+  flex-wrap: nowrap;
+  overflow: hidden;
 }
 
 .logo {
+  flex-shrink: 0;
   margin-right: 20px;
 }
 
@@ -31,12 +34,14 @@
   display: flex;
   gap: 20px;
   margin-right: 15px;
+  white-space: nowrap;
 }
 
 .links a {
   color: #333333;
   text-decoration: none;
   font-weight: bold;
+  flex-shrink: 0;
 }
 
 .links a:hover {
@@ -52,6 +57,7 @@
   padding: 0;
   font: inherit;
   font-weight: bold;
+  flex-shrink: 0;
 }
 
 .logoutButton:hover {
@@ -61,16 +67,16 @@
 /* Adjust styles for mobile or smaller screens */
 @media (max-width: 768px) {
   .nav {
-    flex-direction: column;
-    align-items: flex-start;
+    flex-direction: row; /* Ensure items stay in a row */
+    justify-content: space-between; /* Distribute space evenly */
+    align-items: center; /* Center align items vertically */
   }
 
   .logo {
-    margin-bottom: 10px;
+    margin-bottom: 0px;
   }
 
   .links {
-    flex-direction: column;
     gap: 10px;
   }
 }

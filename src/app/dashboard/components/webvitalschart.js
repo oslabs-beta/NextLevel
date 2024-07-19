@@ -16,6 +16,7 @@ import {
 } from 'chart.js';
 import 'chartjs-adapter-date-fns';
 import useWebVitalsData from '../hooks/useWebVitalsData';
+import WebVitalsFilter from './webvitalsfilter';
 
 ChartJS.register(
   CategoryScale,
@@ -28,18 +29,33 @@ ChartJS.register(
   TimeScale
 );
 
-function WebVitalsChart({ username }) {
+function WebVitalsChart({ username}) {
   const [webVitalsData, setWebVitalsData] = useState([]);
-  
+  const chartRef = useRef(null);
+  // set end date to one day ago
+  // set start date to now
+  const now = new Date();
+  const defaultEnd = now.toISOString().slice(0, 16);
+  const oneDayAgo = new Date(now.getTime() - (24 * 60 * 60 * 1000));
+  const defaultStart = oneDayAgo.toISOString().slice(0, 16); // format to 'YYYY-MM-DDTHH:MM'
+
+  const [startDate, setStartDate] = useState(defaultStart); // July 18, 2024, at 14:35:50 '2024-07-18T14:35:50'
+  const [endDate, setEndDate] = useState(defaultEnd); // July 19, 2024, at 11:45:00 '2024-07-19T12:45:00'
+
+  const onSubmit = (startDate, endDate) => {
+    setStartDate(startDate);
+    setEndDate(endDate);
+  };
+
   useEffect(() => {
-    useWebVitalsData(username)
+    useWebVitalsData(username, startDate, endDate)
     .then(data => {
       setWebVitalsData(data);
       return data;
     }).catch(error => {
     console.error('Error fetching web vitals', error);
     });
-  }, [username]);
+  }, [username, startDate, endDate]);
 
 console.log('Web Vitals Data:', webVitalsData);
 
@@ -129,9 +145,9 @@ console.log('Web Vitals Data:', webVitalsData);
           display: true,
           text: 'Date/Time',
         },
-        ticks: {
-          source: 'data', // Ensures only data points are used for ticks
-        },
+        // ticks: {
+        //   source: 'data', // Ensures only data points are used for ticks
+        // },
       },
       y: {
         title: {
@@ -147,7 +163,6 @@ console.log('Web Vitals Data:', webVitalsData);
       },
       title: {
         display: true,
-        // text: 'Web Vitals Over Time',
       },
     },
   };
@@ -164,16 +179,19 @@ console.log('Web Vitals Data:', webVitalsData);
   
   return (
     <div className={styles.chartContainer}>
-      <h2 className={styles.chartTitle}>Web Vitals</h2>
+      <div className={styles.chartHeader}>
+        <h2 className={styles.chartTitle}>Web Vitals</h2>
+        <WebVitalsFilter onSubmit={onSubmit} />
+      </div>
       {/* <ul>
         adding fake data to test
         {allData.map(webVital => <li key={webVital.id}> {webVital.title} </li>)}
       </ul> */}
-      <div className={styles.chart}> 
-        <Line data={chartData} options={options} />
+      <div className={styles.webVitalsChart}> 
+        <Line data={chartData} options={options} ref={chartRef}/>
        {/* {children} */}
       </div>
-      <button onClick={downloadChart} className={styles.downloadButton}>Download Chart</button>
+      <button onClick={downloadChart} className={styles.downloadButton}>Download</button>
     </div>
   );
 }
