@@ -1,6 +1,6 @@
 @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@700&display=swap');
 
-* {
+:global .your-page-class * {
   margin: 0;
   padding: 0;
   box-sizing: border-box;

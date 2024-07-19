@@ -9,7 +9,6 @@ function SideBar(props) {
   return (
     <div className={styles.sidebar}>
       <div className={styles.sidebarTop}>
-      <Link href={`/onboarding?username=${username}`}>
         <ul className={styles.sidebarTop}>
           <Link className={styles.link} href={`/onboarding?username=${username}`}>
           <li className={styles.sidebarListItems}>Onboarding</li>
@@ -18,10 +17,9 @@ function SideBar(props) {
           <li className={styles.sidebarListItems}>History</li>
           </Link>
         </ul>
-        </Link>
       </div> 
       <div className={styles.sidebarBottom}>
-        <Link href="/dashboard/settings">
+        <Link className={styles.link} href="/dashboard/settings">
         <ul className={styles.sidebarBottom}>
           <IoSettingsOutline className={styles.sidebarListIcons} />
           <li className={styles.sidebarListItems}></li>

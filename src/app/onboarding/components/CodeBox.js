@@ -2,7 +2,7 @@ import React from 'react';
 import CopyButton from './CopyButton';
 import styles from './CodeBox.module.css';
 
-const CodeBox = ({ fileName, codeText }) => {
+const CodeBox = ({ fileName, codeText, formattedCode }) => {
   return (
     <div className={styles.container}>
       <div className={styles.header}>
@@ -10,7 +10,7 @@ const CodeBox = ({ fileName, codeText }) => {
         <CopyButton text={codeText} />
       </div>
       <div className={styles.codeArea}>
-        <pre>{codeText}</pre>
+        <pre>{formattedCode}</pre>
       </div>
     </div>
   );
