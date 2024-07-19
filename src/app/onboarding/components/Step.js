@@ -33,7 +33,7 @@ const Step = ({ stepNumber, title, description, code, language, api, username })
     <div>
       {stepNumber && <h2>Step {stepNumber}: {title}</h2>}
       <p>{description}</p>
-      <CodeBox fileName={language} codeText={formattedCode} />
+      <CodeBox fileName={language} codeText={code} formattedCode={formattedCode} />
       {api === true && <CodeBox fileName="API Key" codeText={APIkey} />}
     </div>
   );

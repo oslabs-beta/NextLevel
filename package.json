@@ -6,9 +6,11 @@
     "dev": "next dev",
     "build": "next build",
     "start": "next start",
-    "lint": "next lint"
+    "lint": "next lint",
+    "nextlevelbuild": "node ./node_modules/nextlevelpackage/cli.js"
   },
   "dependencies": {
+    "@next/bundle-analyzer": "^14.2.5",
     "@supercharge/strings": "^2.0.0",
     "bcrypt": "^5.1.1",
     "bcryptjs": "^2.4.3",
@@ -21,6 +23,7 @@
     "next": "^14.2.4",
     "next-auth": "^4.24.7",
     "nextjs-cors": "^2.2.0",
+    "nextlevelpackage": "^1.0.4",
     "nodemon": "^3.1.4",
     "normalize.css": "^8.0.1",
     "react": "^18",

@@ -6,67 +6,62 @@ import Link from 'next/link';
 
 export default function Home() {
 
-  useEffect(() => {
-    const observer = new IntersectionObserver((entries) => {
-      entries.forEach((entry) => {
-        if (entry.isIntersecting) {
-          entry.target.classList.add('show');
-        } else {
-          entry.target.classList.remove('show');
-        }
-      });
-    });
-
-    const hiddenFadeElements = document.querySelectorAll('.hidden-fade');
-    hiddenFadeElements.forEach((el) => observer.observe(el));
-
-    const hiddenFlyLeftElements = document.querySelectorAll('.hidden-fly-left');
-    hiddenFlyLeftElements.forEach((el) => observer.observe(el));
-
-    const hiddenFlyRightElements = document.querySelectorAll('.hidden-fly-right');
-    hiddenFlyRightElements.forEach((el) => observer.observe(el));
-
-    const hiddenFlyUpElements = document.querySelectorAll('.hidden-fly-up');
-    hiddenFlyUpElements.forEach((el) => observer.observe(el));
-
-    // Cleanup observer on unmount
-    return () => {
-      hiddenFadeElements.forEach((el) => observer.unobserve(el));
-      hiddenFlyLeftElements.forEach((el) => observer.unobserve(el));
-      hiddenFlyRightElements.forEach((el) => observer.unobserve(el));
-      hiddenFlyUpElements.forEach((el) => observer.unobserve(el));
-    };
-  }, []);
 
   return (
     <main>
       <div className='navbar-gap'></div>
-      <section className='hidden-fade'>
-        <h2>Take your app to the</h2>
-        <section className='hidden-fly-up'>
-          <div className="buttonsDiv"> 
-            <div className='homepageButtons'>
-              <Link className='homepage-link' href="/login">
-                <div className="login-button">Login</div> 
-              </Link>
-            </div>
-            <div className='or'> or </div>
-            <div className='homepageButtons'>
-              <Link className='homepage-link' href="/signup">
-                <div className="signup-button">Get Started</div>
-              </Link>
-            </div>
-          </div>
-        </section>
+      <section class ="sec-1">
+        <h1 class="animate">THIS IS SECTION 1</h1>
+        <p class="animate">Section 1 P1</p>
       </section>
-      <section className='hidden-fly-left'>
-        <h2>Level up with Next.js</h2>
-        <p>NextLevel is a performance metrics dashboard tailored to Next.js applications that visualizes critical performance data, such as build time and key web vitals, enabling developers to pinpoint inefficiencies and improve both development productivity and end-user experience.</p>
+
+      <section class ="sec-2">
+        <h1 class="animate">THIS IS SECTION 2</h1>
+        <p class="animate">Section 2 P1</p>
       </section>
-      <section className='hidden-fly-left'>
-        <h2>This is so cool</h2>
+
+      <section class ="sec-3">
+        <h1 class="animate">THIS IS SECTION 3</h1>
+        <p class="animate">Section 2 P1</p>
+      </section>
+
+      <section class ="sec-4">
+        <h1 class="animate">THIS IS SECTION 4</h1>
+        <p class="animate">Section 4 P1</p>
+      </section>
+
+      <section class ="sec-4">
+        <div class="images">
+          {/* IMAGES HERE */}
+        </div>
       </section>
     </main>
   );
 }
 
+// 1st Section:
+// LOGO + Login or sign up buttons
+// Animation: 
+// logo -> fade in after gif
+// buttons -> fly up
+
+// 2nd Section:
+// What is next.js?
+//
+
+//3rd Section
+{/* <section className='hidden-fly-up'>
+  <div className="buttonsDiv"> 
+    <div className='homepageButtons'>
+      <Link className='homepage-link' href="/login">
+        <div className="login-button">Login</div> 
+      </Link>
+    </div>
+    <div className='or'> or </div>
+    <div className='homepageButtons'>
+      <Link className='homepage-link' href="/signup">
+        <div className="signup-button">Get Started</div>
+      </Link>
+    </div>
+  </div>
+</section> */}

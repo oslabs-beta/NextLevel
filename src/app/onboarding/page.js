@@ -5,9 +5,6 @@ import Step from './components/Step';
 import styles from './Onboarding.module.css';
 import NextButton from './components/NextButton';
 import withAuth from '../components/withAuth';
-import Image from 'next/image';
-import Link from 'next/link';
-import logo from '/public/TransparentLogo.png';
 
 const onboardingSteps = [
   {
