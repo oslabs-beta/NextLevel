@@ -1,3 +1,4 @@
+/* global.css */
 body, html {
   margin: 0;
   padding: 0;
@@ -10,15 +11,15 @@ body, html {
   box-sizing: border-box;
 }
 
-/* h2 {
-  font-family: var(--font-roboto-mono);
-} */
-
-/* .topNav {
-  background-color: #333;
-  color: #fff;
+body.loading {
   display: flex;
-  justify-content: space-between;
-  padding: 10px 20px;
-} */
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+  overflow: hidden;
+}
+
+body.loaded {
+  display: block;
+}
 
