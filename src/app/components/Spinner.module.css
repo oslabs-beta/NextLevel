@@ -1,0 +1,28 @@
+/* spinner.css */
+.spinner-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.5);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 1000;
+}
+
+.spinner-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.spinner-video {
+  width: 100px;  /* Set to a smaller size */
+  height: 100px; /* Set to a smaller size */
+  object-fit: contain; /* Ensure the video scales properly */
+}
+
+
+

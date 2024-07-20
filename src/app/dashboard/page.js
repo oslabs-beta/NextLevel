@@ -7,6 +7,7 @@ import APIKey from './components/APIkey';
 import BuildTimeContainer from './components/buildtimecontainer';
 import withAuth from '../components/withAuth';
 import SideBar from './components/sidebar';
+import CLSContainer from './components/CLSContainer';
 
 function Dashboard(props) {
   console.log('Props:', props);
@@ -33,6 +34,7 @@ function Dashboard(props) {
         <APIKey username={username} />
         <WebVitalsChart username={username}/>
         <BuildTimeContainer username={username}/>
+        <CLSContainer username={username}/>
       </div>
     </div>
   );

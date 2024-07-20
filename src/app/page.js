@@ -3,6 +3,8 @@
 import React, { useEffect } from 'react';
 import './home.css';
 import Link from 'next/link';
+import Image from 'next/image';
+
 
 export default function Home() {
 
@@ -37,9 +39,11 @@ export default function Home() {
     <main>
       <div className='navbar-gap'></div>
       <section className='sec-1'>
-        <h1 className="animate">THIS IS SECTION 1</h1>
-        <p className="animate">Section 1 P1</p>
-        <img className = "animate" src ="../public/TransparentLogo.png" alt ="transparentLogo"/>
+        <h1 className="animate">Take your application to the</h1>
+        <video width="1200" preload="none" autoPlay muted >
+          <source src="/NEXTLEVEL.mp4" type="video/mp4" />
+        </video>
+        {/* <Image className = "animate" src="/TransparentLogo.png" alt ="transparentLogo" width={500} height={500}/> */}
       </section>
 
       <section className='sec-2'>
@@ -57,13 +61,19 @@ export default function Home() {
         <p className="animate">Section 4 P1</p>
       </section>
 
-      <section className='sec-4'>
+      <section className='sec-5'>
+        <h1>Tracked Metrics</h1>
         <div className="images">
-          <img src="../METRICS/ttfb.png" alt="TTFB" class="animate" style ={{ "--i": 0 }}/>
-          <img src="../METRICS/lcp.png" alt="LCP" class="animate" style ={{ "--i": 1 }}/>
-          <img src="../METRICS/fcp.png" alt="FCP" class="animate" style ={{ "--i": 2 }}/>
-          <img src="../METRICS/fid.png" alt="FID" class="animate" style ={{ "--i": 3 }}/>
-          <img src="../METRICS/itnp.png" alt="INP" class="animate" style ={{ "--i": 4 }}/>
+          <Image src="/METRICS/ttfb.svg" alt="TTFB" className="animate" style ={{ "--i": 0 }} width={170} height={238}/>
+          <Image src="/METRICS/lcp.svg" alt="LCP" className="animate" style ={{ "--i": 1 }} width={170} height={238}/>
+          <Image src="/METRICS/fcp.svg" alt="FCP" className="animate" style ={{ "--i": 2 }} width={170} height={238}/>
+          <Image src="/METRICS/fid.svg" alt="FID" className="animate" style ={{ "--i": 3 }} width={170} height={238}/>
+          <Image src='/METRICS/inp.svg' alt="INP" className="animate" style ={{ "--i": 4 }} width={170} height={238}/>
+          <Image src='/METRICS/cls.svg' alt="CLS" className="animate" style ={{ "--i": 5 }} width={170} height={238}/>
+        </div>
+        <div className="images">
+          <Image src="/METRICS/buildtime.svg" alt="Build Time" className="animate" style ={{ "--i": 0 }} width={170} height={238}/>
+          <Image src="/METRICS/bundlesize.svg" alt="Bundle Size" className="animate" style ={{ "--i": 1 }} width={170} height={238}/>
         </div>
       </section>
     </main>

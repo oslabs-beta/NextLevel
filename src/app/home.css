@@ -24,12 +24,12 @@ section {
 }
 
 h1 {
-  font-size: 90px;
+  font-size: 70px;
   color: #fff;
+  margin: 0;
 }
 
 p {
-  margin-top: -90px;
   font-size: 35px;
   color: #0ef;
   font-weight: 600;
@@ -47,6 +47,7 @@ section.show-animate .animate {
 }
 
 .sec-1 .animate {
+  margin-top: -30px;
   opacity: 0;
 }
 
@@ -80,13 +81,22 @@ section.show-animate .animate {
 
 .sec-5 .images img{
   max-width: 250px;
-  margin: 0;
+  margin: 10px;
+  border-radius: 30px;
   transform: translateX(-1000%);
-  transition-delay: calc(.2s * var())
+  transition-delay: calc(.4s * var());
+  gap: 20px;
 }
 
 .sec-5.show-animate .images img{
   transform: translateX(0);
 }
 
+.images {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 10px;
+  flex-wrap: wrap;
+}
 
