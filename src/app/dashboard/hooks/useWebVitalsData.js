@@ -21,7 +21,7 @@ async function fetchWebVitals (username, metricType, startDate, endDate) {
 
 const useWebVitalsData = async (username, startDate, endDate) => {
   console.log('entering use effect useWebVitalsData for:', username);
-  const metricTypes = ['FCP', 'LCP', 'TTFB', 'FID', 'INP'];
+  const metricTypes = ['FCP', 'LCP', 'TTFB', 'FID', 'INP', 'CLS'];
   try {
     const metricsCombined = await Promise.all(metricTypes.map(metricType => fetchWebVitals(username, metricType, startDate, endDate)));
     console.log('Metrics Combined:', metricsCombined.flat());

@@ -17,6 +17,8 @@ import {
 import 'chartjs-adapter-date-fns';
 import useWebVitalsData from '../hooks/useWebVitalsData';
 import WebVitalsFilter from './webvitalsfilter';
+import CLSChart from './CLSChart';
+import WebVitalRatings from './WebVitalRatings';
 
 ChartJS.register(
   CategoryScale,
@@ -191,7 +193,11 @@ console.log('Web Vitals Data:', webVitalsData);
         <Line data={chartData} options={options} ref={chartRef}/>
        {/* {children} */}
       </div>
-      <button onClick={downloadChart} className={styles.downloadButton}>Download</button>
+      <button onClick={downloadChart} id={styles.downloadWebVitals} className={styles.downloadButton}>Download</button>
+      <div>
+        <CLSChart username={username} startDate={startDate} endDate={endDate}/>
+        <WebVitalRatings data={webVitalsData}/>
+      </div>
     </div>
   );
 }

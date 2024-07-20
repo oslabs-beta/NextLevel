@@ -297,9 +297,6 @@
 } */
 
 .downloadButton {
-  position: absolute; /* Added for absolute positioning within the container */
-  bottom: 10px; /* Positioned 10px from the bottom */
-  left: 20px; /* Positioned 20px from the left */
   padding: 5px 10px;
   margin: 3px;
   margin-top: 25px;
@@ -308,7 +305,7 @@
   border: 1px solid #7e7e7e; /* Set border color to grey */
   border-radius: 5px;
   cursor: pointer;
-  width: auto;
+  width: 82px;
   display: flex;
   justify-content: flex-start;
 }

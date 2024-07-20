@@ -29,18 +29,18 @@ ChartJS.register(
   TimeScale
 );
 
-function CLSChart({ username }) {
+function CLSChart({ username, startDate, endDate }) {
   const [clsData, setClsData] = useState([]);
   const chartRef = useRef(null);
 
   // set end date to one day ago
-  const now = new Date();
-  const defaultEnd = now.toISOString().slice(0, 16);
-  const oneDayAgo = new Date(now.getTime() - (24 * 60 * 60 * 1000));
-  const defaultStart = oneDayAgo.toISOString().slice(0, 16);
+  // const now = new Date();
+  // const defaultEnd = now.toISOString().slice(0, 16);
+  // const oneDayAgo = new Date(now.getTime() - (24 * 60 * 60 * 1000));
+  // const defaultStart = oneDayAgo.toISOString().slice(0, 16);
 
-  const [startDate, setStartDate] = useState(defaultStart);
-  const [endDate, setEndDate] = useState(defaultEnd);
+  // const [startDate, setStartDate] = useState(defaultStart);
+  // const [endDate, setEndDate] = useState(defaultEnd);
 
   const onSubmit = (startDate, endDate) => {
     setStartDate(startDate);
@@ -65,7 +65,7 @@ function CLSChart({ username }) {
         label: 'Cumulative Layout Shift',
         data: clsData.map(entry => entry.metricValue),
         fill: false,
-        borderColor: 'rgb (255,189,89)',
+        borderColor: 'rgb(255,189,89)',
         tension: 0.1,
       },
     ],
@@ -116,15 +116,11 @@ function CLSChart({ username }) {
   };
 
   return (
-    <div className={styles.chartContainer}>
-      <div className={styles.chartHeader}>
-        <h2 className={styles.chartTitle}>Cumulative Layout Shift</h2>
-        <WebVitalsFilter onSubmit={onSubmit} />
-      </div>
+    <div>
       <div className={styles.webVitalsChart}>
         <Line data={chartData} options={options} ref={chartRef} />
       </div>
-      <button onClick={downloadChart} className={styles.downloadButton}>Download</button>
+      <button onClick={downloadChart} id={styles.downloadCLS} className={styles.downloadButton}>Download</button>
     </div>
   );
 }
