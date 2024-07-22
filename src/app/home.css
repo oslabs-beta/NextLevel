@@ -31,7 +31,7 @@ h1 {
 
 p {
   font-size: 35px;
-  color: #0ef;
+  color: #407cff;
   font-weight: 600;
 }
 
@@ -43,7 +43,7 @@ section .animate {
 
 section.show-animate .animate {
   opacity: 1;
-  filter: blur(0px)
+  filter: blur(0px);
 }
 
 .sec-1 .animate {
@@ -79,16 +79,16 @@ section.show-animate .animate {
   transform: scale(1);
 }
 
-.sec-5 .images img{
+.sec-5 .images img {
   max-width: 250px;
   margin: 10px;
   border-radius: 30px;
   transform: translateX(-1000%);
-  transition-delay: calc(.4s * var());
+  transition-delay: calc(.2s * var(--i));
   gap: 20px;
 }
 
-.sec-5.show-animate .images img{
+.sec-5.show-animate .images img {
   transform: translateX(0);
 }
 
@@ -99,4 +99,47 @@ section.show-animate .animate {
   gap: 10px;
   flex-wrap: wrap;
 }
+
+.image-container {
+  position: relative;
+  display: inline-block;
+}
+
+.info-box {
+  visibility: hidden;
+  width: 500px; /* Allow the box to resize up to a maximum width */
+  background-color: #555;
+  color: #fff;
+  text-align: center;
+  border-radius: 6px;
+  padding: 8px 12px;
+  position: absolute;
+  z-index: 1;
+  bottom: 90%; 
+  left: 50%;
+  transform: translateX(-50%);
+  opacity: 0;
+  transition: opacity 0.3s;
+  word-wrap: break-word; /* Ensure long words are wrapped */
+  white-space: pre-wrap; /* Preserve whitespace */
+  box-sizing: border-box;
+}
+
+.info-box::after {
+  content: '';
+  position: absolute;
+  top: 100%;
+  left: 50%;
+  margin-left: -5px;
+  border-width: 5px;
+  border-style: solid;
+  border-color: #555 transparent transparent transparent;
+}
+
+.image-container:hover .info-box {
+  visibility: visible;
+  opacity: 1;
+}
+
+
 

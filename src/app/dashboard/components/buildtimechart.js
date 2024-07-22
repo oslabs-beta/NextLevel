@@ -119,7 +119,7 @@ function BuildTimeChart({ username }) {
   return (
     <div className={styles.buildTimeDiv}>
       <div className={styles.buildTimeChart}>
-        <Line className={styles.chart} data={chartData} options={options} ref={chartRef}/>
+        <Line data={chartData} options={options} ref={chartRef}/>
       </div>
       <button onClick={downloadChart} className={styles.downloadButton}>Download</button>
     </div>

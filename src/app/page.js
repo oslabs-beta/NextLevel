@@ -5,14 +5,11 @@ import './home.css';
 import Link from 'next/link';
 import Image from 'next/image';
 
-
 export default function Home() {
-
   useEffect(() => {
     document.querySelector('.sec-1').classList.add('show-animate');
 
     const sections = document.querySelectorAll('section');
-    
 
     const handleScroll = () => {
       const top = window.scrollY;
@@ -22,10 +19,7 @@ export default function Home() {
 
         if (top >= offset && top < offset + height) {
           sec.classList.add('show-animate');
-        } 
-        // else {
-        //   sec.classList.remove('show-animate'); // repeats animation
-        // }
+        }
       });
     };
 
@@ -35,6 +29,17 @@ export default function Home() {
     };
   }, []);
 
+  const metricsInfo = {
+    ttfb: "Time to First Byte measures the time it takes for a user's browser to receive the first byte of page content.",
+    lcp: "Largest Contentful Paint marks the time at which the largest content element in the viewport is fully rendered.",
+    fcp: "First Contentful Paint measures the time from when the page starts loading to when any part of the page's content is rendered.",
+    fid: "First Input Delay measures the time from when a user first interacts with your site to the time when the browser is able to respond to that interaction.",
+    inp: "Interaction to Next Paint evaluates responsiveness to user interactions by measuring the time taken from user input to the next frame.",
+    cls: "Cumulative Layout Shift measures the movement of visible elements within the viewport, important for visual stability.",
+    buildtime: "Build Time is the duration taken to compile and bundle your project's source code.",
+    bundlesize: "Bundle Size refers to the total size of all the files that are sent to the user's browser."
+  };
+
   return (
     <main>
       <div className='navbar-gap'></div>
@@ -43,42 +48,46 @@ export default function Home() {
         <video width="1200" preload="none" autoPlay muted >
           <source src="/NEXTLEVEL.mp4" type="video/mp4" />
         </video>
-        {/* <Image className = "animate" src="/TransparentLogo.png" alt ="transparentLogo" width={500} height={500}/> */}
       </section>
 
       <section className='sec-2'>
-        <h1 className="animate">THIS IS SECTION 2</h1>
-        <p className="animate">Section 2 P1</p>
+        <h1 className="animate">STEP ONE</h1>
+        <p className="animate">Download our npm package</p>
       </section>
 
       <section className='sec-3'>
-        <h1 className="animate">THIS IS SECTION 3</h1>
-        <p className="animate">Section 3 P1</p>
+        <h1 className="animate">STEP TWO</h1>
+        <p className="animate">Connect your application</p>
       </section>
 
       <section className='sec-4'>
-        <h1 className="animate">THIS IS SECTION 4</h1>
-        <p className="animate">Section 4 P1</p>
+        <h1 className="animate">STEP THREE</h1>
+        <p className="animate">Collect and log your data</p>
       </section>
 
       <section className='sec-5'>
-        <h1>Tracked Metrics</h1>
+        <h1 className = "animate">Tracked Metrics Include :</h1>
         <div className="images">
-          <Image src="/METRICS/ttfb.svg" alt="TTFB" className="animate" style ={{ "--i": 0 }} width={170} height={238}/>
-          <Image src="/METRICS/lcp.svg" alt="LCP" className="animate" style ={{ "--i": 1 }} width={170} height={238}/>
-          <Image src="/METRICS/fcp.svg" alt="FCP" className="animate" style ={{ "--i": 2 }} width={170} height={238}/>
-          <Image src="/METRICS/fid.svg" alt="FID" className="animate" style ={{ "--i": 3 }} width={170} height={238}/>
-          <Image src='/METRICS/inp.svg' alt="INP" className="animate" style ={{ "--i": 4 }} width={170} height={238}/>
-          <Image src='/METRICS/cls.svg' alt="CLS" className="animate" style ={{ "--i": 5 }} width={170} height={238}/>
+          {Object.keys(metricsInfo).slice(0, 4).map((metric, index) => (
+            <div className="image-container" key={metric}>
+              <Image src={`/METRICS/${metric}.svg`} alt={metric.toUpperCase()} className="animate" style={{ "--i": index }} width={170} height={238} />
+              <div className="info-box">{metricsInfo[metric]}</div>
+            </div>
+          ))}
         </div>
         <div className="images">
-          <Image src="/METRICS/buildtime.svg" alt="Build Time" className="animate" style ={{ "--i": 0 }} width={170} height={238}/>
-          <Image src="/METRICS/bundlesize.svg" alt="Bundle Size" className="animate" style ={{ "--i": 1 }} width={170} height={238}/>
+          {Object.keys(metricsInfo).slice(4).map((metric, index) => (
+            <div className="image-container" key={metric}>
+              <Image src={`/METRICS/${metric}.svg`} alt={metric.toUpperCase()} className="animate" style={{ "--i": index }} width={170} height={238} />
+              <div className="info-box">{metricsInfo[metric]}</div>
+            </div>
+          ))}
         </div>
       </section>
     </main>
   );
 }
+
 
 
 {/* // 1st Section:

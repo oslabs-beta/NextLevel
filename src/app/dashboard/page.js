@@ -2,7 +2,7 @@
 
 import React, { useEffect, useState } from 'react';
 import styles from './dashboard.module.css';
-import WebVitalsChart from './components/webvitalschart';
+import WebVitalsContainer from './components/WebVitalsContainer';
 import APIKey from './components/APIkey';
 import BuildTimeContainer from './components/buildtimecontainer';
 import withAuth from '../components/withAuth';
@@ -31,7 +31,7 @@ function Dashboard(props) {
       <SideBar username={username}/>
       <div className={styles.mainContent}>
         <APIKey username={username} />
-        <WebVitalsChart username={username}/>
+        <WebVitalsContainer username={username}/>
         <BuildTimeContainer username={username}/>
       </div>
     </div>

@@ -29,34 +29,8 @@ ChartJS.register(
   TimeScale
 );
 
-function CLSChart({ username, startDate, endDate }) {
-  const [clsData, setClsData] = useState([]);
+function CLSChart({ clsData }) {
   const chartRef = useRef(null);
-
-  // set end date to one day ago
-  // const now = new Date();
-  // const defaultEnd = now.toISOString().slice(0, 16);
-  // const oneDayAgo = new Date(now.getTime() - (24 * 60 * 60 * 1000));
-  // const defaultStart = oneDayAgo.toISOString().slice(0, 16);
-
-  // const [startDate, setStartDate] = useState(defaultStart);
-  // const [endDate, setEndDate] = useState(defaultEnd);
-
-  const onSubmit = (startDate, endDate) => {
-    setStartDate(startDate);
-    setEndDate(endDate);
-  };
-
-  useEffect(() => {
-    useWebVitalsData(username, startDate, endDate)
-      .then(data => {
-        const filteredData = data.filter(entry => entry.metricType === 'CLS');
-        setClsData(filteredData);
-      })
-      .catch(error => {
-        console.error('Error fetching CLS data', error);
-      });
-  }, [username, startDate, endDate]);
 
   const chartData = {
     labels: clsData.map(entry => new Date(entry.metricDate)),
@@ -116,8 +90,8 @@ function CLSChart({ username, startDate, endDate }) {
   };
 
   return (
-    <div>
-      <div className={styles.webVitalsChart}>
+    <div className={styles.clsContainer}>
+      <div>
         <Line data={chartData} options={options} ref={chartRef} />
       </div>
       <button onClick={downloadChart} id={styles.downloadCLS} className={styles.downloadButton}>Download</button>

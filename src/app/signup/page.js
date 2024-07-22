@@ -8,7 +8,7 @@ import { AiOutlineGoogle } from 'react-icons/ai';
 import { IoLogoGithub } from 'react-icons/io';
 import { ImMail4 } from "react-icons/im";
 import Link from 'next/link';
-import Modal from "../components/Modal.js";
+import Str from '@supercharge/strings';
 
 export default function Signup () {
   const { data: session, status } = useSession();
@@ -52,7 +52,6 @@ export default function Signup () {
     }
   }, [status, session]);
 
-  
   const handleSubmit = async (e) => {
     e.preventDefault();
 
@@ -80,13 +79,28 @@ export default function Signup () {
         setEmail('');
         setPassword('');
         setConfirmPass('');
-        window.location.href = `/onboarding?username=${username}`;
+
+        // Automatically log in the user
+        const signInResponse = await signIn('credentials', {
+          redirect: false,
+          username,
+          password
+        });
+
+        console.log('signInResponse:', signInResponse);
+
+        if (signInResponse.ok) {
+          window.location.href = `/onboarding?username=${username}`;
+        } else {
+          setError('Login after signup failed. Please try to login manually.');
+        }
       } else {
         const errorData = await response.json();
         setError(errorData.message);
         setSuccess(false);
       }
     } catch (err) {
+      console.error('An error occurred:', err);
       setError('An error occurred. Please try again.');
       setSuccess(false);
     }
@@ -118,9 +132,9 @@ export default function Signup () {
             placeholder="Email"
             value={username}
             onChange={(e) => {
-              setUsername(e.target.value)
-              setEmail(e.target.value)}
-            }
+              setUsername(e.target.value);
+              setEmail(e.target.value);
+            }}
             required
           />
           <ImMail4 className="icon" />
@@ -169,3 +183,4 @@ export default function Signup () {
     </div>
   );
 }
+

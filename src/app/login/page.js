@@ -8,8 +8,8 @@ import { AiOutlineGoogle } from 'react-icons/ai';
 import { IoLogoGithub } from 'react-icons/io';
 import Link from 'next/link';
 import { signIn, useSession } from 'next-auth/react';
-import Spinner from '../components/Spinner.js'
-import Image from 'next/image'
+import Spinner from '../components/Spinner.js';
+import Image from 'next/image';
 
 export default function Login() {
   const { data: session, status } = useSession();
@@ -17,7 +17,7 @@ export default function Login() {
   const [password, setPassword] = useState('');
   const [error, setError] = useState('');
   const [success, setSuccess] = useState('');
-  const [loading, setLoading] = useState(false);
+  const [loading, setLoading] = useState(true); // Initially set to true
 
   useEffect(() => {
     document.body.style.fontFamily = "'Poppins', sans-serif";
@@ -30,6 +30,11 @@ export default function Login() {
     document.body.style.backgroundSize = 'cover';
     document.body.style.backgroundPosition = 'center';
     document.body.style.color = '#fff';
+
+    // Simulate loading time (for demonstration purposes)
+    setTimeout(() => {
+      setLoading(false); // Hide preloader after the component has mounted
+    }, 4000); // Adjust the timeout as needed
 
     return () => {
       document.body.style.fontFamily = '';
@@ -65,7 +70,7 @@ export default function Login() {
 
     setLoading(false); // Hide preloader
 
-    if (result.error) {
+    if (result?.error) {
       console.log('Login error:', result.error);
       setError(result.error);
     } else {
@@ -82,7 +87,7 @@ export default function Login() {
     const result = await signIn(provider, { redirect: false });
     console.log('RESULT', result);
 
-    if (!result.error) {
+    if (!result?.error) {
       const interval = setInterval(() => {
         if (status === 'authenticated' && session) {
           clearInterval(interval);
@@ -98,12 +103,15 @@ export default function Login() {
     }
   };
 
+  if (loading) {
+    return <Spinner />;
+  }
+
   return (
     <div className="wrapper">
-      {loading && <Spinner/>}
       <form onSubmit={handleSubmit}>
         <div className="logo-container">
-          <img src="./TransparentIcon.png" alt="Logo" className="logo" />
+          <Image src="/TransparentIcon.png" alt="Logo" className="logo" width={250} height={350} />
           <h1>NextLevel</h1>
         </div>
         <div className="input-box">
@@ -179,6 +187,7 @@ export default function Login() {
     </div>
   );
 }
+
 
 
 

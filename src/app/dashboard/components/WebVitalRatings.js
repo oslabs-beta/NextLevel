@@ -1,15 +1,16 @@
 import { useEffect, useState } from 'react';
 import Rating from './Rating';
+import styles from '../dashboard.module.css';
 
 const WebVitalRatings = ({ data }) => {
     const ranges = {
         //we set the upper limits, may need to adjust
         "TTFB": [0, 800, 1800, 3000],
-        "LCP": [0, 2500, 4000, 6000],
+        "LCP": [0, 2500, 4000, 7000],
         "FCP": [0, 1800, 3000, 5000],
-        "FID": [0, 100, 300, 600],
-        "INP": [0, 200, 500, 1000],
-        "CLS": [0, 0.1, 0.25, 1],
+        "FID": [0, 100, 300, 450],
+        "INP": [0, 200, 500, 800],
+        "CLS": [0, 0.1, 0.25, .75],
     }
     const averages = {
         "TTFB": [0, 0],
@@ -57,7 +58,11 @@ const WebVitalRatings = ({ data }) => {
             const unrounded = averages[metric][0] / averages[metric][1];
             let val;
             if(metric === "CLS") {
-                val = unrounded.toFixed(4);
+                if(!unrounded) {
+                    val = Math.round(unrounded);
+                } else {
+                    val = unrounded.toFixed(4);
+                }
             } else {
                 val = Math.round(unrounded);
             }
@@ -68,6 +73,7 @@ const WebVitalRatings = ({ data }) => {
                     poorRange={[ranges[metric][2],ranges[metric][3]]}
                     currentValue={val}
                     metricType={metric}
+                    // className={styles.ratingGauge}
                 />
             );
         });
@@ -75,8 +81,10 @@ const WebVitalRatings = ({ data }) => {
     }, [data]);
 
     return (
-        <div>
-            {vitalRatings}
+        <div className={styles.ratingContainerDiv}>
+            <div className={styles.ratingsContainer}>
+                {vitalRatings}
+            </div>
         </div>
     );
 };
