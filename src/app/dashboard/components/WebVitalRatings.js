@@ -63,9 +63,9 @@ const WebVitalRatings = ({ data }) => {
             }
             return (
                 <Rating
-                    poorRange={[ranges[metric][0],ranges[metric][1]]}
+                    goodRange={[ranges[metric][0],ranges[metric][1]]}
                     needsImprovementRange={[ranges[metric][1],ranges[metric][2]]}
-                    goodRange={[ranges[metric][2],ranges[metric][3]]}
+                    poorRange={[ranges[metric][2],ranges[metric][3]]}
                     currentValue={val}
                     metricType={metric}
                 />

@@ -8,9 +8,8 @@ import { AiOutlineGoogle } from 'react-icons/ai';
 import { IoLogoGithub } from 'react-icons/io';
 import Link from 'next/link';
 import { signIn, useSession } from 'next-auth/react';
-import Spinner from '../components/Spinner.js';
-import Image from 'next/image';
-import '../globals.css'; // Import the global styles
+import Spinner from '../components/Spinner.js'
+import Image from 'next/image'
 
 export default function Login() {
   const { data: session, status } = useSession();
@@ -18,22 +17,30 @@ export default function Login() {
   const [password, setPassword] = useState('');
   const [error, setError] = useState('');
   const [success, setSuccess] = useState('');
-  const [loading, setLoading] = useState(true); // Initially set to true
+  const [loading, setLoading] = useState(false);
 
   useEffect(() => {
-    // Add loading class to body
-    document.body.classList.add('loading');
-
-    // Simulate loading time (for demonstration purposes)
-    setTimeout(() => {
-      setLoading(false); // Hide preloader after the component has mounted
-      document.body.classList.remove('loading');
-      document.body.classList.add('loaded');
-    }, 2000); // Adjust the timeout as needed
+    document.body.style.fontFamily = "'Poppins', sans-serif";
+    document.body.style.display = 'flex';
+    document.body.style.justifyContent = 'center';
+    document.body.style.alignItems = 'center';
+    document.body.style.minHeight = '100vh';
+    document.body.style.background =
+      'url("https://getwallpapers.com/wallpaper/full/2/8/f/537844.jpg") no-repeat';
+    document.body.style.backgroundSize = 'cover';
+    document.body.style.backgroundPosition = 'center';
+    document.body.style.color = '#fff';
 
     return () => {
-      document.body.classList.remove('loading');
-      document.body.classList.remove('loaded');
+      document.body.style.fontFamily = '';
+      document.body.style.display = '';
+      document.body.style.justifyContent = '';
+      document.body.style.alignItems = '';
+      document.body.style.minHeight = '';
+      document.body.style.background = '';
+      document.body.style.backgroundSize = '';
+      document.body.style.backgroundPosition = '';
+      document.body.style.color = '';
     };
   }, []);
 
@@ -91,15 +98,12 @@ export default function Login() {
     }
   };
 
-  if (loading) {
-    return <Spinner />;
-  }
-
   return (
     <div className="wrapper">
+      {loading && <Spinner/>}
       <form onSubmit={handleSubmit}>
         <div className="logo-container">
-          <Image src="/TransparentIcon.png" alt="Logo" className="logo" width={250} height={350} />
+          <img src="./TransparentIcon.png" alt="Logo" className="logo" />
           <h1>NextLevel</h1>
         </div>
         <div className="input-box">
@@ -175,6 +179,10 @@ export default function Login() {
     </div>
   );
 }
+
+
+
+
 
 
 
