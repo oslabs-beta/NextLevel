@@ -11,13 +11,13 @@ import { signIn, useSession } from 'next-auth/react';
 import Spinner from '../components/Spinner.js';
 import Image from 'next/image';
 
-export default function Login() {
+export default function Login({ initialLoading = true }) {  //added prop for testing purposes
   const { data: session, status } = useSession();
   const [username, setUsername] = useState('');
   const [password, setPassword] = useState('');
   const [error, setError] = useState('');
   const [success, setSuccess] = useState('');
-  const [loading, setLoading] = useState(true); // Initially set to true
+  const [loading, setLoading] = useState(initialLoading); // Initially set to true via prop
 
   useEffect(() => {
     document.body.style.fontFamily = "'Poppins', sans-serif";
@@ -156,6 +156,7 @@ export default function Login() {
           <button
             type="button"
             className="oauth-button"
+            aria-label="Sign in with Google"
             onClick={() => handleOAuthSignIn('google')}
           >
             <AiOutlineGoogle className="google-icon" />
@@ -163,6 +164,7 @@ export default function Login() {
           <button
             type="button"
             className="oauth-button"
+            aria-label="Sign in with GitHub"
             onClick={() => handleOAuthSignIn('github')}
           >
             <IoLogoGithub className="github-icon" />

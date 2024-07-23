@@ -38,9 +38,10 @@ export default function Signup () {
       document.body.style.justifyContent = '';
       document.body.style.alignItems = '';
       document.body.style.minHeight = '';
-      document.body.style.background = '';
-      document.body.style.backgroundSize = '';
-      document.body.style.backgroundPosition = '';
+      document.body.style.backgroundImage = '';
+      document.body.style.backgroundRepeat = 'repeat';
+      document.body.style.backgroundSize = 'auto';
+      document.body.style.backgroundPosition = '0% 0%';
     };
   }, []);
 
@@ -183,4 +184,5 @@ export default function Signup () {
     </div>
   );
 }
+
 
