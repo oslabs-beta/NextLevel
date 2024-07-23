@@ -45,7 +45,7 @@ function BuildTimeChart({ username }) {
     });
   }, []);
 
-  console.log('Build Time Data:', buildTimeData);
+  // console.log('Build Time Data:', buildTimeData);
 
   const chartData = {
     labels: buildTimeData.map(entry => new Date(entry.buildDate)),
@@ -75,20 +75,7 @@ function BuildTimeChart({ username }) {
           display: true,
           text: 'Date/Time',
         },
-        // ticks: {
-        //   source: 'data', // Ensures only data points are used for ticks
-        // },
       },
-      // x: {
-      //   type: 'time',
-      //   time: {
-      //     unit: 'minute',
-      //   },
-      //   title: {
-      //     display: true,
-      //     text: 'Date/Time',
-      //   },
-      // },
       y: {
         title: {
           display: true,

@@ -146,6 +146,7 @@ section.show-animate .animate {
   gap: 10px;
   transform: translateY(1000%);
   text-decoration: none;
+  margin-top: 400px;
 }
 
 .sec-6.show-animate .animate {
@@ -173,7 +174,7 @@ section.show-animate .animate {
 }
 
 .meetTheTeam {
-  margin-top: 100px;
+  margin-top: 400px;
 }
 .team {
   display: flex;
@@ -220,4 +221,15 @@ section.show-animate .animate {
 .linkedinLogo{
   font-size: 35px;
   color: white;
+}
+
+.sec-7{
+display: flex;
+margin-top: -100px;
+padding: 300px;
+margin-bottom: -100px;
+}
+
+.gif {
+  border-radius: 20px;
 }

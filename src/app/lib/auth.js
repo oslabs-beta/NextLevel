@@ -3,9 +3,9 @@ import User from '../models/User'; // Adjust the import based on your User model
 import bcrypt from 'bcryptjs';
 
 export async function verifyCredentials(username, password) {
-  console.log('Connecting to database');
+  // console.log('Connecting to database');
   await dbConnect();
-  console.log('Finding user by username:', username);
+  // console.log('Finding user by username:', username);
   const user = await User.findOne({ username });
 
   if (!user) {

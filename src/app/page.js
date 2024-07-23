@@ -53,6 +53,17 @@ export default function Home() {
         </video>
       </section>
 
+      <section className='sec-7'>
+        <h1 className="animate">What is NextLevel?</h1>
+        <p className="animate">
+          NextLevel is a performance metrics dashboard tailored to Next.js applications that visualizes critical data, such as build time and key web vitals, enabling developers to pinpoint inefficiencies and improve development productivity and end-user experience.
+        </p>
+  
+      </section>
+
+      <section>
+        <Image src='/NextLevelDashboardHomepage.gif' alt="NextLevel Logo" width={1200} height={800} className="gif"/>
+      </section>
       <section className='sec-2'>
         <h1 className="animate">STEP ONE</h1>
         <Link href="https://www.npmjs.com/package/nextlevelpackage?activeTab=code" target="_blank" rel="noopener noreferrer" className="no-decoration">
@@ -91,7 +102,7 @@ export default function Home() {
       </section>
 
       <section className='sec-6'>
-        <h1 className="meetTheTeam">MEET THE TEAM </h1>
+        <h1 className="meetTheTeam" >MEET THE TEAM </h1>
         <p> Feel free to contact us if you have any questions!</p>
         <div className="team">
           <div className="team-member">

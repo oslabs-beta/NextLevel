@@ -19,12 +19,12 @@ function BuildTimeMetrics({username}) {
       setBundleLogs(logs);
       return logs;
     }).then(logs => {
-      console.log('logs length ', logs.length)
+      // console.log('logs length ', logs.length)
       const logsLength = logs.length
       setCurrentIndex(logsLength - 1);
-      console.log('Current Index:', currentIndex);
+      // console.log('Current Index:', currentIndex);
       setCurrentLog(bundleLogs[currentIndex]);
-      console.log('Current Log:', currentLog);
+      // console.log('Current Log:', currentLog);
     })
     .catch(error => {
       console.error('Error fetching bundle log:', error);
