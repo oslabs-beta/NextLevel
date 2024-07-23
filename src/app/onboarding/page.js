@@ -91,9 +91,12 @@ export default withBundleAnalyzer(nextConfig);`,
   },
 ];
 
- function Onboarding (props) {
+ function Onboarding () {
   // console.log('Props onboarding page:', props);
-  const usernameData = props.searchParams.username;
+  const currentUrl = window.location.href;
+  console.log('Current URL:', currentUrl);
+  const url = new URL(currentUrl);
+  const usernameData = url.searchParams.username;
   // console.log('Username:', usernameData);
   return (
     <div className={styles.onboardingContainer}>
