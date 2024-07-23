@@ -9,7 +9,7 @@ function APIKey({ username }) {
   const [ api, setApi ] = useState('');
 
   useEffect(() => {
-    fetch(`https://nextlevel-dash.com/onboarding/api?username=${username}`)
+    fetch(`https://www.nextlevel-dash.com/onboarding/api?username=${username}`)
     .then((res) => {
       if (res.ok) {
         // console.log('res:', res);
