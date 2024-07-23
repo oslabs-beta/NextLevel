@@ -4,6 +4,9 @@ import React, { useEffect } from 'react';
 import './home.css';
 import Link from 'next/link';
 import Image from 'next/image';
+import { IoLogoGithub } from "react-icons/io";
+import { FaLinkedin } from "react-icons/fa6";
+
 
 export default function Home() {
   useEffect(() => {
@@ -52,12 +55,14 @@ export default function Home() {
 
       <section className='sec-2'>
         <h1 className="animate">STEP ONE</h1>
-        <p className="animate">Download our npm package</p>
+        <Link href="https://www.npmjs.com/package/nextlevelpackage?activeTab=code" target="_blank" rel="noopener noreferrer" className="no-decoration">
+          <p className="animate">Download our npm package</p>
+        </Link>
       </section>
 
       <section className='sec-3'>
         <h1 className="animate">STEP TWO</h1>
-        <p className="animate">Connect your application</p>
+        <p className="animate">Connect your Next.js application</p>
       </section>
 
       <section className='sec-4'>
@@ -66,7 +71,7 @@ export default function Home() {
       </section>
 
       <section className='sec-5'>
-        <h1 className = "animate">Tracked Metrics Include :</h1>
+        <h1 className = "animate" id="trackedMetricsHeading">Tracked Metrics Include :</h1>
         <div className="images">
           {Object.keys(metricsInfo).slice(0, 4).map((metric, index) => (
             <div className="image-container" key={metric}>
@@ -84,35 +89,66 @@ export default function Home() {
           ))}
         </div>
       </section>
+
+      <section className='sec-6'>
+        <h1 className="meetTheTeam">MEET THE TEAM </h1>
+        <p> Feel free to contact us if you have any questions!</p>
+        <div className="team">
+          <div className="team-member">
+            <Image src='/HEADSHOTS/kim.png' alt="Kim Cuomo Headshot" width={200} height={200} className="headshot"/>
+            <h2 className="name">Kim Cuomo</h2>
+            <p className="role">Software Engineer</p>
+            <div className="links">
+              <Link href="https://github.com/kimcuomo" target="_blank" rel="noopener noreferrer" className="githubLink">
+                <IoLogoGithub className="githubLogo"/>
+              </Link>
+              <Link href="https://www.linkedin.com/in/kimcuomo/" target="_blank" rel="noopener noreferrer" className="linkedinLink">
+                <FaLinkedin className="linkedinLogo"/>
+              </Link>
+            </div>
+          </div>
+          <div className="team-member">
+            <Image src='/HEADSHOTS/nelly.png' alt="Nelly Segimoto Headshot" width={200} height={200} className="headshot"/>
+            <h2 className="name">Nelly Segimoto</h2>
+            <p className="role">Software Engineer</p>
+            <div className="links">
+              <Link href="https://github.com/nellysegi" target="_blank" rel="noopener noreferrer" className="githubLink">
+                <IoLogoGithub className="githubLogo"/>
+              </Link>
+              <Link href="https://www.linkedin.com/in/nellysegimoto/" target="_blank" rel="noopener noreferrer" className="linkedinLink">
+                <FaLinkedin className="linkedinLogo"/>
+              </Link>
+            </div>
+          </div>
+          <div className="team-member">
+            <Image src='/HEADSHOTS/ian.png' alt="Ian Mann Headshot" width={200} height={200} className="headshot"/>
+            <h2 className="name">Ian Mann</h2>
+            <p className="role">Software Engineer</p>
+            <div className="links">
+              <Link href="https://github.com/ianmannn" target="_blank" rel="noopener noreferrer" className="githubLink">
+                <IoLogoGithub className="githubLogo"/>
+              </Link>
+              <Link href="https://www.linkedin.com/in/iancmann99/" target="_blank" rel="noopener noreferrer" className="linkedinLink">
+                <FaLinkedin className="linkedinLogo"/>
+              </Link>
+            </div>
+          </div>
+          <div className="team-member">
+            <Image src='/HEADSHOTS/fred.png' alt="Frederico Aires Headshot" width={200} height={200} className="headshot"/>
+            <h2 className="name">Frederico Aires</h2>
+            <p className="role">Software Engineer</p>
+            <div className="links">
+              <Link href="https://github.com/FredAires" target="_blank" rel="noopener noreferrer" className="githubLink">
+                <IoLogoGithub className="githubLogo"/>
+              </Link>
+              <Link href="https://www.linkedin.com/in/frederico-neto-a3722b221/" target="_blank" rel="noopener noreferrer" className="linkedinLink">
+                <FaLinkedin className="linkedinLogo"/>
+              </Link>
+            </div>
+          </div>
+        </div>
+      </section>
+
     </main>
   );
 }
-
-
-
-{/* // 1st Section:
-// LOGO + Login or sign up buttons
-// Animation: 
-// logo -> fade in after gif
-// buttons -> fly up
-
-// 2nd Section:
-// What is next.js?
-//
-
-//3rd Section */}
-{/* <section className='hidden-fly-up'>
-  <div className="buttonsDiv"> 
-    <div className='homepageButtons'>
-      <Link className='homepage-link' href="/login">
-        <div className="login-button">Login</div> 
-      </Link>
-    </div>
-    <div className='or'> or </div>
-    <div className='homepageButtons'>
-      <Link className='homepage-link' href="/signup">
-        <div className="signup-button">Get Started</div>
-      </Link>
-    </div>
-  </div>
-</section> */}

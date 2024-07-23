@@ -30,8 +30,9 @@ ChartJS.register(
 
 
 function BuildTimeChart({ username }) {
-  const [buildTimeData, setBuildTimeData] = useState([]);
   const chartRef = useRef(null);
+  const [buildTimeData, setBuildTimeData] = useState([]);
+
 
   useEffect(() => {
     useBuildTimeData(username)
@@ -121,7 +122,7 @@ function BuildTimeChart({ username }) {
       <div className={styles.buildTimeChart}>
         <Line data={chartData} options={options} ref={chartRef}/>
       </div>
-      <button onClick={downloadChart} className={styles.downloadButton}>Download</button>
+      <button onClick={downloadChart} id={styles.downloadBuildTime} className={styles.downloadButton}>Download</button>
     </div>
   );
 }
