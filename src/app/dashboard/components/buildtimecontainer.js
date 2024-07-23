@@ -1,7 +1,7 @@
 import React from 'react';
 import styles from '../dashboard.module.css';
-import BuildTimeChart from './buildtimechart';
-import BuildTimeMetrics from './buildtimemetrics';
+import BuildTimeChart from './BuildTimeChart';
+import BundleLog from './BundleLog';
 
 function BuildTimeContainer({ username }) {
   return (
@@ -9,7 +9,7 @@ function BuildTimeContainer({ username }) {
       <h2 className={styles.chartTitle}>Build Time</h2>
       <div className={styles.buildCharts}>
         <BuildTimeChart className={styles.buildTimeDiv} username={username}/>
-        <BuildTimeMetrics username={username}/>
+        <BundleLog username={username}/>
       </div>
     </div>
   );

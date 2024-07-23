@@ -13,7 +13,7 @@ export async function verifyCredentials(username, password) {
     return null;
   }
 
-  console.log('User found:', user);
+  // console.log('User found:', user);
   const isPassValid = await bcrypt.compare(password, user.password); // Use your specific method for comparing passwords
   if (!isPassValid) {
     console.log('Password is invalid');

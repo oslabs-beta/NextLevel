@@ -4,14 +4,14 @@ import React, { useEffect, useState } from 'react';
 import styles from './dashboard.module.css';
 import WebVitalsContainer from './components/WebVitalsContainer';
 import APIKey from './components/APIkey';
-import BuildTimeContainer from './components/buildtimecontainer';
+import BuildTimeContainer from './components/BuildTimeContainer';
 import withAuth from '../components/withAuth';
-import SideBar from './components/sidebar';
+import SideBar from './components/Sidebar';
 
 function Dashboard(props) {
-  console.log('Props:', props);
+  // console.log('Props:', props);
   const username = props.searchParams.username;
-  console.log('Username:', username);
+  // console.log('Username:', username);
 
   return (
     <div className={styles.dashboardContainer}>

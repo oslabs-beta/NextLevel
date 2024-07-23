@@ -16,7 +16,7 @@ import {
 } from 'chart.js';
 import 'chartjs-adapter-date-fns';
 import useWebVitalsData from '../hooks/useWebVitalsData';
-import WebVitalsFilter from './webvitalsfilter';
+import WebVitalsFilter from './WebVitalsFilter';
 
 ChartJS.register(
   CategoryScale,

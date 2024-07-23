@@ -3,9 +3,9 @@ import { IoSettingsOutline } from "react-icons/io5";
 import Link from 'next/link';
 
 function SideBar(props) {
-  console.log('Props sidebar:', props);
+  // console.log('Props sidebar:', props);
   const username = props.username;
-  console.log('Username sidebar:', username);
+  // console.log('Username sidebar:', username);
   return (
     <div className={styles.sidebar}>
       <div className={styles.sidebarTop}>

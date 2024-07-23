@@ -48,9 +48,7 @@ export default function Home() {
       <div className='navbar-gap'></div>
       <section className='sec-1'>
         <h1 className="animate">Take your application to the</h1>
-        <video width="1200" preload="none" autoPlay muted >
-          <source src="/NEXTLEVEL.mp4" type="video/mp4" />
-        </video>
+        <Image src='/NextLevelGifHomepage.gif' alt="NextLevel Logo" width={1200} height={550} className="logoGif"/>
       </section>
 
       <section className='sec-7'>
@@ -58,11 +56,10 @@ export default function Home() {
         <p className="animate">
           NextLevel is a performance metrics dashboard tailored to Next.js applications that visualizes critical data, such as build time and key web vitals, enabling developers to pinpoint inefficiencies and improve development productivity and end-user experience.
         </p>
-  
       </section>
 
-      <section>
-        <Image src='/NextLevelDashboardHomepage.gif' alt="NextLevel Logo" width={1200} height={800} className="gif"/>
+      <section className="homegif">
+        <Image src='/NextLevelDashboardHomepage.gif' alt="NextLevel Demo" width={1200} height={800} className="gif"/>
       </section>
       <section className='sec-2'>
         <h1 className="animate">STEP ONE</h1>

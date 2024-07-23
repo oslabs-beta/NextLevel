@@ -4,7 +4,7 @@ import useBundleData from '../hooks/useBundleData';
 import { set } from 'mongoose';
 
 
-function BuildTimeMetrics({username}) {
+function BundleLog({username}) {
   console.log('entering build time metrics for username:', username);
 
   const [bundleLogs, setBundleLogs] = useState([]);
@@ -35,9 +35,9 @@ function BuildTimeMetrics({username}) {
   useEffect(() => {
     const logsLength = bundleLogs.length;
     setCurrentIndex(logsLength - 1);
-    console.log('Current Index:', currentIndex);
+    // console.log('Current Index:', currentIndex);
     setCurrentLog(bundleLogs[currentIndex]);
-    console.log('Current Log:', currentLog);
+    // console.log('Current Log:', currentLog);
   }, [bundleLogs]);
 
   const toggleBack = () => {
@@ -83,4 +83,4 @@ function BuildTimeMetrics({username}) {
   );
 }
 
-export default BuildTimeMetrics;
+export default BundleLog;

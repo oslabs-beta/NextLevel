@@ -2,35 +2,11 @@
 
 import React, { useEffect, useState, useRef } from 'react';
 import styles from '../dashboard.module.css';
-// import { Line } from 'react-chartjs-2';
-// import {
-//   Chart as ChartJS,
-//   CategoryScale,
-//   LinearScale,
-//   PointElement,
-//   LineElement,
-//   Title,
-//   Tooltip,
-//   Legend,
-//   TimeScale
-// } from 'chart.js';
-// import 'chartjs-adapter-date-fns';
 import useWebVitalsData from '../hooks/useWebVitalsData';
-import WebVitalsFilter from './webvitalsfilter';
+import WebVitalsFilter from './WebVitalsFilter';
 import CLSChart from './CLSChart';
 import WebVitalRatings from './WebVitalRatings';
-import WebVitalsChart from './webvitalschart';
-
-// ChartJS.register(
-//   CategoryScale,
-//   LinearScale,
-//   PointElement,
-//   LineElement,
-//   Title,
-//   Tooltip,
-//   Legend,
-//   TimeScale
-// );
+import WebVitalsChart from './WebVitalsChart';
 
 function WebVitalsContainer({ username}) {
   const [webVitalsData, setWebVitalsData] = useState([]);
@@ -43,8 +19,8 @@ function WebVitalsContainer({ username}) {
   const oneDayAgo = new Date(now.getTime() - (24 * 60 * 60 * 1000));
   const defaultStart = oneDayAgo.toISOString().slice(0, 16); // format to 'YYYY-MM-DDTHH:MM'
 
-  const [startDate, setStartDate] = useState(defaultStart); // July 18, 2024, at 14:35:50 '2024-07-18T14:35:50'
-  const [endDate, setEndDate] = useState(defaultEnd); // July 19, 2024, at 11:45:00 '2024-07-19T12:45:00'
+  const [startDate, setStartDate] = useState(defaultStart);
+  const [endDate, setEndDate] = useState(defaultEnd);
 
   const onSubmit = (startDate, endDate) => {
     setStartDate(startDate);

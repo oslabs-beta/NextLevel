@@ -24,6 +24,7 @@ function TopNav() {
         </div>
         <div className={styles.links}>
           <Link href="/">Home</Link>
+          <Link href="https://github.com/oslabs-beta/NextLevel" target="_blank" rel="noopener noreferrer">Docs</Link>
           {status === 'authenticated' ? (
             <>
               <Link href={`/dashboard?username=${session?.user?.email}`}>Dashboard</Link>

@@ -16,7 +16,7 @@ section {
   align-items: center;
   flex-direction: column;
   min-height: 80vh;
-  background: #131316;
+  background: #1B212C;
   color: #ffffff;
   box-sizing: border-box;
   font-family: 'Poppins', sans-serif;
@@ -31,7 +31,7 @@ h1 {
 
 p {
   font-size: 35px;
-  color: #407cff;
+  color: #489ae7;
   font-weight: 600;
 }
 
@@ -47,12 +47,16 @@ section.show-animate .animate {
 }
 
 .sec-1 .animate {
-  margin-top: -30px;
+  margin-top: 200px;
   opacity: 0;
 }
 
 .sec-1.show-animate .animate {
   opacity: 1;
+}
+
+.logoGif{
+  margin-top: -100px;
 }
 
 .sec-2 .animate {
@@ -72,11 +76,11 @@ section.show-animate .animate {
 }
 
 .sec-4 .animate {
-  transform: scale(0);
+  transform: translateY(300%);
 }
 
 .sec-4.show-animate .animate {
-  transform: scale(1);
+  transform: translateY(0);
 }
 
 .sec-5 .images img {
@@ -144,13 +148,13 @@ section.show-animate .animate {
 .sec-6 .animate {
   display: flex;
   gap: 10px;
-  transform: translateY(1000%);
+  transform: opacity(0);
   text-decoration: none;
   margin-top: 400px;
 }
 
 .sec-6.show-animate .animate {
-  transform: translateY(0);
+  transform: opacity(1);
 }
 
 .homepage-buttons{
@@ -209,8 +213,10 @@ section.show-animate .animate {
 }
 
 .links {
+  margin-top: 10px;
   display: flex;
   gap: 15px;
+  margin-bottom: 80px;
 }
 
 .githubLogo{
@@ -232,4 +238,8 @@ margin-bottom: -100px;
 
 .gif {
   border-radius: 20px;
+}
+
+.homegif{
+  margin-bottom: 200px;
 }
