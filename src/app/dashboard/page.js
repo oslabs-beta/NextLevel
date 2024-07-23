@@ -13,7 +13,7 @@ function Dashboard(props) {
   const currentUrl = window.location.href;
   console.log('Current URL:', currentUrl);
   const url = new URL(currentUrl);
-  const usernameData = url.searchParams.username;
+  const username = url.searchParams.username;
   console.log('Username:', username);
 
   return (
