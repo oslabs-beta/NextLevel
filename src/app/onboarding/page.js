@@ -96,8 +96,8 @@ export default withBundleAnalyzer(nextConfig);`,
   const currentUrl = window.location.href;
   console.log('Current URL:', currentUrl);
   const url = new URL(currentUrl);
-  const usernameData = url.searchParams.username;
-  // console.log('Username:', usernameData);
+  const username = url.searchParams.username;
+  console.log('Username:', username);
   return (
     <div className={styles.onboardingContainer}>
       <h1 className={styles.onboardingTitle}>
@@ -113,10 +113,10 @@ export default withBundleAnalyzer(nextConfig);`,
           code={step.code}
           language={step.language}
           api={step.api}
-          username={usernameData}
+          username={username}
         />
       ))}
-      <NextButton username={usernameData}/>
+      <NextButton username={username}/>
     </div>
   );
 };
