@@ -5,14 +5,13 @@ import CodeBox from './CodeBox';
 
 const Step = ({ stepNumber, title, description, code, language, api, username }) => {
   const [APIkey, setAPIkey] = useState('');
-  // {"APIkey":"0nHYsAj9s6Ai2j31oSLut"}
   
   useEffect(() => {
     if(api === true) {
       fetch(`http://localhost:3000/onboarding/api?username=${username}`)
       .then((res) => {
         if (res.ok) {
-          console.log('res:', res);
+          // console.log('res:', res);
           return res.json();
         }
       })

@@ -30,8 +30,9 @@ ChartJS.register(
 
 
 function BuildTimeChart({ username }) {
-  const [buildTimeData, setBuildTimeData] = useState([]);
   const chartRef = useRef(null);
+  const [buildTimeData, setBuildTimeData] = useState([]);
+
 
   useEffect(() => {
     useBuildTimeData(username)
@@ -44,7 +45,7 @@ function BuildTimeChart({ username }) {
     });
   }, []);
 
-  console.log('Build Time Data:', buildTimeData);
+  // console.log('Build Time Data:', buildTimeData);
 
   const chartData = {
     labels: buildTimeData.map(entry => new Date(entry.buildDate)),
@@ -74,20 +75,7 @@ function BuildTimeChart({ username }) {
           display: true,
           text: 'Date/Time',
         },
-        // ticks: {
-        //   source: 'data', // Ensures only data points are used for ticks
-        // },
       },
-      // x: {
-      //   type: 'time',
-      //   time: {
-      //     unit: 'minute',
-      //   },
-      //   title: {
-      //     display: true,
-      //     text: 'Date/Time',
-      //   },
-      // },
       y: {
         title: {
           display: true,
@@ -121,7 +109,7 @@ function BuildTimeChart({ username }) {
       <div className={styles.buildTimeChart}>
         <Line data={chartData} options={options} ref={chartRef}/>
       </div>
-      <button onClick={downloadChart} className={styles.downloadButton}>Download</button>
+      <button onClick={downloadChart} id={styles.downloadBuildTime} className={styles.downloadButton}>Download</button>
     </div>
   );
 }

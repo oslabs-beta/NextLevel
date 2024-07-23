@@ -88,7 +88,7 @@ export default function Signup () {
           password
         });
 
-        console.log('signInResponse:', signInResponse);
+        // console.log('signInResponse:', signInResponse);
 
         if (signInResponse.ok) {
           window.location.href = `/onboarding?username=${username}`;

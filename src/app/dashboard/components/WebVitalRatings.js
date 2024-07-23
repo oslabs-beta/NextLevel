@@ -73,7 +73,6 @@ const WebVitalRatings = ({ data }) => {
                     poorRange={[ranges[metric][2],ranges[metric][3]]}
                     currentValue={val}
                     metricType={metric}
-                    // className={styles.ratingGauge}
                 />
             );
         });

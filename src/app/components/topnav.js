@@ -1,6 +1,6 @@
 'use client';
 
-import React, { useEffect, useState } from 'react';
+import React from 'react';
 import styles from './topnav.module.css';
 import Link from 'next/link';
 import Image from 'next/image';
@@ -19,13 +19,17 @@ function TopNav() {
       <nav className={styles.nav}>
         <div className={styles.logo}>
           <Link href="/">
-            <Image src={logo} alt="logo" height={40}/>
+            <Image src={logo} alt="logo" height={40} />
           </Link>
         </div>
         <div className={styles.links}>
           <Link href="/">Home</Link>
+          <Link href="https://github.com/oslabs-beta/NextLevel" target="_blank" rel="noopener noreferrer">Docs</Link>
           {status === 'authenticated' ? (
-            <button onClick={handleLogout} className={styles.logoutButton}>Logout</button>
+            <>
+              <Link href={`/dashboard?username=${session?.user?.email}`}>Dashboard</Link>
+              <button onClick={handleLogout} className={styles.logoutButton}>Logout</button>
+            </>
           ) : (
             <Link href="/login">Login</Link>
           )}
@@ -36,4 +40,5 @@ function TopNav() {
 }
 
 export default TopNav;
+
 

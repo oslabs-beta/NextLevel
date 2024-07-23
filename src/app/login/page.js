@@ -60,7 +60,7 @@ export default function Login({ initialLoading = true }) {  //added prop for tes
   const handleSubmit = async (e) => {
     e.preventDefault();
     setLoading(true); // Show preloader
-    console.log("Submitting login form with username:", username);
+    // console.log("Submitting login form with username:", username);
 
     const result = await signIn('credentials', {
       redirect: false,
@@ -85,7 +85,7 @@ export default function Login({ initialLoading = true }) {  //added prop for tes
   const handleOAuthSignIn = async (provider) => {
     setLoading(true); // Show preloader
     const result = await signIn(provider, { redirect: false });
-    console.log('RESULT', result);
+    // console.log('RESULT', result);
 
     if (!result?.error) {
       const interval = setInterval(() => {

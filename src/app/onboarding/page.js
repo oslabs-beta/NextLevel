@@ -92,9 +92,9 @@ export default withBundleAnalyzer(nextConfig);`,
 ];
 
  function Onboarding (props) {
-  console.log('Props onboarding page:', props);
+  // console.log('Props onboarding page:', props);
   const usernameData = props.searchParams.username;
-  console.log('Username:', usernameData);
+  // console.log('Username:', usernameData);
   return (
     <div className={styles.onboardingContainer}>
       <h1 className={styles.onboardingTitle}>

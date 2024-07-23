@@ -16,7 +16,7 @@ export async function GET(request) {
     //console.log("Found user: ", foundUser);
     return NextResponse.json(foundUser.bundleLog);
   } catch (error) {
-    console.error(error);
+    // console.error(error);
     return NextResponse.json({ error: error.message }, { status: 500 });
   }
 }
@@ -26,15 +26,15 @@ export async function POST(request) {
   try {
     const { bundleLog } = await request.json();
     const APIkey = request.headers.get('Authorization');
-    console.log('API key:', APIkey);
+    // console.log('API key:', APIkey);
 
     if (!APIkey) {
       return NextResponse.json({ message: 'API key is required' }, { status: 400 });
     }
 
-    console.log('going into try block post -- dashb api bundle')
+    // console.log('going into try block post -- dashb api bundle')
     const user = await User.findOne({ APIkey });
-    console.log('User:', user);
+    // console.log('User:', user);
     if (!user) { 
       return NextResponse.json({ message: 'API key was not found' }, { status: 409 });
     }
@@ -53,7 +53,7 @@ export async function POST(request) {
 
     return NextResponse.json({ message: 'User build updated successfully'}, { status: 201 });
   } catch (error) {
-    console.error(error);
+    // console.error(error);
     return NextResponse.json({ message: `Internal server error in build post request ${error}` }, { status: 500 });
   }
 }

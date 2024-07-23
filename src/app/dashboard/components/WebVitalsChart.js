@@ -116,9 +116,6 @@ function WebVitalsChart({ webVitalsData }) {
           display: true,
           text: 'Date/Time',
         },
-        // ticks: {
-        //   source: 'data', // Ensures only data points are used for ticks
-        // },
       },
       y: {
         title: {
