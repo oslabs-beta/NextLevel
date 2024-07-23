@@ -99,16 +99,21 @@ export default withBundleAnalyzer(nextConfig);`,
   // const username = url.searchParams.username;
   // console.log('Username:', username);
 
-  const [username, setUsername] = useState('');
+  // const [username, setUsername] = useState('');
 
-    useEffect(() => {
-      const currentUrl = window.location.href;
-      console.log('Current URL:', currentUrl);
-      const url = new URL(currentUrl);
-      const usernameFromUrl = url.searchParams.get('username');
-      console.log('Username:', usernameFromUrl);
-      setUsername(usernameFromUrl);
-    }, []);
+  //   useEffect(() => {
+  //     const currentUrl = window.location.href;
+  //     console.log('Current URL:', currentUrl);
+  //     const url = new URL(currentUrl);
+  //     const usernameFromUrl = url.searchParams.get('username');
+  //     console.log('Username:', usernameFromUrl);
+  //     setUsername(usernameFromUrl);
+  //   }, []);
+  const currentUrl = window.location.href;
+  console.log('Current URL:', currentUrl);
+  const url = new URL(currentUrl);
+  const username = url.searchParams.get('username');
+  console.log('Username:', username);
 
   return (
     <div className={styles.onboardingContainer}>
