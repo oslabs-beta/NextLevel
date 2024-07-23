@@ -104,8 +104,6 @@ export default withBundleAnalyzer(nextConfig);`,
         <Step
           key={index}
           className={styles.step}
-          titleClassName={styles.stepTitle}
-          descriptionClassName={styles.stepDescription}
           stepNumber={step.stepNumber}
           title={step.title}
           description={step.description}

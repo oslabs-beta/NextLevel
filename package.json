@@ -7,7 +7,9 @@
     "build": "next build",
     "start": "next start",
     "lint": "next lint",
-    "nextlevelbuild": "node ./node_modules/nextlevelpackage/cli.js"
+    "nextlevelbuild": "node ./node_modules/nextlevelpackage/cli.js",
+    "test": "jest",
+    "test:watch": "jest --watch"
   },
   "dependencies": {
     "@next/bundle-analyzer": "^14.2.5",
@@ -34,8 +36,12 @@
     "web-vitals": "^4.2.1"
   },
   "devDependencies": {
+    "@testing-library/jest-dom": "^6.4.7",
+    "@testing-library/react": "^16.0.0",
     "@types/node": "^20.14.10",
     "@types/react": "18.3.3",
+    "jest": "^29.7.0",
+    "jest-environment-jsdom": "^29.7.0",
     "typescript": "5.5.3"
   }
 }
