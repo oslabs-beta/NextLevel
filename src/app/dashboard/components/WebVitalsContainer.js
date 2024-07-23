@@ -19,7 +19,7 @@ import useWebVitalsData from '../hooks/useWebVitalsData';
 import WebVitalsFilter from './webvitalsfilter';
 import CLSChart from './CLSChart';
 import WebVitalRatings from './WebVitalRatings';
-import WebVitalsChart from './WebVitalsChart';
+import WebVitalsChart from './webvitalschart';
 
 // ChartJS.register(
 //   CategoryScale,
