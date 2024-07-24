@@ -49,7 +49,7 @@ NextLevel is a performance metrics dashboard tailored to Next.js applications th
 
 ## Getting Started
 
-1. To get started, visit nextlevel-dash.com and create an account. After account creation, you will be navigated to an onboardingp page which will direct you to complete the below steps.
+1. To get started, visit nextlevel-dash.com and create an account. After account creation, you will be navigated to an onboarding page which will direct you to complete the below steps.
 
 2. Install configure next.js bundle analyzer in your Next.js application
 
@@ -143,7 +143,7 @@ Metrics displayed on the dashboard include:
 
 By default, the overview data covers the last 24 hours. You can modify the time period using the date and time selector located in the top right corner of the dashboard.
 
-There are also gauges that track the averages of each metric over  a set period of time. From these averages there will also be a performance score displayed ranging from "poor" to "needs work" to "great". This will notify you if your application needs to make some changes to improve its performance. 
+There are also gauges that track the averages of each metric over a set period of time. From these averages there will also be a performance score displayed ranging from "poor" to "needs work" to "great." This will notify you if your application needs to make some changes to improve its performance. 
 
 ## Contribution Guidelines
 
@@ -160,15 +160,15 @@ We welcome your contributions to the NextLevel product!
 
 ### Looking Ahead
 
-Here’s a list of features being considered by our team:
+Here is a list of features being considered by our team:
 
 - Tracking individual page/component build time via the npm package
 - Allow users to track metrics for multiple codebases through their dashboard
 - Create organizations so multiple users can access an organization's dashboard
-- Enhanced security through change password and email functionality/profile page
-- A dark mode and light mode feature to reduce eye strain.
-- A completed forgot password and remember me functionality. /additional customizations via a settings page
-- Fix CLS gauge so that the marker is at the correct position.
+- Enhanced security through change password and email functionality
+- A dark mode and light mode feature to reduce eye strain
+- A completed forgot password and remember me functionality
+- Fix CLS gauge so that the marker is at the correct position
 
 ## Contributors
 
