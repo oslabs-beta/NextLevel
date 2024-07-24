@@ -163,7 +163,7 @@ We welcome your contributions to the NextLevel product!
 Here’s a list of features being considered by our team:
 
 - Tracking individual page/component build time via the npm package
-- Allow users to track metrics for multiple codebases with multiple dashboards.applications through their dashboard
+- Allow users to track metrics for multiple codebases through their dashboard
 - Create organizations so multiple users can access an organization's dashboard
 - Enhanced security through change password and email functionality/profile page
 - A dark mode and light mode feature to reduce eye strain.
