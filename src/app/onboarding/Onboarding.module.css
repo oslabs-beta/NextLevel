@@ -26,3 +26,14 @@
 .stepDescription {
   margin-top: 5px;
 }
+
+.description {
+  display: block;
+  margin-top: 1em;
+  margin-bottom: 1em;
+  margin-left: 0;
+  margin-right: 0;
+  font-size: 16px;
+  color: black;
+  font-weight: 400;
+}
