@@ -2,6 +2,7 @@
 
 import React, { useEffect, useState } from 'react';
 import CodeBox from './CodeBox';
+import styles from '../Onboarding.module.css';
 
 const Step = ({ stepNumber, title, description, code, language, api, username }) => {
   const [APIkey, setAPIkey] = useState('');
@@ -32,7 +33,7 @@ const Step = ({ stepNumber, title, description, code, language, api, username })
   return (
     <div>
       {stepNumber && <h2>Step {stepNumber}: {title}</h2>}
-      <p>{description}</p>
+      <p className={styles.description}>{description}</p>
       <CodeBox fileName={language} codeText={code} formattedCode={formattedCode} />
       {api === true && <CodeBox fileName="API Key" formattedCode={APIkey} />}
     </div>

@@ -5,6 +5,7 @@ import Step from './components/Step';
 import styles from './Onboarding.module.css';
 import NextButton from './components/NextButton';
 import withAuth from '../components/withAuth';
+import { useState, useEffect } from 'react';
 
 const onboardingSteps = [
   {
@@ -92,28 +93,20 @@ export default withBundleAnalyzer(nextConfig);`,
 ];
 
  function Onboarding () {
-  // console.log('Props onboarding page:', props);
-  // const currentUrl = window.location.href;
-  // console.log('Current URL:', currentUrl);
-  // const url = new URL(currentUrl);
-  // const username = url.searchParams.username;
-  // console.log('Username:', username);
+  const [username, setUsername] = useState('');
 
-  // const [username, setUsername] = useState('');
+  useEffect(() => {
+    const currentUrl = window.location.href;
+    console.log('Current URL:', currentUrl);
+    const url = new URL(currentUrl);
+    const usernameFromUrl = url.searchParams.get('username');
+    console.log('Username:', usernameFromUrl);
+    setUsername(usernameFromUrl);
+  }, []);
 
-  //   useEffect(() => {
-  //     const currentUrl = window.location.href;
-  //     console.log('Current URL:', currentUrl);
-  //     const url = new URL(currentUrl);
-  //     const usernameFromUrl = url.searchParams.get('username');
-  //     console.log('Username:', usernameFromUrl);
-  //     setUsername(usernameFromUrl);
-  //   }, []);
-  const currentUrl = window.location.href;
-  console.log('Current URL:', currentUrl);
-  const url = new URL(currentUrl);
-  const username = url.searchParams.get('username');
-  console.log('Username:', username);
+  if (!username) {
+    return null; 
+  }
 
   return (
     <div className={styles.onboardingContainer}>
