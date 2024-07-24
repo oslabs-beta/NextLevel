@@ -59,7 +59,7 @@ export default function Home() {
       </section>
 
       <section className="homegif">
-        <Image src='/NextLevelDashboardHomepage.gif' alt="NextLevel Demo" width={1200} height={800} className="gif"/>
+        <Image src='/UpdatedNextLevelGifHomepage.gif' alt="NextLevel Demo" width={1200} height={800} className="gif"/>
       </section>
       <section className='sec-2'>
         <h1 className="animate">STEP ONE</h1>

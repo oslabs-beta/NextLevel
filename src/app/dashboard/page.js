@@ -9,28 +9,20 @@ import withAuth from '../components/withAuth';
 import SideBar from './components/Sidebar';
 
 function Dashboard(props) {
-  const currentUrl = window.location.href;
-  console.log('Current URL:', currentUrl);
-  const url = new URL(currentUrl);
-  const username = url.searchParams.get('username');
-  console.log('Username:', username);
-  // const [username, setUsername] = useState('');
+  const [username, setUsername] = useState('');
 
-  // useEffect(() => {
-  //   const currentUrl = window.location.href;
-  //   console.log('Current URL:', currentUrl);
-  //   const url = new URL(currentUrl);
-  //   const usernameFromUrl = url.searchParams.get('username');
-  //   console.log('Username:', usernameFromUrl);
-  //   setUsername(usernameFromUrl);
-  // }, []);
-  // console.log('Props:', props);
-  // const currentUrl = window.location.href;
-  // console.log('Current URL:', currentUrl);
-  // const url = new URL(currentUrl);
-  // const username = url.searchParams.username;
-  // console.log('Username:', username);
+  useEffect(() => {
+    const currentUrl = window.location.href;
+    console.log('Current URL:', currentUrl);
+    const url = new URL(currentUrl);
+    const usernameFromUrl = url.searchParams.get('username');
+    console.log('Username:', usernameFromUrl);
+    setUsername(usernameFromUrl);
+  }, []);
 
+  if (!username) {
+    return null; 
+  }
   return (
     <div className={styles.dashboardContainer}>
       <SideBar username={username}/>
@@ -44,4 +36,5 @@ function Dashboard(props) {
 }
 
 export default withAuth(Dashboard);
+
 
