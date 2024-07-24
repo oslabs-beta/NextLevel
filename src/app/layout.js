@@ -21,14 +21,17 @@ export const metadata = {
 
 export default function RootLayout({ children }) {
   return (
-    <SessionWrapper>
       <html lang="en" >
-        <Script src="https://code.jscharting.com/latest/jscharting.js"></Script>
+        <head>
+          <Script src="https://code.jscharting.com/latest/jscharting.js"></Script>
+          <Script type="text/javascript" src="https://code.jscharting.com/latest/modules/types.js"></Script>
+        </head>
         <body className={ poppins.className }>
-          <TopNav />
-          {children}
+          <SessionWrapper>
+            <TopNav />
+            {children}
+          </SessionWrapper>
         </body>
       </html>
-    </SessionWrapper>
   );
 }
