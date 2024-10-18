@@ -2,43 +2,39 @@
 
 import React, { useEffect, useState } from 'react';
 import styles from './dashboard.module.css';
-import WebVitalsChart from './components/webvitalschart';
+import WebVitalsContainer from './components/WebVitalsContainer';
 import APIKey from './components/APIkey';
-import BuildTimeContainer from './components/buildtimecontainer';
+import BuildTimeContainer from './components/BuildTimeContainer';
 import withAuth from '../components/withAuth';
-import SideBar from './components/sidebar';
-import CLSContainer from './components/CLSContainer';
+import SideBar from './components/Sidebar';
 
 function Dashboard(props) {
-  console.log('Props:', props);
-  const username = props.searchParams.username;
-  console.log('Username:', username);
-  //hard coded dates for now
-  const startDate = '2024-07-18T14:35:50'; // July 18, 2024, at 14:35:50
-  const endDate = '2024-07-19T12:45:00'; // July 19, 2024, at 11:45:00
-  // const webVitalsData = useWebVitalsData();
+  const [username, setUsername] = useState('');
 
-  // useEffect(() => {
-  //   console.log('Dashboard component mounted');
-  //   console.log('Web Vitals Data:', webVitalsData);
+  useEffect(() => {
+    const currentUrl = window.location.href;
+    console.log('Current URL:', currentUrl);
+    const url = new URL(currentUrl);
+    const usernameFromUrl = url.searchParams.get('username');
+    console.log('Username:', usernameFromUrl);
+    setUsername(usernameFromUrl);
+  }, []);
 
-  //   return () => {
-  //     console.log('Dashboard component unmounted');
-  //   };
-  // }, [webVitalsData]);
-
+  if (!username) {
+    return null; 
+  }
   return (
     <div className={styles.dashboardContainer}>
       <SideBar username={username}/>
       <div className={styles.mainContent}>
         <APIKey username={username} />
-        <WebVitalsChart username={username}/>
+        <WebVitalsContainer username={username}/>
         <BuildTimeContainer username={username}/>
-        <CLSContainer username={username}/>
       </div>
     </div>
   );
 }
 
 export default withAuth(Dashboard);
+
 

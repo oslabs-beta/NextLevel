@@ -15,8 +15,8 @@ section {
   justify-content: center;
   align-items: center;
   flex-direction: column;
-  min-height: 100vh;
-  background: #131316;
+  min-height: 80vh;
+  background: #1B212C;
   color: #ffffff;
   box-sizing: border-box;
   font-family: 'Poppins', sans-serif;
@@ -31,7 +31,7 @@ h1 {
 
 p {
   font-size: 35px;
-  color: #0ef;
+  color: #489ae7;
   font-weight: 600;
 }
 
@@ -43,16 +43,20 @@ section .animate {
 
 section.show-animate .animate {
   opacity: 1;
-  filter: blur(0px)
+  filter: blur(0px);
 }
 
 .sec-1 .animate {
-  margin-top: -30px;
+  margin-top: 200px;
   opacity: 0;
 }
 
 .sec-1.show-animate .animate {
   opacity: 1;
+}
+
+.logoGif{
+  margin-top: -100px;
 }
 
 .sec-2 .animate {
@@ -72,23 +76,23 @@ section.show-animate .animate {
 }
 
 .sec-4 .animate {
-  transform: scale(0);
+  transform: translateY(300%);
 }
 
 .sec-4.show-animate .animate {
-  transform: scale(1);
+  transform: translateY(0);
 }
 
-.sec-5 .images img{
+.sec-5 .images img {
   max-width: 250px;
   margin: 10px;
   border-radius: 30px;
   transform: translateX(-1000%);
-  transition-delay: calc(.4s * var());
+  transition-delay: calc(.2s * var(--i));
   gap: 20px;
 }
 
-.sec-5.show-animate .images img{
+.sec-5.show-animate .images img {
   transform: translateX(0);
 }
 
@@ -100,3 +104,142 @@ section.show-animate .animate {
   flex-wrap: wrap;
 }
 
+.image-container {
+  position: relative;
+  display: inline-block;
+}
+
+.info-box {
+  visibility: hidden;
+  width: 500px; /* Allow the box to resize up to a maximum width */
+  background-color: #555;
+  color: #fff;
+  text-align: center;
+  border-radius: 6px;
+  padding: 8px 12px;
+  position: absolute;
+  z-index: 1;
+  bottom: 90%; 
+  left: 50%;
+  transform: translateX(-50%);
+  opacity: 0;
+  transition: opacity 0.3s;
+  word-wrap: break-word; /* Ensure long words are wrapped */
+  white-space: pre-wrap; /* Preserve whitespace */
+  box-sizing: border-box;
+}
+
+.info-box::after {
+  content: '';
+  position: absolute;
+  top: 100%;
+  left: 50%;
+  margin-left: -5px;
+  border-width: 5px;
+  border-style: solid;
+  border-color: #555 transparent transparent transparent;
+}
+
+.image-container:hover .info-box {
+  visibility: visible;
+  opacity: 1;
+}
+
+.sec-6 .animate {
+  display: flex;
+  gap: 10px;
+  transform: opacity(0);
+  text-decoration: none;
+  margin-top: 400px;
+}
+
+.sec-6.show-animate .animate {
+  transform: opacity(1);
+}
+
+.homepage-buttons{
+  font-size: 15px;
+  color: #407cff;
+  text-decoration: none;
+}
+
+.no-decoration {
+  text-decoration: underline;
+  color: inherit;
+}
+
+.no-decoration:hover {
+  color: inherit;
+  text-decoration: none;
+}
+
+#trackedMetricsHeading {
+  margin-bottom: 20px;
+}
+
+.meetTheTeam {
+  margin-top: 400px;
+}
+.team {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  gap: 30px;
+  margin-top: 20px;
+  margin-bottom: 50px;
+}
+
+.team-member {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 10px;
+}
+
+.name {
+  font-size: 30px;
+  margin: 0;
+  margin-top: 10px;
+  padding: 0;
+}
+
+.role {
+  font-family: 'Poppins', sans-serif;
+  font-size: 20px;
+  margin: 0;
+  padding: 0;
+}
+
+.links {
+  margin-top: 10px;
+  display: flex;
+  gap: 15px;
+  margin-bottom: 80px;
+}
+
+.githubLogo{
+  font-size: 35px;
+  color: white;
+}
+
+.linkedinLogo{
+  font-size: 35px;
+  color: white;
+}
+
+.sec-7{
+display: flex;
+margin-top: -100px;
+padding: 300px;
+margin-bottom: -100px;
+}
+
+.gif {
+  border-radius: 20px;
+}
+
+.homegif{
+  margin-bottom: 200px;
+}

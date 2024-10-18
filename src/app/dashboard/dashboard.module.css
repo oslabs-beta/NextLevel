@@ -134,6 +134,7 @@
   border-radius: 4px;
   cursor: pointer;
   font-size: 14px;
+  font-family: 'Poppins', sans-serif;
 }
 
 .copyButton:hover {
@@ -176,6 +177,13 @@
 .chartTitle {
   margin: 0 0 5px 0; /* Add bottom margin to space title from the chart */
   flex-shrink: 0; /* Prevent title from shrinking */
+}
+
+.webVitalsChartContainer {
+  display: flex;
+  align-items: center;
+  align-self: center;
+  justify-content: center;
 
 }
 
@@ -185,7 +193,7 @@
   align-self: center;
   justify-content: center;
   width: 80%;
-  min-width: 300px; /* Minimum width to prevent them from getting too small */
+  min-width: 300px;
   box-sizing: border-box;
 }
 
@@ -208,7 +216,7 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  height: 100%;
+  height: 85%;
   width: 100%;
   min-width: 300px; /* Minimum width to prevent them from getting too small */
   box-sizing: border-box;
@@ -281,25 +289,7 @@
   border-radius: 0px 0px 10px 10px ;
 }
 
-/* .downloadButton {
-  margin-top: 10px;
-  padding: 10px 20px;
-  background-color: #007bff;
-  color: white;
-  border: none;
-  border-radius: 5px;
-  cursor: pointer;
-  width: auto;
-  display: flex;
-  justify-content: flex-start;
-  margin-left: auto;
-  margin-right: auto;
-} */
-
 .downloadButton {
-  position: absolute; /* Added for absolute positioning within the container */
-  bottom: 10px; /* Positioned 10px from the bottom */
-  left: 20px; /* Positioned 20px from the left */
   padding: 5px 10px;
   margin: 3px;
   margin-top: 25px;
@@ -308,9 +298,10 @@
   border: 1px solid #7e7e7e; /* Set border color to grey */
   border-radius: 5px;
   cursor: pointer;
-  width: auto;
+  width: 82px;
   display: flex;
   justify-content: flex-start;
+  font-family: 'Poppins', sans-serif;
 }
 
 .downloadButton:hover {
@@ -341,9 +332,53 @@
   border: none;
   border-radius: 5px;
   cursor: pointer;
+  font-family: 'Poppins', sans-serif;
 }
 
 .filterDateSubmit:hover {
   background-color: #4b8acf;
   transform: translateY(2px);
+}
+
+.clsAndRatings {
+  display: flex;
+  flex-direction: row;
+  width: 100%;
+}
+
+.clsContainer {
+  display: flex;
+  flex-direction: column;
+  flex:1;
+}
+
+.ratingsContainerDiv {
+  display: flex;
+  flex-direction: column;
+  width: max-content;
+}
+
+.ratingsContainer {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  width: 350px;
+  margin-left: 10px;
+}
+
+.ratingGauge {
+  width: 175px;
+  height: 150px;
+}
+
+.ratingDiv {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.ratingHeading {
+  align-self: center;
+  margin: 0;
+  padding: 0;
+  font-size: 15px;
 }

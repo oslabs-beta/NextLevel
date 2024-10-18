@@ -5,6 +5,7 @@ import Step from './components/Step';
 import styles from './Onboarding.module.css';
 import NextButton from './components/NextButton';
 import withAuth from '../components/withAuth';
+import { useState, useEffect } from 'react';
 
 const onboardingSteps = [
   {
@@ -91,10 +92,22 @@ export default withBundleAnalyzer(nextConfig);`,
   },
 ];
 
- function Onboarding (props) {
-  console.log('Props onboarding page:', props);
-  const usernameData = props.searchParams.username;
-  console.log('Username:', usernameData);
+ function Onboarding () {
+  const [username, setUsername] = useState('');
+
+  useEffect(() => {
+    const currentUrl = window.location.href;
+    console.log('Current URL:', currentUrl);
+    const url = new URL(currentUrl);
+    const usernameFromUrl = url.searchParams.get('username');
+    console.log('Username:', usernameFromUrl);
+    setUsername(usernameFromUrl);
+  }, []);
+
+  if (!username) {
+    return null; 
+  }
+
   return (
     <div className={styles.onboardingContainer}>
       <h1 className={styles.onboardingTitle}>
@@ -104,18 +117,16 @@ export default withBundleAnalyzer(nextConfig);`,
         <Step
           key={index}
           className={styles.step}
-          titleClassName={styles.stepTitle}
-          descriptionClassName={styles.stepDescription}
           stepNumber={step.stepNumber}
           title={step.title}
           description={step.description}
           code={step.code}
           language={step.language}
           api={step.api}
-          username={usernameData}
+          username={username}
         />
       ))}
-      <NextButton username={usernameData}/>
+      <NextButton username={username}/>
     </div>
   );
 };

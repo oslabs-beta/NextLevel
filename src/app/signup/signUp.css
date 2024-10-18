@@ -148,6 +148,7 @@ input:-webkit-autofill ~ .icon {
 
 .message {
   text-align: center;
+  font-size: 18px;
   margin-top: 10px;
   width: 100%;
   margin-bottom: -20px;

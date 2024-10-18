@@ -3,6 +3,7 @@ import React from "react";
 import "./globals.css";
 import TopNav from "./components/topnav";
 import NextWebVitals from "nextlevelpackage";
+import Script from 'next/script';
 
 import SessionWrapper from './components/SessionWrapper'
 
@@ -20,13 +21,17 @@ export const metadata = {
 
 export default function RootLayout({ children }) {
   return (
-    <SessionWrapper>
       <html lang="en" >
+        <head>
+          <Script src="https://code.jscharting.com/latest/jscharting.js"></Script>
+          <Script type="text/javascript" src="https://code.jscharting.com/latest/modules/types.js"></Script>
+        </head>
         <body className={ poppins.className }>
-          <TopNav />
-          {children}
+          <SessionWrapper>
+            <TopNav />
+            {children}
+          </SessionWrapper>
         </body>
       </html>
-    </SessionWrapper>
   );
 }

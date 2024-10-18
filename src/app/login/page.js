@@ -10,30 +10,42 @@ import Link from 'next/link';
 import { signIn, useSession } from 'next-auth/react';
 import Spinner from '../components/Spinner.js';
 import Image from 'next/image';
-import '../globals.css'; // Import the global styles
 
-export default function Login() {
+export default function Login({ initialLoading = true }) {  //added prop for testing purposes
   const { data: session, status } = useSession();
   const [username, setUsername] = useState('');
   const [password, setPassword] = useState('');
   const [error, setError] = useState('');
   const [success, setSuccess] = useState('');
-  const [loading, setLoading] = useState(true); // Initially set to true
+  const [loading, setLoading] = useState(initialLoading); // Initially set to true via prop
 
   useEffect(() => {
-    // Add loading class to body
-    document.body.classList.add('loading');
+    document.body.style.fontFamily = "'Poppins', sans-serif";
+    document.body.style.display = 'flex';
+    document.body.style.justifyContent = 'center';
+    document.body.style.alignItems = 'center';
+    document.body.style.minHeight = '100vh';
+    document.body.style.background =
+      'url("https://getwallpapers.com/wallpaper/full/2/8/f/537844.jpg") no-repeat';
+    document.body.style.backgroundSize = 'cover';
+    document.body.style.backgroundPosition = 'center';
+    document.body.style.color = '#fff';
 
     // Simulate loading time (for demonstration purposes)
     setTimeout(() => {
       setLoading(false); // Hide preloader after the component has mounted
-      document.body.classList.remove('loading');
-      document.body.classList.add('loaded');
-    }, 2000); // Adjust the timeout as needed
+    }, 4000); // Adjust the timeout as needed
 
     return () => {
-      document.body.classList.remove('loading');
-      document.body.classList.remove('loaded');
+      document.body.style.fontFamily = '';
+      document.body.style.display = '';
+      document.body.style.justifyContent = '';
+      document.body.style.alignItems = '';
+      document.body.style.minHeight = '';
+      document.body.style.background = '';
+      document.body.style.backgroundSize = '';
+      document.body.style.backgroundPosition = '';
+      document.body.style.color = '';
     };
   }, []);
 
@@ -48,7 +60,7 @@ export default function Login() {
   const handleSubmit = async (e) => {
     e.preventDefault();
     setLoading(true); // Show preloader
-    console.log("Submitting login form with username:", username);
+    // console.log("Submitting login form with username:", username);
 
     const result = await signIn('credentials', {
       redirect: false,
@@ -58,7 +70,7 @@ export default function Login() {
 
     setLoading(false); // Hide preloader
 
-    if (result.error) {
+    if (result?.error) {
       console.log('Login error:', result.error);
       setError(result.error);
     } else {
@@ -73,9 +85,9 @@ export default function Login() {
   const handleOAuthSignIn = async (provider) => {
     setLoading(true); // Show preloader
     const result = await signIn(provider, { redirect: false });
-    console.log('RESULT', result);
+    // console.log('RESULT', result);
 
-    if (!result.error) {
+    if (!result?.error) {
       const interval = setInterval(() => {
         if (status === 'authenticated' && session) {
           clearInterval(interval);
@@ -144,6 +156,7 @@ export default function Login() {
           <button
             type="button"
             className="oauth-button"
+            aria-label="Sign in with Google"
             onClick={() => handleOAuthSignIn('google')}
           >
             <AiOutlineGoogle className="google-icon" />
@@ -151,6 +164,7 @@ export default function Login() {
           <button
             type="button"
             className="oauth-button"
+            aria-label="Sign in with GitHub"
             onClick={() => handleOAuthSignIn('github')}
           >
             <IoLogoGithub className="github-icon" />
@@ -175,6 +189,11 @@ export default function Login() {
     </div>
   );
 }
+
+
+
+
+
 
 
 

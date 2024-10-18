@@ -19,10 +19,6 @@ export default function NextWebVitals() {
     const body = JSON.stringify(data);
     const url = 'https://www.nextlevel-dash.com/dashboard/api/webvitals';
 
-    
-    // if(navigator.sendBeacon) {
-    //   navigator.sendBeacon(url, body);
-    // } else {
       fetch(url, {
         method: 'POST',
         headers: {
@@ -39,6 +35,5 @@ export default function NextWebVitals() {
       }).catch((error) => {
         console.error('index.js .catch error Error sending web vitals data:', error);
       })
-    // }
   })
 }

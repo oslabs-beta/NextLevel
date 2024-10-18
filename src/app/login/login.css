@@ -1,11 +1,17 @@
 @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@700&display=swap');
 
-:global .your-page-class * {
+:global .login * {
   margin: 0;
   padding: 0;
+  font-family: 'Poppins', sans-serif;
+  height: 100%;
+  background-color: hsl(240, 7%, 8%);
   box-sizing: border-box;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
-body-login {
+.body-login {
   font-family: 'Poppins', sans-serif;
   display: flex;
   justify-content: center;

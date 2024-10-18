@@ -4,15 +4,34 @@ import React, { useEffect } from 'react';
 import './home.css';
 import Link from 'next/link';
 import Image from 'next/image';
+import { IoLogoGithub } from "react-icons/io";
+import { FaLinkedin } from "react-icons/fa6";
 
+import { datadogRum } from '@datadog/browser-rum';
+
+datadogRum.init({
+    applicationId: '86dcce0f-eb1b-4ea1-9000-8623fecbb6cd',
+    clientToken: 'pubb355e37074c0e1ed09a909b54bd4f20f',
+    // `site` refers to the Datadog site parameter of your organization
+    // see https://docs.datadoghq.com/getting_started/site/
+    site: 'us5.datadoghq.com',
+    service: 'fred-project',
+    env: 'demo',
+    // Specify a version number to identify the deployed version of your application in Datadog
+    // version: '1.0.0',
+    sessionSampleRate: 100,
+    sessionReplaySampleRate: 20,
+    trackUserInteractions: true,
+    trackResources: true,
+    trackLongTasks: true,
+    defaultPrivacyLevel: 'mask-user-input',
+});
 
 export default function Home() {
-
   useEffect(() => {
     document.querySelector('.sec-1').classList.add('show-animate');
 
     const sections = document.querySelectorAll('section');
-    
 
     const handleScroll = () => {
       const top = window.scrollY;
@@ -22,10 +41,7 @@ export default function Home() {
 
         if (top >= offset && top < offset + height) {
           sec.classList.add('show-animate');
-        } 
-        // else {
-        //   sec.classList.remove('show-animate'); // repeats animation
-        // }
+        }
       });
     };
 
@@ -35,75 +51,131 @@ export default function Home() {
     };
   }, []);
 
+  const metricsInfo = {
+    ttfb: "Time to First Byte measures the time it takes for a user's browser to receive the first byte of page content.",
+    lcp: "Largest Contentful Paint marks the time at which the largest content element in the viewport is fully rendered.",
+    fcp: "First Contentful Paint measures the time from when the page starts loading to when any part of the page's content is rendered.",
+    fid: "First Input Delay measures the time from when a user first interacts with your site to the time when the browser is able to respond to that interaction.",
+    inp: "Interaction to Next Paint evaluates responsiveness to user interactions by measuring the time taken from user input to the next frame.",
+    cls: "Cumulative Layout Shift measures the movement of visible elements within the viewport, important for visual stability.",
+    buildtime: "Build Time is the duration taken to compile and bundle your project's source code.",
+    bundlesize: "Bundle Size refers to the total size of all the files that are sent to the user's browser."
+  };
+
   return (
     <main>
       <div className='navbar-gap'></div>
       <section className='sec-1'>
         <h1 className="animate">Take your application to the</h1>
-        <video width="1200" preload="none" autoPlay muted >
-          <source src="/NEXTLEVEL.mp4" type="video/mp4" />
-        </video>
-        {/* <Image className = "animate" src="/TransparentLogo.png" alt ="transparentLogo" width={500} height={500}/> */}
+        <Image src='/NextLevelGifHomepage.gif' alt="NextLevel Logo" width={1200} height={550} className="logoGif"/>
       </section>
 
+      <section className='sec-7'>
+        <h1 className="animate">What is NextLevel?</h1>
+        <p className="animate">
+          NextLevel is a performance metrics dashboard tailored to Next.js applications that visualizes critical data, such as build time and key web vitals, enabling developers to pinpoint inefficiencies and improve development productivity and end-user experience.
+        </p>
+      </section>
+
+      <section className="homegif">
+        <Image src='/UpdatedNextLevelGifHomepage.gif' alt="NextLevel Demo" width={1000} height={600} className="gif"/>
+      </section>
       <section className='sec-2'>
-        <h1 className="animate">THIS IS SECTION 2</h1>
-        <p className="animate">Section 2 P1</p>
+        <h1 className="animate">STEP ONE</h1>
+        <Link href="https://www.npmjs.com/package/nextlevelpackage?activeTab=code" target="_blank" rel="noopener noreferrer" className="no-decoration">
+          <p className="animate">Download our npm package</p>
+        </Link>
       </section>
 
       <section className='sec-3'>
-        <h1 className="animate">THIS IS SECTION 3</h1>
-        <p className="animate">Section 3 P1</p>
+        <h1 className="animate">STEP TWO</h1>
+        <p className="animate">Connect your Next.js application</p>
       </section>
 
       <section className='sec-4'>
-        <h1 className="animate">THIS IS SECTION 4</h1>
-        <p className="animate">Section 4 P1</p>
+        <h1 className="animate">STEP THREE</h1>
+        <p className="animate">Collect and log your data</p>
       </section>
 
       <section className='sec-5'>
-        <h1>Tracked Metrics</h1>
+        <h1 className = "animate" id="trackedMetricsHeading">Tracked Metrics Include :</h1>
         <div className="images">
-          <Image src="/METRICS/ttfb.svg" alt="TTFB" className="animate" style ={{ "--i": 0 }} width={170} height={238}/>
-          <Image src="/METRICS/lcp.svg" alt="LCP" className="animate" style ={{ "--i": 1 }} width={170} height={238}/>
-          <Image src="/METRICS/fcp.svg" alt="FCP" className="animate" style ={{ "--i": 2 }} width={170} height={238}/>
-          <Image src="/METRICS/fid.svg" alt="FID" className="animate" style ={{ "--i": 3 }} width={170} height={238}/>
-          <Image src='/METRICS/inp.svg' alt="INP" className="animate" style ={{ "--i": 4 }} width={170} height={238}/>
-          <Image src='/METRICS/cls.svg' alt="CLS" className="animate" style ={{ "--i": 5 }} width={170} height={238}/>
+          {Object.keys(metricsInfo).slice(0, 4).map((metric, index) => (
+            <div className="image-container" key={metric}>
+              <Image src={`/METRICS/${metric}.svg`} alt={metric.toUpperCase()} className="animate" style={{ "--i": index }} width={170} height={238} />
+              <div className="info-box">{metricsInfo[metric]}</div>
+            </div>
+          ))}
         </div>
         <div className="images">
-          <Image src="/METRICS/buildtime.svg" alt="Build Time" className="animate" style ={{ "--i": 0 }} width={170} height={238}/>
-          <Image src="/METRICS/bundlesize.svg" alt="Bundle Size" className="animate" style ={{ "--i": 1 }} width={170} height={238}/>
+          {Object.keys(metricsInfo).slice(4).map((metric, index) => (
+            <div className="image-container" key={metric}>
+              <Image src={`/METRICS/${metric}.svg`} alt={metric.toUpperCase()} className="animate" style={{ "--i": index }} width={170} height={238} />
+              <div className="info-box">{metricsInfo[metric]}</div>
+            </div>
+          ))}
         </div>
       </section>
+
+      <section className='sec-6'>
+        <h1 className="meetTheTeam" >MEET THE TEAM </h1>
+        <p> Feel free to contact us if you have any questions!</p>
+        <div className="team">
+          <div className="team-member">
+            <Image src='/HEADSHOTS/kim.png' alt="Kim Cuomo Headshot" width={200} height={200} className="headshot"/>
+            <h2 className="name">Kim Cuomo</h2>
+            <p className="role">Software Engineer</p>
+            <div className="links">
+              <Link href="https://github.com/kimcuomo" target="_blank" rel="noopener noreferrer" className="githubLink">
+                <IoLogoGithub className="githubLogo"/>
+              </Link>
+              <Link href="https://www.linkedin.com/in/kimcuomo/" target="_blank" rel="noopener noreferrer" className="linkedinLink">
+                <FaLinkedin className="linkedinLogo"/>
+              </Link>
+            </div>
+          </div>
+          <div className="team-member">
+            <Image src='/HEADSHOTS/nelly.png' alt="Nelly Segimoto Headshot" width={200} height={200} className="headshot"/>
+            <h2 className="name">Nelly Segimoto</h2>
+            <p className="role">Software Engineer</p>
+            <div className="links">
+              <Link href="https://github.com/nellysegi" target="_blank" rel="noopener noreferrer" className="githubLink">
+                <IoLogoGithub className="githubLogo"/>
+              </Link>
+              <Link href="https://www.linkedin.com/in/nellysegimoto/" target="_blank" rel="noopener noreferrer" className="linkedinLink">
+                <FaLinkedin className="linkedinLogo"/>
+              </Link>
+            </div>
+          </div>
+          <div className="team-member">
+            <Image src='/HEADSHOTS/ian.png' alt="Ian Mann Headshot" width={200} height={200} className="headshot"/>
+            <h2 className="name">Ian Mann</h2>
+            <p className="role">Software Engineer</p>
+            <div className="links">
+              <Link href="https://github.com/ianmannn" target="_blank" rel="noopener noreferrer" className="githubLink">
+                <IoLogoGithub className="githubLogo"/>
+              </Link>
+              <Link href="https://www.linkedin.com/in/iancmann99/" target="_blank" rel="noopener noreferrer" className="linkedinLink">
+                <FaLinkedin className="linkedinLogo"/>
+              </Link>
+            </div>
+          </div>
+          <div className="team-member">
+            <Image src='/HEADSHOTS/fred.png' alt="Frederico Aires Headshot" width={200} height={200} className="headshot"/>
+            <h2 className="name">Frederico Aires</h2>
+            <p className="role">Software Engineer</p>
+            <div className="links">
+              <Link href="https://github.com/FredAires" target="_blank" rel="noopener noreferrer" className="githubLink">
+                <IoLogoGithub className="githubLogo"/>
+              </Link>
+              <Link href="https://www.linkedin.com/in/frederico-neto-a3722b221/" target="_blank" rel="noopener noreferrer" className="linkedinLink">
+                <FaLinkedin className="linkedinLogo"/>
+              </Link>
+            </div>
+          </div>
+        </div>
+      </section>
+
     </main>
   );
 }
-
-
-{/* // 1st Section:
-// LOGO + Login or sign up buttons
-// Animation: 
-// logo -> fade in after gif
-// buttons -> fly up
-
-// 2nd Section:
-// What is next.js?
-//
-
-//3rd Section */}
-{/* <section className='hidden-fly-up'>
-  <div className="buttonsDiv"> 
-    <div className='homepageButtons'>
-      <Link className='homepage-link' href="/login">
-        <div className="login-button">Login</div> 
-      </Link>
-    </div>
-    <div className='or'> or </div>
-    <div className='homepageButtons'>
-      <Link className='homepage-link' href="/signup">
-        <div className="signup-button">Get Started</div>
-      </Link>
-    </div>
-  </div>
-</section> */}

@@ -32,7 +32,7 @@ export async function GET(request) {
 
     return NextResponse.json(metricData, { status: 200 });
   } catch (error) {
-    console.error(error);
+    // console.error(error);
     return NextResponse.json({ error: error.message }, { status: 500 });
   }
 }
@@ -42,15 +42,15 @@ export async function POST(request) {
   await dbConnect();
   try {
     const { metricType, metricValue, apiKey } = await request.json();
-    console.log('API key:', apiKey);
+    // console.log('API key:', apiKey);
 
     if (!metricType || !metricValue || !apiKey) {
       return NextResponse.json({ message: 'Missing infromation in the web vitals post' }, { status: 400 });
     }
 
-    console.log('going into try web vitals post')
+    // console.log('going into try web vitals post')
     const user = await User.findOne({ APIkey: apiKey });
-    console.log('User:', user);
+    // console.log('User:', user);
     
     if (!user) { 
       return NextResponse.json({ message: 'API key was not found' }, { status: 409 });
@@ -67,7 +67,7 @@ export async function POST(request) {
 
     return NextResponse.json({ message: 'Web vitals updated successfully'}, { status: 201 });
   } catch (error) {
-    console.error(error);
+    // console.error(error);
     return NextResponse.json({ message: `Internal server error in web vitals post request ${error}` }, { status: 500 });
   }
 }

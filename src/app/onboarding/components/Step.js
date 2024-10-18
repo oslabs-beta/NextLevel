@@ -2,17 +2,17 @@
 
 import React, { useEffect, useState } from 'react';
 import CodeBox from './CodeBox';
+import styles from '../Onboarding.module.css';
 
 const Step = ({ stepNumber, title, description, code, language, api, username }) => {
   const [APIkey, setAPIkey] = useState('');
-  // {"APIkey":"0nHYsAj9s6Ai2j31oSLut"}
   
   useEffect(() => {
     if(api === true) {
-      fetch(`http://localhost:3000/onboarding/api?username=${username}`)
+      fetch(`https://www.nextlevel-dash.com/onboarding/api?username=${username}`)
       .then((res) => {
         if (res.ok) {
-          console.log('res:', res);
+          // console.log('res:', res);
           return res.json();
         }
       })
@@ -33,7 +33,7 @@ const Step = ({ stepNumber, title, description, code, language, api, username })
   return (
     <div>
       {stepNumber && <h2>Step {stepNumber}: {title}</h2>}
-      <p>{description}</p>
+      <p className={styles.description}>{description}</p>
       <CodeBox fileName={language} codeText={code} formattedCode={formattedCode} />
       {api === true && <CodeBox fileName="API Key" formattedCode={APIkey} />}
     </div>
