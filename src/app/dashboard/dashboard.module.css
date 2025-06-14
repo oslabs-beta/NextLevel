@@ -1,6 +1,14 @@
+html, body {
+  height: auto;
+  min-height: 100vh;
+  overflow-y: auto;
+}
+
 .dashboardContainer {
+  height: auto;
+  min-height: 100vh;
+  overflow-y: auto;
   display: flex;
-  height: 100vh;
   background-color: #e7e7e7;
 }
 
@@ -104,6 +112,11 @@
 
 /* Chart Container Styles */
 .chartContainer {
+  max-width: 1200px;
+  min-width: 900px;
+  width: 98%;
+  margin: 0 auto 20px auto;
+  overflow-x: auto;
   position: relative;
   background-color: #ffffff;
   border: 1px solid #ddd;
@@ -113,25 +126,21 @@
   display: flex;
   flex-direction: column;
   gap: 20px;
-  margin: 10px;
-  justify-content: flex-start;
-  align-items: stretch; 
-  width: 98%;
-  height: auto;
-  box-sizing: border-box;
 }
 
 .chartHeader {
   display: flex;
-  justify-content: space-between;
   align-items: center;
-  padding: 0 0 10px 0;
+  justify-content: space-between;
+  width: 100%;
+  box-sizing: border-box;
 }
 
 .filterContainer {
   display: flex;
   align-items: center;
-  gap: 15px;
+  gap: 8px;
+  flex-wrap: wrap;
 }
 
 .dateInput {
@@ -172,15 +181,18 @@
 /* Web Vitals Section */
 .webVitalsSection {
   width: 100%;
-  margin-bottom: 30px;
+  min-height: 400px;
+  margin-bottom: 16px;
 }
 
 .webVitalsChartContainer {
+  width: 100%;
+  min-height: 250px;
+  max-height: 500px;
+  height: 40vw;
   display: flex;
   flex-direction: column;
-  align-items: flex-start;
-  width: 100%;
-  height: 400px;
+  align-items: center;
 }
 
 .webVitalsChart {
@@ -196,11 +208,15 @@
   flex-direction: column;
   align-items: flex-start;
   width: 100%;
+  max-width: 600px;
+  margin: 0 auto;
   height: fit-content;
 }
 
 .clsChartWrapper {
   width: 100%;
+  max-width: 600px;
+  margin: 0 auto;
   height: 300px;
   background: #f8f9fa;
   padding: 15px;
@@ -209,26 +225,24 @@
 
 .buildTimeChart {
   width: 100%;
-  height: 250px;
+  height: 350px;
   background: #f8f9fa;
   padding: 15px;
   border-radius: 8px;
 }
 
-.buildTimeDiv {
-  flex: 1;
+.buildTimeDiv,
+.bundleLogContainer {
+  flex: 1 1 0;
   min-width: 300px;
-  max-width: 500px;
-  padding: 20px;
-  border-radius: 8px;
-  height: fit-content;
-  margin: 0 auto;
+  max-width: 600px;
+  min-height: 400px;
 }
 
 /* CLS Section */
 .clsSection {
   width: 70%;
-  margin: 0 auto;
+  margin: 0 auto 32px auto;
 }
 
 .ratingsSection {
@@ -353,9 +367,10 @@
 
 .buildCharts {
   display: flex;
-  gap: 20px;
+  gap: 32px;
   width: 100%;
   align-items: flex-start;
+  justify-content: center;
 }
 
 .apiKeyContainer {
@@ -364,12 +379,14 @@
   border-radius: 8px;
   border: 1px solid #ddd;
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-  margin: 20px 10px 10px 10px;
+  margin: 20px auto 10px auto;
   width: 98%;
   display: flex;
   align-items: center;
   gap: 20px;
   justify-content: space-between;
+  min-width: 350px;
+  max-width: 900px;
 }
 
 .apiKeyTitle {
@@ -390,13 +407,6 @@
   font-size: 0.95rem;
   flex: 1;
   max-width: 600px;
-}
-
-.bundleLogContainer {
-  min-width: 300px;
-  max-width: 500px;
-  height: fit-content;
-  margin-left: 20px;
 }
 
 .bundleLogTitle {
@@ -540,4 +550,42 @@
 .statusText {
   font-size: 0.9rem;
   font-weight: 500;
+}
+
+.filterRight {
+  margin-left: auto;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.chartContainer::-webkit-scrollbar {
+  height: 8px;
+}
+.chartContainer::-webkit-scrollbar-thumb {
+  background: #d1d5db;
+  border-radius: 4px;
+}
+.chartContainer::after {
+  content: '→';
+  position: absolute;
+  right: 8px;
+  top: 50%;
+  transform: translateY(-50%);
+  font-size: 1.2rem;
+  color: #b0b0b0;
+  pointer-events: none;
+  opacity: 0.7;
+  display: none;
+}
+.chartContainer[style*='overflow-x: auto']::after {
+  display: block;
+}
+
+.centeredButton {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  margin-top: 4px;
+  margin-bottom: 0;
 }

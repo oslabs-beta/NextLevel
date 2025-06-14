@@ -129,9 +129,11 @@ function WebVitalsChart({ webVitalsData }) {
       <div className={styles.webVitalsChart}>
         <Line data={chartData} options={options} ref={chartRef} />
       </div>
-      <button onClick={downloadChart} className={styles.downloadButton}>
-        Download
-      </button>
+      <div className={styles.centeredButton}>
+        <button onClick={downloadChart} className={styles.downloadButton}>
+          Download
+        </button>
+      </div>
     </div>
   );
 }

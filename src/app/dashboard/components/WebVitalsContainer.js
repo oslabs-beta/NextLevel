@@ -62,7 +62,9 @@ function WebVitalsContainer({ username}) {
     <div className={styles.chartContainer}>
       <div className={styles.chartHeader}>
         <h2 className={styles.chartTitle}>Web Vitals</h2>
-        <WebVitalsFilter onSubmit={onSubmit} />
+        <div className={styles.filterRight}>
+          <WebVitalsFilter onSubmit={onSubmit} />
+        </div>
       </div>
       
       {/* Web Vitals Chart */}
