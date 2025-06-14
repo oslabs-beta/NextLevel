@@ -11,8 +11,8 @@ function APIKey({ username }) {
     console.log('Fetching API key for username:', username);
 
     const apiUrl = process.env.NODE_ENV === 'development'
-    ? `http://localhost:3000/onboarding/api?username=${username}`  // Local URL in dev mode
-    : `https://www.nextlevel-dash.com/onboarding/api?username=${username}`;  // Production URL
+    ? `http://localhost:3000/onboarding/api?username=${decodeURIComponent(username)}`  // Local URL in dev mode
+    : `https://www.nextlevel-dash.com/onboarding/api?username=${decodeURIComponent(username)}`;  // Production URL
 
     fetch(apiUrl)
     .then((res) => {
@@ -23,7 +23,12 @@ function APIKey({ username }) {
     })
     .then((data) => {
       console.log('API key response:', data);
-      setApi(data.APIkey);
+      if (data && data.APIkey) {
+        setApi(data.APIkey);
+      } else {
+        setApi('');
+        console.error('APIkey not found in response:', data);
+      }
     })
     .catch((error) => {
       console.error('Error fetching API key:', error);
@@ -44,7 +49,7 @@ function APIKey({ username }) {
     <div className={styles.apiKeyContainer}>
       <h3 className={styles.apiKeyTitle}>API Key</h3>
       <div className={styles.apiKeyDisplay}>
-        {api}
+        {api ? api : 'No API key found. Please check your account.'}
       </div>
       <button onClick={copyToClipboard} className={styles.filterButton}>
         {copySuccess || 'Copy'}

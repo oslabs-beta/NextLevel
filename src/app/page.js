@@ -48,7 +48,14 @@ export default function Home() {
       <div className='navbar-gap'></div>
       <section className='sec-1'>
         <h1 className="animate">Take your application to the</h1>
-        <Image src='/NextLevelGifHomepage.gif' alt="NextLevel Logo" width={1200} height={550} className="logoGif"/>
+        <Image
+          src='/NextLevelGifHomepage.gif'
+          alt="NextLevel Logo"
+          width={1200}
+          height={550}
+          className="logoGif"
+          unoptimized
+        />
       </section>
 
       <section className='sec-7'>
@@ -59,7 +66,14 @@ export default function Home() {
       </section>
 
       <section className="homegif">
-        <Image src='/UpdatedNextLevelGifHomepage.gif' alt="NextLevel Demo" width={1000} height={600} className="gif"/>
+        <Image
+          src='/UpdatedNextLevelGifHomepage.gif'
+          alt="NextLevel Demo"
+          width={1000}
+          height={600}
+          className="gif"
+          unoptimized
+        />
       </section>
       <section className='sec-2'>
         <h1 className="animate">STEP ONE</h1>

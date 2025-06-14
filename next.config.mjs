@@ -4,10 +4,11 @@ const withBundleAnalyzer = pkg({
 });
 
 /** @type {import('next').NextConfig} */
-
 const nextConfig = {
   experimental: {
-    instrumentationHook: true,
+    turbo: {
+      enabled: true
+    }
   },
   swcMinify: true,
   compiler: {

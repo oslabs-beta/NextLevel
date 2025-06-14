@@ -9,11 +9,13 @@ body {
   font-family: 'Poppins', sans-serif;
   display: flex;
   justify-content: center;
-  align-items: center;
+  align-items: flex-start;
   min-height: 100vh;
   background: no-repeat;
   background-size: cover;
   background-position: center;
+  padding-top: 150px;
+  padding-bottom: 75px;
 }
 
 .wrapper {
@@ -21,11 +23,12 @@ body {
   background: transparent;
   border: 2px solid rgba(255, 255, 255, 0.2);
   backdrop-filter: blur(30px);
-  box-shadow: 0 0 30px rgba(0, 0, 0, 0.2);
+  box-shadow: 0 0px 10px rgba(255, 255, 255, 0.308);
   color: #fff;
   border-radius: 10px;
   padding: 30px 40px;
-  box-shadow: 0 0px 10px rgba(255, 255, 255, 0.308);
+  position: relative;
+  z-index: 2;
 }
 .wrapper h1 {
   font-size: 40px;

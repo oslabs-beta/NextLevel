@@ -8,7 +8,11 @@ export async function GET(request) {
     try {
         const { searchParams } = new URL(request.nextUrl);
         // const { searchParams } = new URL(request.url);
-        const username = searchParams.get('username');
+        let username = searchParams.get('username');
+        // Fix: Convert spaces back to plus signs if needed
+        if (username && username.includes(' ')) {
+            username = username.replace(/ /g, '+');
+        }
         console.log('Looking up API key for username:', username);
 
         if (!username) {

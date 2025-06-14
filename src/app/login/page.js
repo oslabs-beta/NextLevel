@@ -1,7 +1,7 @@
 'use client';
 
 import React, { useState, useEffect } from 'react';
-import styles from './login.css';
+import styles from './login.module.css';
 import { FaCircleUser } from 'react-icons/fa6';
 import { Si1Password } from 'react-icons/si';
 import { AiOutlineGoogle } from 'react-icons/ai';
@@ -10,7 +10,6 @@ import Link from 'next/link';
 import { signIn, useSession } from 'next-auth/react';
 import Spinner from '../components/Spinner.js';
 import Image from 'next/image';
-import logo from '/public/TransparentIcon.png';
 
 export default function Login({ initialLoading = true }) {  //added prop for testing purposes
   const { data: session, status } = useSession();
@@ -26,11 +25,11 @@ export default function Login({ initialLoading = true }) {  //added prop for tes
     document.body.style.justifyContent = 'center';
     document.body.style.alignItems = 'center';
     document.body.style.minHeight = '100vh';
-    document.body.style.background =
-      'url("https://getwallpapers.com/wallpaper/full/2/8/f/537844.jpg") no-repeat';
+    document.body.style.background = 'url("https://getwallpapers.com/wallpaper/full/2/8/f/537844.jpg") no-repeat';
     document.body.style.backgroundSize = 'cover';
     document.body.style.backgroundPosition = 'center';
-    document.body.style.color = '#fff';
+    document.body.style.backgroundAttachment = 'fixed';
+    document.body.style.height = '100%';
 
     // Simulate loading time (for demonstration purposes)
     setTimeout(() => {
@@ -43,10 +42,12 @@ export default function Login({ initialLoading = true }) {  //added prop for tes
       document.body.style.justifyContent = '';
       document.body.style.alignItems = '';
       document.body.style.minHeight = '';
-      document.body.style.background = '';
-      document.body.style.backgroundSize = '';
-      document.body.style.backgroundPosition = '';
-      document.body.style.color = '';
+      document.body.style.backgroundImage = '';
+      document.body.style.backgroundRepeat = 'repeat';
+      document.body.style.backgroundSize = 'auto';
+      document.body.style.backgroundPosition = '0% 0%';
+      document.body.style.backgroundAttachment = '';
+      document.body.style.height = '';
     };
   }, []);
 
@@ -121,94 +122,93 @@ export default function Login({ initialLoading = true }) {  //added prop for tes
   }
 
   return (
-    <div className={styles.wrapper}>
-      <div className={styles['header-container']}>
-        <h1>NextLevel</h1>
-        <Image 
-          src={logo}
-          alt="NextLevel Logo" 
-          priority={true}
-          width={100}
-          height={100}
-          style={{ 
-            objectFit: 'contain',
-            background: 'transparent'
-          }}
-        />
-      </div>
-      <form onSubmit={handleSubmit}>
-        <div className="input-box">
-          <input
-            type="text"
-            placeholder="Username"
-            value={username}
-            onChange={(e) => setUsername(e.target.value)}
-            required
-          />
-          <FaCircleUser className="icon" />
-        </div>
-        <div className="input-box">
-          <input
-            type="password"
-            placeholder="Password"
-            value={password}
-            onChange={(e) => setPassword(e.target.value)}
-            required
-          />
-          <Si1Password className="icon" />
-        </div>
-        <div className="remember-forgot">
-          <label>
-            <input type="checkbox" /> Remember me
-          </label>
-          <a href="#">Forgot password?</a>
-        </div>
-        <button type="submit">Login</button>
+    <div className={styles.login}>
+      <div className={styles.bodyLogin}>
+        <div className={styles.wrapper}>
+          <div className={styles.headerContainer}>
+            <h1>NextLevel</h1>
+            <Image 
+              src="/TransparentIcon.png"
+              alt="NextLevel Logo" 
+              priority={true}
+              width={100}
+              height={100}
+              style={{ 
+                objectFit: 'contain',
+                background: 'transparent'
+              }}
+            />
+          </div>
+          <form onSubmit={handleSubmit}>
+            <div className={styles.inputBox}>
+              <input
+                type="text"
+                placeholder="Username"
+                value={username}
+                onChange={(e) => setUsername(e.target.value)}
+                required
+              />
+              <FaCircleUser className={styles.icon} />
+            </div>
+            <div className={styles.inputBox}>
+              <input
+                type="password"
+                placeholder="Password"
+                value={password}
+                onChange={(e) => setPassword(e.target.value)}
+                required
+              />
+              <Si1Password className={styles.icon} />
+            </div>
+            <div className={styles.rememberForgot}>
+              <label>
+                <input type="checkbox" /> Remember me
+              </label>
+            </div>
+            <button type="submit">Login</button>
+            <a href="#">Forgot password?</a>
 
-        {error && (
-          <p className="message" style={{ color: 'red' }}>
-            {error}
-          </p>
-        )}
-        {success && (
-          <p className="message" style={{ color: 'green' }}>
-            Login successful!
-          </p>
-        )}
-        <div className="oauth-link">
-          <button
-            type="button"
-            className="oauth-button"
-            aria-label="Sign in with Google"
-            onClick={() => handleOAuthSignIn('google')}
-          >
-            <AiOutlineGoogle className="google-icon" />
-          </button>
-          <button
-            type="button"
-            className="oauth-button"
-            aria-label="Sign in with GitHub"
-            onClick={() => handleOAuthSignIn('github')}
-          >
-            <IoLogoGithub className="github-icon" />
-          </button>
+            {error && (
+              <p className={styles.message} style={{ color: 'red' }}>
+                {error}
+              </p>
+            )}
+            {success && (
+              <p className={styles.message} style={{ color: 'green' }}>
+                Login successful!
+              </p>
+            )}
+            <div className={styles.oauthLink}>
+              <button
+                type="button"
+                className={styles.oauthButton}
+                aria-label="Sign in with Google"
+                onClick={() => handleOAuthSignIn('google')}
+              >
+                <AiOutlineGoogle className={styles.googleIcon} />
+              </button>
+              <button
+                type="button"
+                className={styles.oauthButton}
+                aria-label="Sign in with GitHub"
+                onClick={() => handleOAuthSignIn('github')}
+              >
+                <IoLogoGithub className={styles.githubIcon} />
+              </button>
+            </div>
+            <div className={styles.registerLink}>
+              <p style={{ margin: 0, color: '#fff', fontSize: '14.5px' }}>
+                Don't have an account?{' '}
+                <Link
+                  href="/signup"
+                  className={styles.registerLink}>
+                  Register
+                </Link>
+              </p>
+            </div>
+          </form>
         </div>
-        <div
-          className="register-link"
-          style={{
-            fontSize: '14.5px',
-            textAlign: 'center',
-            margin: '20px 0 15px',
-          }}
-        >
-          <p style={{ margin: 0, color: '#fff', fontSize: '14.5px' }}>
-            Don't have an account?{' '}
-            <Link href="/signup" style={{ color: '#fff', textDecoration: 'none', fontWeight: '600', fontSize: '14.5px' }}>
-              Register
-            </Link>
-          </p>
-        </div>
-      </form>
+      </div>
     </div>
   );
 }

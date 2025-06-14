@@ -27,9 +27,9 @@ function Dashboard(props) {
     <div className={styles.dashboardContainer}>
       <SideBar username={username}/>
       <div className={styles.mainContent}>
-        <APIKey username={username} />
-        <WebVitalsContainer username={username}/>
-        <BuildTimeContainer username={username}/>
+        <APIKey username={encodeURIComponent(username)} />
+        <WebVitalsContainer username={encodeURIComponent(username)}/>
+        <BuildTimeContainer username={encodeURIComponent(username)}/>
       </div>
     </div>
   );

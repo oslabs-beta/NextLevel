@@ -4,7 +4,6 @@ import React from 'react';
 import styles from './topnav.module.css';
 import Link from 'next/link';
 import Image from 'next/image';
-import logo from '/public/TransparentLogoLessSpace.png';
 import { useSession, signOut } from 'next-auth/react';
 
 function TopNav() {
@@ -20,7 +19,7 @@ function TopNav() {
         <div className={styles.logo}>
           <Link href="/">
             <Image 
-              src={logo} 
+              src="/TransparentLogoLessSpace.png"
               alt="logo" 
               height={40} 
               width={160}

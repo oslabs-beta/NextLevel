@@ -23,6 +23,7 @@ export default function RootLayout({ children }) {
     <html lang="en" suppressHydrationWarning>
       <body suppressHydrationWarning className={poppins.className}>
         <SessionWrapper>
+          <NextWebVitals />
           <TopNav />
           {children}
         </SessionWrapper>

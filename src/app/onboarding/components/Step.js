@@ -11,8 +11,8 @@ const Step = ({ stepNumber, title, description, code, language, api, username })
     if(api === true) {
       // Determine API URL based on the environment
       const apiUrl = process.env.NODE_ENV === 'development'
-        ? `http://localhost:3000/onboarding/api?username=${username}`  // Local API for dev
-        : `https://www.nextlevel-dash.com/onboarding/api?username=${username}`;  // Production API URL
+        ? `http://localhost:3000/onboarding/api?username=${encodeURIComponent(username)}`  // Local API for dev
+        : `https://www.nextlevel-dash.com/onboarding/api?username=${encodeURIComponent(username)}`;  // Production API URL
       
       fetch(apiUrl)
       .then((res) => {
@@ -22,8 +22,12 @@ const Step = ({ stepNumber, title, description, code, language, api, username })
         }
       })
       .then((data) => {
-        // console.log('API key in onboardin page:', data.APIkey);
-        setAPIkey(data.APIkey); // Set the API key in state
+        if (data && data.APIkey) {
+          setAPIkey(data.APIkey); // Set the API key in state
+        } else {
+          setAPIkey('');
+          console.error('APIkey not found in response:', data);
+        }
       })
       .catch((error) => {
         console.error('Error fetching API key:', error);
